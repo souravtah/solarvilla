@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="color-scheme" content="dark light">
-    <title>Register to SolarVilla</title>
+    <title>{{ config('app.name', 'SolarVilla1') }}</title>
     @vite('resources/sass/app.scss')
 </head>
 <body>

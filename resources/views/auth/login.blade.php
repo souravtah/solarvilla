@@ -1,61 +1,63 @@
 @extends('layouts.guest')
 
 @section('content')
-    <div class="col-lg-8">
-        <div class="card-group d-block d-md-flex row">
-            <div class="card col-md-7 p-4 mb-0">
-                <div class="card-body">
-                    <h1>{{ __('Login') }}</h1>
+<div class="px-5 py-5 p-lg-0 h-screen bg-surface-secondary d-flex flex-column justify-content-center">
+    <div class="d-flex justify-content-center">
+        <div class="col-12 col-md-9 col-lg-6 min-h-lg-screen d-flex flex-column justify-content-center py-lg-16 px-lg-20 position-relative">
+            <div class="row">
+                <div class="col-lg-10 col-md-9 col-xl-7 mx-auto">
+                    <div class="text-center mb-12">
+                        <h3 class="display-5">👋</h3>
+                        <h1 class="ls-tight font-bolder mt-6">Welcome back!</h1>
+                        <p class="mt-2">Login to view your account</p>
+                    </div>
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-                        <div class="input-group mb-3"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="{{ asset('icons/coreui.svg#cil-envelope-open') }}"></use>
-                      </svg></span>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text" name="email"
-                                   placeholder="{{ __('Email') }}" required autofocus>
+                        <div class="mb-5">
+                            <label class="form-label" for="email">Email address</label>
+                            <input type="email" class="form-control" id="email"
+                            @error('email') is-invalid @enderror" name="email"
+                            placeholder="{{ __('Email') }}" required autofocus>
                             @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
-                        <div class="input-group mb-4"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="{{ asset('icons/coreui.svg#cil-lock-locked') }}"></use>
-                      </svg></span>
-                            <input class="form-control @error('password') is-invalid @enderror" type="password"
-                                   name="password"
-                                   placeholder="{{ __('Password') }}" required>
+                        <div class="mb-5">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <label class="form-label" for="password">Password</label>
+                                @if (Route::has('password.request'))
+                                <div class="mb-2">
+                                    <a href="{{ route('password.request') }}" class="text-sm text-muted text-primary-hover text-underline">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                </div>
+                                @endif
+                            </div>
+                            <input type="password" class="form-control" id="password" @error('password') is-invalid @enderror" type="password"
+                            name="password"
+                            placeholder="{{ __('Password') }}" required>
                             @error('password')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
+                        {{-- <div class="mb-5">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" name="check_example" id="check-remind-me">
+                                <label class="form-check-label" for="check-remind-me">Keep me logged in</label>
                             </div>
-                            @if (Route::has('password.request'))
-                                <div class="col-6 text-end">
-                                    <a href="{{ route('password.request') }}" class="btn btn-link px-0"
-                                       type="button">{{ __('Forgot Your Password?') }}</a>
-                                </div>
-                            @endif
+                        </div> --}}
+                        <div>
+                            <button class="btn btn-primary w-full" type="submit">{{ __('Login') }}</button>
                         </div>
                     </form>
-                </div>
-            </div>
-            <div class="card col-md-5 text-white bg-primary py-5">
-                <div class="card-body text-center">
-                    <div>
-                        <h2>{{ __('Sign up') }}</h2>
-                        <a href="{{ route('register') }}"
-                           class="btn btn-lg btn-outline-light mt-3">{{ __('Register') }}</a>
-                    </div>
+                    <div class="my-6"><small>Don't have an account?</small> <a href="{{ route('register') }}"
+                            class="text-warning text-sm font-semibold">Sign up</a></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="px-5 py-5 p-lg-0 h-screen bg-surface-secondary d-flex flex-column justify-content-center">
+<div class="px-2 py-2 p-lg-0 h-screen bg-surface-secondary d-flex flex-column justify-content-center">
     <div class="d-flex justify-content-center">
         <div class="col-12 col-md-9 col-lg-6 min-h-lg-screen d-flex flex-column justify-content-center py-lg-16 px-lg-20 position-relative">
             <div class="row">

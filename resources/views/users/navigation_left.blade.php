@@ -21,7 +21,13 @@
                     <a href="#" class="dropdown-item">Settings</a>
                     <a href="#" class="dropdown-item">Billing</a>
                     <hr class="dropdown-divider">
-                    <a href="#" class="dropdown-item">Logout</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); this.closest('form').submit();">
+                            <i class="bi bi-box-arrow-left me-3"></i>{{ __('Logout') }}
+                        </a>
+                    </form>
                 </div>
             </div>
         </div>
@@ -93,8 +99,9 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item"><a href="../user/profile.html" class="nav-link">Profile</a>
                             </li>
-                            <li class="nav-item"><a href="../user/table-view.html" class="nav-link">Table
-                                    View</a></li>
+                            <li class="nav-item">
+                                <a href="{{ route('users.index') }}" class="nav-link">Table View</a>
+                            </li>
                             <li class="nav-item"><a href="../user/permissions.html" class="nav-link">Permissions</a>
                             </li>
                         </ul>

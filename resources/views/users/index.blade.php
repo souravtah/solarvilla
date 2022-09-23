@@ -25,9 +25,16 @@
             <ul class="nav nav-tabs overflow-x border-0">
             <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link {{ Route::currentRouteNamed('users.index') ? 'active' : '' }}">View all</a></li>
                 @foreach ($all_roles_in_database as $role)
-                <li class="nav-item"><a href="{{ route('users.rolewise.index', ['roleName' => $role]) }}" class="nav-link {{ (request()->is('users/'.$role)) ? 'active' : '' }}">{{ $role }}</a></li>
+                <li class="nav-item">
+                    <a href="{{ route('users.rolewise.index', ['roleName' => $role]) }}" class="nav-link {{ (request()->is('users/'.$role)) ? 'active' : '' }}">{{ $role }}</a>
+                </li>
                 @endforeach
-                <li class="nav-item"><a href="{{ route('users.withoutrole.index') }}" class="nav-link {{ Route::currentRouteNamed('users.withoutrole.index') ? 'active' : '' }}">Without any Role</a></li>
+                <li class="nav-item">
+                    <a href="{{ route('users.withoutrole.index') }}" class="nav-link {{ Route::currentRouteNamed('users.withoutrole.index') ? 'active' : '' }}">Without any Role</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('users.withtrashed.index') }}" class="nav-link {{ Route::currentRouteNamed('users.withtrashed.index') ? 'active' : '' }}"><span class="text-danger">Deleted User(s)</span></a>
+                </li>
             </ul>
         </div>
     </div>
@@ -41,7 +48,7 @@
         </div>
         <div class="offcanvas-body vstack gap-5">
             <div class="row g-5">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div>
                         <label class="form-label">Title</label>
                         <select class="form-select">
@@ -53,26 +60,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <div><label class="form-label">Name</label> <input type="text" class="form-control"></div>
-                </div>
-            </div>
-            <div>
-                <label class="form-label" for="formInputExample">Photo</label>
-                <div class="d-flex align-items-center">
-                    <a href="#" class="avatar avatar-lg bg-warning rounded-circle text-white">
-                    <img alt="..." src="../../img/people/img-6.jpg"></a>
-                    <div class="ms-5">
-                        <label for="file-upload" class="btn btn-sm btn-neutral">
-                        <span>Upload</span>
-                        <input type="file" name="file-upload" id="file-upload" class="visually-hidden"></label>
-                        <a href="#" class="btn d-inline-flex btn-sm btn-neutral ms-2 text-danger">
-                            <span class="pe-2">
-                                <i class="bi bi-trash"></i>
-                            </span>
-                            <span>Remove</span>
-                        </a>
-                    </div>
                 </div>
             </div>
             <hr>
@@ -89,9 +78,9 @@
             <div>@forelse ($all_roles_in_database as $role)
                 <div class="vstack gap-4">
                     <div class="d-flex gap-3">
-                        <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role">
+                        <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role" id="{{ "role" . $loop->iteration }}">
                         <div class="pt-1 form-checked-content">
-                            <h6 class="mb-1 lh-relaxed">{{ $role }}</h6>
+                            <label class="mb-1 lh-relaxed" for="{{ "role" . $loop->iteration }}">{{ $role }}</label>
                             {{-- <span class="d-block text-muted text-sm"><i class="bi bi-lock-fill me-1"></i>
                                  Only you will be able to see this project
                             </span> --}}
@@ -108,7 +97,7 @@
             <button type="button" class="btn btn-sm btn-primary">Save</button>
         </div>
     </div>
-    {{-- <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
+    <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-3">
                 <div class="modal-header">
@@ -147,7 +136,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <div class="container-fluid">
         <div class="vstack gap-4">
             <div class="d-flex justify-content-between flex-column flex-sm-row gap-3">
@@ -156,7 +145,7 @@
                                 class="bi bi-search"></i> </span><input type="email" class="form-control"
                             placeholder="Search" aria-label="Search"></div>
                     <div><button type="button" class="btn btn-sm px-3 btn-neutral d-flex align-items-center"><i
-                                class="bi bi-funnel me-2"></i> <span>Filters</span> <span
+                                class="bi bi-funnel me-2"></i> <span>Search</span> <span
                                 class="vr opacity-20 mx-3"></span> <span class="text-xs text-primary">2</span></button>
                     </div>
                 </div>
@@ -167,6 +156,11 @@
             <div class="card">
                 <div class="card-header border-bottom d-flex align-items-center">
                     <h5 class="me-auto">Total {{ $total_users }} user(s)</h5>
+                    @if (session('status'))
+                    <span class="me-auto text-success">
+                            {{ session('status') }}
+                    </span>
+                    @endif
                     <div class="dropdown"><a class="text-muted" href="#" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></a>
                         <div class="dropdown-menu"><a href="#!" class="dropdown-item">Action </a><a href="#!"
@@ -183,6 +177,7 @@
                                 <th scope="col">Position</th>
                                 <th scope="col">Emails</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>@forelse ($users as $user)
@@ -196,14 +191,28 @@
                                     <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $user->roles[0]->name ?? 'No Role' }}</span>
                                 </td>
                                 <td>{{ $user->email }}</td>
-                                <td class="text-end">
-                                    <a href="#offcanvasCreate" class="btn btn-sm btn-square btn-neutral" data-bs-toggle="offcanvas">
+                                <td class="p-1 text-end">
+                                    <a href="#offcanvasCreate" class="btn btn-sm btn-square btn-success" data-bs-toggle="offcanvas">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
                                 </td>
+                                @if (Route::currentRouteNamed('users.withtrashed.index'))
+                                <td class="p-0">
+                                    <a type="submit" href="{{ route('users.restore', $user->id) }}" onclick="return confirm('Are you sure you want to restore ?')" class="btn btn-sm btn-square btn-primary">
+                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                    </a>
+                                </td>
+                                @else
+                                <td class="p-0">
+                                    <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button type="submit" onclick="return confirm('Are you sure you want to delete ?')" class="btn btn-sm btn-square btn-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                                @endif
                             </tr>
                             @empty
                             <tr >

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,9 +25,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function () {
     Route::view('about', 'users.about')->name('about');
 
-    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-    Route::get('users/{roleName}', [\App\Http\Controllers\UserController::class, 'role_wise_index'])->name('users.rolewise.index');
-    Route::get('users-without-roles', [\App\Http\Controllers\UserController::class, 'users_without_any_role'])->name('users.withoutrole.index');
+    Route::get('users/{roleName}', [UserController::class, 'role_wise_index'])->name('users.rolewise.index');
+    Route::get('users-without-roles', [UserController::class, 'users_without_any_role'])->name('users.withoutrole.index');
+    Route::get('users-with-trashed', [UserController::class, 'users_with_trashed'])->name('users.withtrashed.index');
+    Route::get('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
+    Route::resource('users', UserController::class);
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

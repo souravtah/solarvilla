@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="color-scheme" content="dark light">
-    <title>Clever Dashboard | Made by Webpixels</title>
+    <title>{{ config('app.name', 'SolarVilla') }}</title>
     <link rel="stylesheet" href="../../cdn.jsdelivr.net/npm/bootstrap-icons%401.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
     <link rel="stylesheet" type="text/css" href="../../css/utilities.css">

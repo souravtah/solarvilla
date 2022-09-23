@@ -9,11 +9,16 @@
                     <h1 class="h2 ls-tight">Users</h1>
                 </div>
                 <div class="col-sm-auto col-12 mt-4 mt-sm-0">
-                    <div class="hstack gap-2 justify-content-sm-end"><a href="#modalExport"
-                            class="btn btn-sm btn-neutral border-base" data-bs-toggle="modal"><span class="pe-2"><i
-                                    class="bi bi-people-fill"></i> </span><span>Share</span> </a><a
-                            href="#offcanvasCreate" class="btn btn-sm btn-primary" data-bs-toggle="offcanvas"><span
-                                class="pe-2"><i class="bi bi-plus-square-dotted"></i> </span><span>Create</span></a>
+                    <div class="hstack gap-2 justify-content-sm-end">
+                        <a href="#modalExport" class="btn btn-sm btn-neutral border-base" data-bs-toggle="modal">
+                            <span class="pe-2"><i class="bi bi-people-fill"></i>
+                            </span>
+                            <span>Share</span>
+                        </a>
+                        <a href="#offcanvasCreate" class="btn btn-sm btn-primary" data-bs-toggle="offcanvas">
+                            <span class="pe-2"><i class="bi bi-plus-square-dotted"></i> </span>
+                            <span>Create</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -36,16 +41,21 @@
         </div>
         <div class="offcanvas-body vstack gap-5">
             <div class="row g-5">
-                <div class="col-md-6">
-                    <div><label class="form-label">First name</label> <input type="text" class="form-control"></div>
+                <div class="col-md-3">
+                    <div>
+                        <label class="form-label">Title</label>
+                        <select class="form-select">
+                            <option value="1" selected>Mr</option>
+                            <option value="2">Mrs</option>
+                            <option value="3">Miss</option>
+                            <option value="4">Dr</option>
+                            <option value="5">Er</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <div><label class="form-label">Last name</label> <input type="text" class="form-control"></div>
+                <div class="col-md-9">
+                    <div><label class="form-label">Name</label> <input type="text" class="form-control"></div>
                 </div>
-            </div>
-            <div>
-                <label class="form-label">Bio</label>
-                <textarea class="form-control" placeholder="Your email" rows="2"></textarea>
             </div>
             <div>
                 <label class="form-label" for="formInputExample">Photo</label>
@@ -76,11 +86,21 @@
                     <input type="tel" class="form-control">
                 </div>
             </div>
-            <div>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" name="switchMakeAdmin" id="switchMakeAdmin">
-                    <label class="form-check-label ms-2" for="switchMakeAdmin">Make admin</label>
+            <div>@forelse ($all_roles_in_database as $role)
+                <div class="vstack gap-4">
+                    <div class="d-flex gap-3">
+                        <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role">
+                        <div class="pt-1 form-checked-content">
+                            <h6 class="mb-1 lh-relaxed">{{ $role }}</h6>
+                            {{-- <span class="d-block text-muted text-sm"><i class="bi bi-lock-fill me-1"></i>
+                                 Only you will be able to see this project
+                            </span> --}}
+                        </div>
+                    </div>
                 </div>
+                @empty
+
+                @endforelse
             </div>
         </div>
         <div class="modal-footer py-2 bg-surface-secondary">
@@ -88,7 +108,7 @@
             <button type="button" class="btn btn-sm btn-primary">Save</button>
         </div>
     </div>
-    <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
+    {{-- <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-3">
                 <div class="modal-header">
@@ -127,7 +147,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="container-fluid">
         <div class="vstack gap-4">
             <div class="d-flex justify-content-between flex-column flex-sm-row gap-3">
@@ -177,7 +197,7 @@
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td class="text-end">
-                                    <a href="#" class="btn btn-sm btn-square btn-neutral">
+                                    <a href="#offcanvasCreate" class="btn btn-sm btn-square btn-neutral" data-bs-toggle="offcanvas">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">

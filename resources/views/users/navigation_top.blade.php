@@ -72,7 +72,7 @@
                             <span class="d-block text-heading font-semibold">{{ Auth::user()->name }}</span>
                         </div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('home') }}">
                             <i class="bi bi-house me-3"></i>Home
                         </a>
                         <a class="dropdown-item" href="#">
@@ -81,12 +81,6 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">
                             <i class="bi bi-gear me-3"></i>Settings
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="bi bi-image me-3"></i>Media
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="bi bi-box-arrow-up me-3"></i>Share
                         </a>
                         <div class="dropdown-divider"></div>
                         <form method="POST" action="{{ route('logout') }}">

@@ -20,7 +20,7 @@
         </div>
     </div>
 </header>
-<main class="py-6 bg-surface-secondary">
+{{-- <main class="py-6 bg-surface-secondary">
     <div class="container-fluid max-w-screen-md vstack gap-6">
         <div class="card">
             <div class="card-body">
@@ -126,5 +126,5 @@
             </div>
         </div>
     </div>
-</main>
+</main> --}}
 @endsection

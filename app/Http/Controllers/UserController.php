@@ -13,7 +13,8 @@ class UserController extends Controller
     {
         $users                      = User::with('roles')->paginate(5);
         $all_roles_in_database      = Role::all()->pluck('name');
-        return view('users.index', compact('users', 'all_roles_in_database'));
+        $total_users                = $users->toArray()['total'];
+        return view('users.index', compact('users', 'all_roles_in_database', 'total_users'));
     }
 
     public function role_wise_index(String $roleName)
@@ -23,8 +24,16 @@ class UserController extends Controller
         } catch (RoleDoesNotExist $e) {
             abort(404);
         }
-
         $all_roles_in_database      = Role::all()->pluck('name');
-        return view('users.index', compact('users', 'all_roles_in_database'));
+        $total_users                = $users->toArray()['total'];
+        return view('users.index', compact('users', 'all_roles_in_database', 'total_users'));
+    }
+
+    public function users_without_any_role()
+    {
+        $users                      = User::doesntHave('roles')->paginate(5);
+        $all_roles_in_database      = Role::all()->pluck('name');
+        $total_users                = $users->toArray()['total'];
+        return view('users.index', compact('users', 'all_roles_in_database', 'total_users'));
     }
 }

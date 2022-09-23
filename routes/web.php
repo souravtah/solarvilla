@@ -23,10 +23,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::view('about', 'about')->name('about');
+    Route::view('about', 'users.about')->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::get('users/{roleName}', [\App\Http\Controllers\UserController::class, 'role_wise_index'])->name('users.rolewise.index');
+    Route::get('users-without-roles', [\App\Http\Controllers\UserController::class, 'users_without_any_role'])->name('users.withoutrole.index');
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

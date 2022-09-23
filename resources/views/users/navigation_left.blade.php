@@ -1,11 +1,11 @@
-<nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="sidebar">
+<nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg scrollbar" id="sidebar">
     <div class="container-fluid">
         <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand d-inline-block py-lg-2 mb-lg-5 px-lg-6 me-0" href="../../index.html">
+        <a class="navbar-brand d-inline-block py-lg-2 mb-lg-5 px-lg-6 me-0" href="{{ route('home') }}">
             <img src="../../img/logos/clever-primary.svg" alt="..."></a>
         <div class="navbar-user d-lg-none">
             <div class="dropdown">
@@ -157,10 +157,16 @@
                                 as</span> <span class="d-block text-heading font-semibold">{{ Auth::user()->name
                                 }}</span>
                         </div>
-                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                class="bi bi-house me-3"></i>Home </a><a class="dropdown-item" href="#"><i
-                                class="bi bi-pencil me-3"></i>Profile </a><a class="dropdown-item" href="#"><i
-                                class="bi bi-gear me-3"></i>Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('home') }}">
+                            <i class="bi bi-house me-3"></i>Home
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-pencil me-3"></i>Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-gear me-3"></i>Settings
+                        </a>
                         <div class="dropdown-divider"></div>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

@@ -22,6 +22,7 @@
                 @foreach ($all_roles_in_database as $role)
                 <li class="nav-item"><a href="{{ route('users.rolewise.index', ['roleName' => $role]) }}" class="nav-link {{ (request()->is('users/'.$role)) ? 'active' : '' }}">{{ $role }}</a></li>
                 @endforeach
+                <li class="nav-item"><a href="{{ route('users.withoutrole.index') }}" class="nav-link {{ Route::currentRouteNamed('users.withoutrole.index') ? 'active' : '' }}">Without any Role</a></li>
             </ul>
         </div>
     </div>
@@ -145,7 +146,7 @@
             </div>
             <div class="card">
                 <div class="card-header border-bottom d-flex align-items-center">
-                    <h5 class="me-auto">All projects</h5>
+                    <h5 class="me-auto">Total {{ $total_users }} user(s)</h5>
                     <div class="dropdown"><a class="text-muted" href="#" role="button" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></a>
                         <div class="dropdown-menu"><a href="#!" class="dropdown-item">Action </a><a href="#!"
@@ -164,7 +165,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>@foreach($users as $user)
+                        <tbody>@forelse ($users as $user)
                             <tr>
                                 <td>
                                     <img alt="..." src="../../img/people/img-3.jpg" class="avatar avatar-sm rounded-circle me-2">
@@ -172,7 +173,7 @@
                                 </td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $user->roles[0]->name }}</span>
+                                    <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $user->roles[0]->name ?? 'No Role' }}</span>
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td class="text-end">
@@ -183,7 +184,12 @@
                                         <i class="bi bi-trash"></i>
                                     </button>
                                 </td>
-                            </tr>@endforeach
+                            </tr>
+                            @empty
+                            <tr >
+                                <th scope="col" rowspan="5">No User</th>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

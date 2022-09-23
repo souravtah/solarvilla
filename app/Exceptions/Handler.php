@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+//use Spatie\Permission\Exceptions\RoleDoesNotExist;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -43,8 +44,11 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
+        // $this->renderable(function (RoleDoesNotExist $e, $request) {
+        //     return response()->json([
+        //         'responseMessage' => 'Role not found.',
+        //         'responseStatus'  => 404,
+        //     ]);
+        // });
     }
 }

@@ -18,9 +18,10 @@
                 </div>
             </div>
             <ul class="nav nav-tabs overflow-x border-0">
-                <li class="nav-item"><a href="#" class="nav-link active">View all</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Most recent</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Popular</a></li>
+            <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link {{ Route::currentRouteNamed('users.index') ? 'active' : '' }}">View all</a></li>
+                @foreach ($all_roles_in_database as $role)
+                <li class="nav-item"><a href="{{ route('users.rolewise.index', ['roleName' => $role]) }}" class="nav-link {{ (request()->is('users/'.$role)) ? 'active' : '' }}">{{ $role }}</a></li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -171,7 +172,7 @@
                                 </td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">Web Developer</span>
+                                    <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $user->roles[0]->name }}</span>
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td class="text-end">

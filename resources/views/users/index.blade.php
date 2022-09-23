@@ -46,56 +46,64 @@
             <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new user</h5>
             <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body vstack gap-5">
-            <div class="row g-5">
-                <div class="col-md-4">
-                    <div>
-                        <label class="form-label">Title</label>
-                        <select class="form-select">
-                            <option value="1" selected>Mr</option>
-                            <option value="2">Mrs</option>
-                            <option value="3">Miss</option>
-                            <option value="4">Dr</option>
-                            <option value="5">Er</option>
-                        </select>
+        <form method="POST" action="{{ route('users.store') }}">
+            @csrf
+            <div class="offcanvas-body vstack gap-5">
+                <div class="row g-5">
+                    <div class="col-md-4">
+                        <div>
+                            <label class="form-label">Title</label>
+                            <select class="form-select" name="title">
+                                <option value="1" selected>Mr</option>
+                                <option value="2">Mrs</option>
+                                <option value="3">Miss</option>
+                                <option value="4">Dr</option>
+                                <option value="5">Er</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-8">
-                    <div><label class="form-label">Name</label> <input type="text" class="form-control"></div>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-6">
-                    <label class="form-label" for="last_name">Email address</label>
-                    <input type="email" class="form-control">
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label" for="last_name">Phone number</label>
-                    <input type="tel" class="form-control">
-                </div>
-            </div>
-            <div>@forelse ($all_roles_in_database as $role)
-                <div class="vstack gap-4">
-                    <div class="d-flex gap-3">
-                        <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role" id="{{ "role" . $loop->iteration }}">
-                        <div class="pt-1 form-checked-content">
-                            <label class="mb-1 lh-relaxed" for="{{ "role" . $loop->iteration }}">{{ $role }}</label>
-                            {{-- <span class="d-block text-muted text-sm"><i class="bi bi-lock-fill me-1"></i>
-                                 Only you will be able to see this project
-                            </span> --}}
+                    <div class="col-md-8">
+                        <div>
+                            <label class="form-label">Name</label>
+                            <input type="text" name="name" class="form-control" maxlength="25">
                         </div>
                     </div>
                 </div>
-                @empty
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label" for="last_name">Email address</label>
+                        <input type="email" name="email" class="form-control" maxlength="95">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="last_name">Phone number</label>
+                        <input type="tel" name="phone" class="form-control" maxlength="10">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="form-label">Choose an user role from the below list:</label>
+                    @forelse ($all_roles_in_database as $role)
+                    <div class="vstack gap-4 col-md-6">
+                        <div class="d-flex gap-3">
+                            <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role" id="{{ "role" . $loop->iteration }}" value="{{ $role }}">
+                            <div class="pt-1 form-checked-content">
+                                <label class="mb-1 lh-relaxed" for="{{ "role" . $loop->iteration }}">{{ $role }}</label>
+                                {{-- <span class="d-block text-muted text-sm"><i class="bi bi-lock-fill me-1"></i>
+                                    Only you will be able to see this project
+                                </span> --}}
+                            </div>
+                        </div>
+                    </div>
+                    @empty
 
-                @endforelse
+                    @endforelse
+                </div>
             </div>
-        </div>
-        <div class="modal-footer py-2 bg-surface-secondary">
-            <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
-            <button type="button" class="btn btn-sm btn-primary">Save</button>
-        </div>
+            <div class="modal-footer py-2 bg-surface-secondary">
+                <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
+                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+            </div>
+        </form>
     </div>
     <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -173,7 +181,7 @@
                         <thead class="table-light">
                             <tr>
                                 <th scope="col">Name</th>
-                                <th scope="col">Created at</th>
+                                <th scope="col">Phone (+91)</th>
                                 <th scope="col">Position</th>
                                 <th scope="col">Emails</th>
                                 <th></th>
@@ -186,7 +194,7 @@
                                     <img alt="..." src="../../img/people/img-3.jpg" class="avatar avatar-sm rounded-circle me-2">
                                     <a class="text-heading text-primary-hover font-semibold" href="#">{{ $user->name }}</a>
                                 </td>
-                                <td>{{ $user->created_at }}</td>
+                                <td>{{ $user->phone }}</td>
                                 <td>
                                     <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $user->roles[0]->name ?? 'No Role' }}</span>
                                 </td>

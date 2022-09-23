@@ -32,6 +32,16 @@
                             </span>
                             @enderror
                         </div>
+                        <div class="mb-5">
+                            <label class="form-label" for="phone">Phone</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="{{ __('Phone') }}" required
+                            autocomplete="phone">
+                            @error('phone')
+                            <span class="invalid-feedback">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
                         <div class="mb-5"><label class="form-label" for="password">Password</label>
                             <input type="password" class="form-control" id="password" @error('password') is-invalid @enderror" type="password"
                             name="password" placeholder="{{ __('Password') }}" required autocomplete="new-password">

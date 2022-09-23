@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users                      = User::with('roles')->paginate(5);
+        $users                      = User::with('roles')->paginate(3);
         $all_roles_in_database      = Role::all()->pluck('name');
         $total_users                = $users->toArray()['total'];
         return view('users.index', compact('users', 'all_roles_in_database', 'total_users'));
@@ -21,7 +21,7 @@ class UserController extends Controller
     public function role_wise_index(String $roleName)
     {
         try {
-            $users                  = User::with('roles')->role($roleName)->paginate(5);
+            $users                  = User::with('roles')->role($roleName)->paginate(3);
         } catch (RoleDoesNotExist $e) {
             abort(404);
         }
@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function users_without_any_role()
     {
-        $users                      = User::doesntHave('roles')->paginate(5);
+        $users                      = User::doesntHave('roles')->paginate(3);
         $all_roles_in_database      = Role::all()->pluck('name');
         $total_users                = $users->toArray()['total'];
         return view('users.index', compact('users', 'all_roles_in_database', 'total_users'));
@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function users_with_trashed()
     {
-        $users                      = User::onlyTrashed()->paginate(5);
+        $users                      = User::with('roles')->onlyTrashed()->paginate(3);
         $all_roles_in_database      = Role::all()->pluck('name');
         $total_users                = $users->toArray()['total'];
         return view('users.index', compact('users', 'all_roles_in_database', 'total_users'));
@@ -60,7 +60,11 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        //
+        $validated                  = $request->safe()
+                                        ->only(['title', 'name', 'email', 'phone']);
+        $user                       = User::create($validated)->assignRole($request->role);
+        return redirect()->route('users.index')
+                    ->with('status', 'User '. $user->name .' created!');
     }
 
     public function show(User $user)

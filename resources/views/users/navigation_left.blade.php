@@ -1,3 +1,58 @@
+<?php
+    $left_navbar = [
+        'SuperAdmin' => [],
+        'Admin' => [],
+        'BackOffice' => [],
+        'TeamLeader' => [],
+        'Sales' => [],
+        'Technician' => [],
+        'Client' => [
+                        [
+                            'menu_name' => 'Raise a Ticket12',
+                            'icon' => 'bi bi-plus-circle-dotted',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'menu41',
+                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'menu31',
+                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'menu127',
+                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                            ],
+                        ],
+                        [
+                            'menu_name' => 'Raise a Ticket12',
+                            'icon' => 'bi bi-plus-circle-dotted',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'menu41',
+                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'menu31',
+                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'menu127',
+                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                        ],
+
+                    ],
+                ],
+            ];
+?>
 <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg scrollbar" id="sidebar">
     <div class="container-fluid">
         <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse"
@@ -33,116 +88,23 @@
         </div>
         <div class="collapse navbar-collapse" id="sidebarCollapse">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#sidebar-projects" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="sidebar-projects"><i
-                            class="bi bi-briefcase"></i> Projects</a>
-                    <div class="collapse" id="sidebar-projects">
+                @foreach($left_navbar['Client'] as $key => $value)
+                <li class="nav-item">
+                    <a class="nav-link" href="#sidebar-{{ $key }}" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="sidebar-{{ $key }}">
+                        <i class="{{ $value['icon'] }}"></i> {{ $value['menu_name'] }}
+                    </a>
+                    <div class="collapse" id="sidebar-{{ $key }}">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item"><a href="../projects/overview.html" class="nav-link">Overview</a></li>
-                            <li class="nav-item"><a href="../projects/grid-view.html" class="nav-link">Grid
-                                    View</a></li>
-                            <li class="nav-item"><a href="../projects/table-view.html" class="nav-link">Table
-                                    View</a></li>
-                            <li class="nav-item"><a href="../projects/details.html" class="nav-link">Details</a>
-                            </li>
-                            <li class="nav-item"><a href="../projects/create-project.html" class="nav-link">Create
-                                    Project</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#sidebar-tasks" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebar-tasks"><i class="bi bi-kanban"></i> Tasks</a>
-                    <div class="collapse" id="sidebar-tasks">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item"><a href="../tasks/overview.html" class="nav-link">Overview</a>
-                            </li>
-                            <li class="nav-item"><a href="../tasks/list-view.html" class="nav-link">List
-                                    View</a></li>
-                            <li class="nav-item"><a href="../tasks/list-view-aside.html" class="nav-link">List
-                                    View w/ Details</a></li>
-                            <li class="nav-item"><a href="../tasks/board-view.html" class="nav-link">Board
-                                    View</a></li>
-                            <li class="nav-item"><a href="../tasks/create-task.html" class="nav-link">Create
-                                    Task</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#sidebar-files" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebar-files"><i class="bi bi-file-earmark-text"></i>
-                        Files</a>
-                    <div class="collapse" id="sidebar-files">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item"><a href="../files/overview.html" class="nav-link">Overview</a>
-                            </li>
-                            <li class="nav-item"><a href="../files/table-view.html" class="nav-link">Table
-                                    View</a></li>
-                            <li class="nav-item"><a href="../files/media-gallery.html" class="nav-link">Media
-                                    Gallery</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#sidebar-integrations" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="sidebar-integrations"><i
-                            class="bi bi-terminal"></i> Integrations</a>
-                    <div class="collapse" id="sidebar-integrations">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item"><a href="../integrations/applications.html"
-                                    class="nav-link">Applications</a></li>
-                            <li class="nav-item"><a href="../integrations/manage-apps.html" class="nav-link">Manage
-                                    Apps</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#sidebar-user" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebar-user"><i class="bi bi-people"></i> User</a>
-                    <div class="collapse" id="sidebar-user">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item"><a href="../user/profile.html" class="nav-link">Profile</a>
-                            </li>
+                            @foreach($value['sub_menu'] as $sub_key => $sub_value)
                             <li class="nav-item">
-                                <a href="{{ route('users.index') }}" class="nav-link">Table View</a>
+                                <a href="{{ route($sub_value['sub_menu_route']) }}" class="nav-link"><i class="{{ $sub_value['sub_menu_icon'] }}"></i> {{ $sub_value['sub_menu_name'] }}</a>
                             </li>
-                            <li class="nav-item"><a href="../user/permissions.html" class="nav-link">Permissions</a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#sidebar-settings" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="sidebar-settings"><i class="bi bi-gear"></i>
-                        Settings</a>
-                    <div class="collapse" id="sidebar-settings">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item"><a href="general.html" class="nav-link">General</a>
-                            </li>
-                            <li class="nav-item"><a href="security.html" class="nav-link">Security</a></li>
-                            <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
-                            <li class="nav-item"><a href="billing.html" class="nav-link">Billing</a></li>
-                            <li class="nav-item"><a href="notifications.html" class="nav-link">Notifications</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#sidebar-authentication" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="sidebar-authentication"><i
-                            class="bi bi-person-bounding-box"></i>
-                        Authentication</a>
-                    <div class="collapse" id="sidebar-authentication">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item"><a href="../authentication/basic-login.html" class="nav-link">Basic
-                                    Login</a></li>
-                            <li class="nav-item"><a href="../authentication/basic-register.html" class="nav-link">Basic
-                                    Register</a></li>
-                            <li class="nav-item"><a href="../authentication/basic-recover.html" class="nav-link">Basic
-                                    Recover</a></li>
-                            <li class="nav-item"><a href="../authentication/side-login.html" class="nav-link">Side
-                                    Login</a></li>
-                            <li class="nav-item"><a href="../authentication/side-register.html" class="nav-link">Side
-                                    Register</a></li>
-                            <li class="nav-item"><a href="../authentication/side-recover.html" class="nav-link">Side
-                                    Recover</a></li>
-                        </ul>
-                    </div>
-                </li>
+                @endforeach
             </ul>
             <div class="mt-auto"></div>
             <div class="my-4 px-lg-6 position-relative">

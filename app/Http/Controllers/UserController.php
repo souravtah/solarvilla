@@ -53,10 +53,6 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('status', 'User '. $user->name .' restored!');
     }
 
-    public function create()
-    {
-        //
-    }
 
     public function store(StoreUserRequest $request)
     {
@@ -69,7 +65,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-
+        return view('users.show', compact('user'));
     }
 
     public function edit(User $user)
@@ -94,7 +90,23 @@ class UserController extends Controller
             $user->delete();
             return redirect(route('users.index'))->with('status', 'User '. $user->name .' deleted!');
         }
-        return redirect(route('users.index'))->with('status', 'User '. $user->name .' not deleted!');
+        abort(403);
+    }
+
+    public function activity(User $user)
+    {
+        return view('users.activity', compact('user'));
+    }
+
+    public function setting(User $user)
+    {
+        return view('users.setting', compact('user'));
+    }
+
+    public function force_delete(User $user)
+    {
+        $user->forceDelete();
+        return redirect()->route('users.index')->with('status', 'User '. $user->name .' permanently deleted!');
     }
 
 }

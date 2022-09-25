@@ -25,11 +25,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->group(function () {
     Route::view('about', 'users.about')->name('about');
 
-    Route::get('users/{roleName}', [UserController::class, 'role_wise_index'])->name('users.rolewise.index');
+    Route::get('users/role/{roleName}', [UserController::class, 'role_wise_index'])->name('users.rolewise.index');
     Route::get('users-without-roles', [UserController::class, 'users_without_any_role'])->name('users.withoutrole.index');
     Route::get('users-with-trashed', [UserController::class, 'users_with_trashed'])->name('users.withtrashed.index');
     Route::get('users/{user}/restore', [UserController::class, 'restore'])->name('users.restore');
-    Route::resource('users', UserController::class);
+    Route::get('users/{user}/activities', [UserController::class, 'activity'])->name('users.activity');
+    Route::get('users/{user}/settings', [UserController::class, 'setting'])->name('users.setting');
+    Route::delete('users/{user}/force-delete', [UserController::class, 'force_delete'])->name('users.force_delete');
+    Route::resource('users', UserController::class)->except(['create']);
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

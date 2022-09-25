@@ -23,30 +23,30 @@
                 </div>
             </div>
             <ul class="nav nav-tabs overflow-x border-0">
-            <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link {{ Route::currentRouteNamed('users.index') ? 'active' : '' }}">View all</a></li>
+            <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link {{ Route::currentRouteNamed('users.index') ? 'active font-bold' : '' }}">View all</a></li>
                 @foreach ($all_roles_in_database as $role)
                 <li class="nav-item">
-                    <a href="{{ route('users.rolewise.index', ['roleName' => $role]) }}" class="nav-link {{ (request()->is('users/'.$role)) ? 'active' : '' }}">{{ $role }}</a>
+                    <a href="{{ route('users.rolewise.index', ['roleName' => $role]) }}" class="nav-link {{ (request()->is('users/'.$role)) ? 'active font-bold' : '' }}">{{ $role }}</a>
                 </li>
                 @endforeach
                 <li class="nav-item">
-                    <a href="{{ route('users.withoutrole.index') }}" class="nav-link {{ Route::currentRouteNamed('users.withoutrole.index') ? 'active' : '' }}">Without any Role</a>
+                    <a href="{{ route('users.withoutrole.index') }}" class="nav-link {{ Route::currentRouteNamed('users.withoutrole.index') ? 'active font-bold' : '' }}">Without any Role</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('users.withtrashed.index') }}" class="nav-link {{ Route::currentRouteNamed('users.withtrashed.index') ? 'active' : '' }}"><span class="text-danger">Deleted User(s)</span></a>
+                    <a href="{{ route('users.withtrashed.index') }}" class="nav-link {{ Route::currentRouteNamed('users.withtrashed.index') ? 'active font-bold' : '' }}"><span class="text-danger">Deleted User(s)</span></a>
                 </li>
             </ul>
         </div>
     </div>
 </header>
 <main class="py-6 bg-surface-secondary">
+    <form method="POST" action="{{ route('users.store') }}">
     <div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
         id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
         <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
             <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new user</h5>
             <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <form method="POST" action="{{ route('users.store') }}">
             @csrf
             <div class="offcanvas-body vstack gap-5">
                 <div class="row g-5">
@@ -103,8 +103,8 @@
                 <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
                 <button type="submit" class="btn btn-sm btn-primary">Save</button>
             </div>
-        </form>
     </div>
+    </form>
     <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-3">
@@ -192,7 +192,7 @@
                             <tr>
                                 <td>
                                     <img alt="..." src="../../img/people/img-3.jpg" class="avatar avatar-sm rounded-circle me-2">
-                                    <a class="text-heading text-primary-hover font-semibold" href="#">{{ $user->name }}</a>
+                                    <a class="text-heading text-primary-hover font-semibold" href="{{ route('users.show', ['user' => $user->id]) }}">{{ $user->name }}</a>
                                 </td>
                                 <td>{{ $user->phone }}</td>
                                 <td>

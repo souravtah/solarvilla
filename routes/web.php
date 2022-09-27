@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TicketLabelController;
+use App\Http\Controllers\TicketCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,8 +35,14 @@ Route::middleware('auth')->group(function () {
     Route::get('users/{user}/activities', [UserController::class, 'activity'])->name('users.activity');
     Route::get('users/{user}/settings', [UserController::class, 'setting'])->name('users.setting');
     Route::delete('users/{user}/force-delete', [UserController::class, 'force_delete'])->name('users.force_delete');
-    Route::resource('users', UserController::class)->except(['create']);
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+
+    Route::resource('users', UserController::class)->except(['create']);
+    Route::resource('ticket-categories', TicketCategoryController::class);
+    Route::resource('tickets', TicketController::class);
+    Route::resource('ticket-labels', TicketLabelController::class);
+
 });

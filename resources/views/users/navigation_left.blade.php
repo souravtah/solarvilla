@@ -1,7 +1,45 @@
 <?php
     $left_navbar = [
         'SuperAdmin' => [],
-        'Admin' => [],
+        'Admin' => [
+                        [
+                            'menu_name' => 'Ticket settings',
+                            'icon' => 'bi bi-gear',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Category management',
+                                    'sub_menu_icon' => 'bi bi-gear-wide-connected',
+                                    'sub_menu_route' => 'ticket-categories.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'Label management',
+                                    'sub_menu_icon' => 'bi bi-tags',
+                                    'sub_menu_route' => 'ticket-labels.index',
+                                ],
+                            ],
+                        ],
+                        [
+                            'menu_name' => 'Resolve Ticket',
+                            'icon' => 'bi bi-ticket-perforated',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Answer a ticket',
+                                    'sub_menu_icon' => 'bi bi-ticket',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'Modify ticket',
+                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'menu127',
+                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                            ],
+                        ],
+                    ],
         'BackOffice' => [],
         'TeamLeader' => [],
         'Sales' => [],
@@ -47,11 +85,10 @@
                                     'sub_menu_icon' => 'bi bi-plus-circle-dotted',
                                     'sub_menu_route' => 'users.index',
                                 ],
+                            ],
                         ],
-
                     ],
-                ],
-            ];
+                ];
 ?>
 <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg scrollbar" id="sidebar">
     <div class="container-fluid">
@@ -88,7 +125,7 @@
         </div>
         <div class="collapse navbar-collapse" id="sidebarCollapse">
             <ul class="navbar-nav">
-                @foreach($left_navbar['Client'] as $key => $value)
+                @foreach($left_navbar['Admin'] as $key => $value)
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebar-{{ $key }}" data-bs-toggle="collapse"
                         role="button" aria-expanded="false" aria-controls="sidebar-{{ $key }}">

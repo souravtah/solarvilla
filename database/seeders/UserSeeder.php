@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         $roles = collect(['SuperAdmin', 'Admin', 'BackOffice', 'TeamLeader', 'Sales', 'Technician', 'Client']);
         User::factory()
-            ->count(10)
+            ->count(2)
             ->create()
             ->each(function($user) use ($roles) {
                 $user->assignRole($roles->random());

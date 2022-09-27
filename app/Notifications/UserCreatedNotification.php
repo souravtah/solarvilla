@@ -2,7 +2,6 @@
 
 namespace App\Notifications;
 
-use App\Mail\AccountCreatedEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -42,7 +41,12 @@ class UserCreatedNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new AccountCreatedEmail);
+        return (new MailMessage)
+                ->subject('Your SolarVilla account has been created successfully')
+                ->line('Welcome to SolarVilla')
+                ->line('You may raise support tickets after login')
+                ->action('Login to view your dashboard', url('/'))
+                ->line('Thank you for using Solarvilla!');
 
     }
 

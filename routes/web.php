@@ -43,6 +43,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class)->except(['create']);
     Route::resource('ticket-categories', TicketCategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('tickets', TicketController::class);
-    //Route::resource('ticket-labels', TicketLabelController::class);
+    Route::resource('ticket-labels', TicketLabelController::class);
 
 });

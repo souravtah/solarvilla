@@ -3,13 +3,13 @@
         'SuperAdmin' => [],
         'Admin' => [
                         [
-                            'menu_name' => 'Ticket settings',
-                            'icon' => 'bi bi-gear',
+                            'menu_name' => 'User management',
+                            'icon' => 'bi bi-person-bounding-box',
                             'sub_menu' => [
                                 [
-                                    'sub_menu_name' => 'Category management',
-                                    'sub_menu_icon' => 'bi bi-gear-wide-connected',
-                                    'sub_menu_route' => 'ticket-categories.index',
+                                    'sub_menu_name' => 'User List',
+                                    'sub_menu_icon' => 'bi bi-people',
+                                    'sub_menu_route' => 'users.index',
                                 ],
                                 // [
                                 //     'sub_menu_name' => 'Label management',
@@ -19,22 +19,80 @@
                             ],
                         ],
                         [
+                            'menu_name' => 'Ticket settings',
+                            'icon' => 'bi bi-gear',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Category management',
+                                    'sub_menu_icon' => 'bi bi-gear-wide-connected',
+                                    'sub_menu_route' => 'ticket-categories.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'Label management',
+                                    'sub_menu_icon' => 'bi bi-tags',
+                                    'sub_menu_route' => 'ticket-labels.index',
+                                ],
+                            ],
+                        ],
+                        [
                             'menu_name' => 'Resolve Ticket',
                             'icon' => 'bi bi-ticket-perforated',
                             'sub_menu' => [
                                 [
                                     'sub_menu_name' => 'Answer a ticket',
                                     'sub_menu_icon' => 'bi bi-ticket',
+                                    'sub_menu_route' => 'tickets.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'Modify/close ticket',
+                                    'sub_menu_icon' => 'bi bi-ticket-detailed',
                                     'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'View pending ticket(s)',
+                                    'sub_menu_icon' => 'bi bi-ticket-perforated-fill',
+                                    'sub_menu_route' => 'tickets.index',
+                                ],
+                            ],
+                        ],
+                        [
+                            'menu_name' => 'Raise a Ticket',
+                            'icon' => 'bi bi-ticket',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Create a new ticket',
+                                    'sub_menu_icon' => 'bi bi-ticket',
+                                    'sub_menu_route' => 'tickets.create',
                                 ],
                                 [
                                     'sub_menu_name' => 'Modify ticket',
-                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_icon' => 'bi bi-ticket-detailed-fill',
                                     'sub_menu_route' => 'users.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'menu127',
-                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_name' => 'Ticket history',
+                                    'sub_menu_icon' => 'bi bi-ticket-fill',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                            ],
+                        ],
+                        [
+                            'menu_name' => 'Settings',
+                            'icon' => 'bi bi-gear-wide',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Privacy settings',
+                                    'sub_menu_icon' => 'bi bi-shield-check',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'Notification settings',
+                                    'sub_menu_icon' => 'bi bi-bell',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'Website preference',
+                                    'sub_menu_icon' => 'bi bi-browser-safari',
                                     'sub_menu_route' => 'users.index',
                                 ],
                             ],
@@ -125,6 +183,19 @@
         </div>
         <div class="collapse navbar-collapse" id="sidebarCollapse">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#sidebar-home" data-bs-toggle="collapse"
+                        role="button" aria-expanded="false" aria-controls="sidebar-home">
+                        <i class="bi bi-house-heart"></i> Solar Home
+                    </a>
+                    <div class="collapse" id="sidebar-home">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('home') }}" class="nav-link"><i class="bi bi-house"></i> Dashboard</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 @foreach($left_navbar['Admin'] as $key => $value)
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebar-{{ $key }}" data-bs-toggle="collapse"

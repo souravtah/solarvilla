@@ -13,7 +13,7 @@ class StoreTicketRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class StoreTicketRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'              => 'required|max:191|string',
+            'message'            => 'required|string',
+            'ticketPriority'     => 'required|in:low,medium,high,critical',
+            'category'           => 'required|exists:categories,id',
+            'due_date'           => 'nullable|date',
         ];
     }
 }

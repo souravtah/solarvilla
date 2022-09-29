@@ -11,11 +11,11 @@
                                     'sub_menu_icon' => 'bi bi-gear-wide-connected',
                                     'sub_menu_route' => 'ticket-categories.index',
                                 ],
-                                [
-                                    'sub_menu_name' => 'Label management',
-                                    'sub_menu_icon' => 'bi bi-tags',
-                                    'sub_menu_route' => 'ticket-labels.index',
-                                ],
+                                // [
+                                //     'sub_menu_name' => 'Label management',
+                                //     'sub_menu_icon' => 'bi bi-tags',
+                                //     'sub_menu_route' => 'ticket-labels.index',
+                                // ],
                             ],
                         ],
                         [

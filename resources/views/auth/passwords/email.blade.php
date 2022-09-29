@@ -11,6 +11,15 @@
                         <h1 class="ls-tight font-bolder mt-2">Password Reset</h1>
                         <p class="mt-2">Enter your email, we will send you a reset link</p>
                     </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form action="{{ route('password.email') }}" method="POST">
                         @csrf
                         @if(session('status'))
@@ -24,11 +33,6 @@
                             <label class="form-label" for="email">Email address</label>
                             <input type="email" class="form-control" id="email" @error('email') is-invalid @enderror" type="email"
                             id="email" name="email" placeholder="{{ __('Type your registered email') }}">
-                            @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
                         </div>
                         <button class="btn btn-primary w-full" type="submit">{{ __('Send Password Reset Link') }}</button>
                     </form>

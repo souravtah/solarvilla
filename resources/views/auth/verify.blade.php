@@ -14,7 +14,15 @@
 
                 <p class="text-medium-emphasis">{{ __('Before proceeding, please check your email for a verification link.') }}</p>
                 <p class="text-medium-emphasis">{{ __('If you did not receive the email') }},</p>
-
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('verification.resend') }}">
                     @csrf
 

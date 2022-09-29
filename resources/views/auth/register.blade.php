@@ -10,6 +10,15 @@
                         <h1 class="ls-tight font-bolder mt-2">Create your account</h1>
                         <p class="mt-1">It's free and easy</p>
                     </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="mb-5">

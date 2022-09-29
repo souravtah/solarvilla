@@ -11,6 +11,15 @@
                         <h1 class="ls-tight font-bolder mt-6">Welcome back!</h1>
                         <p class="mt-2">Login to view your account</p>
                     </div>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="mb-5">
@@ -18,11 +27,6 @@
                             <input type="email" class="form-control" id="email"
                             @error('email') is-invalid @enderror" name="email"
                             placeholder="{{ __('Email') }}" required autofocus>
-                            @error('email')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
                         </div>
                         <div class="mb-5">
                             <div class="d-flex align-items-center justify-content-between">
@@ -38,11 +42,6 @@
                             <input type="password" class="form-control" id="password" @error('password') is-invalid @enderror" type="password"
                             name="password"
                             placeholder="{{ __('Password') }}" required>
-                            @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
                         </div>
                         {{-- <div class="mb-5">
                             <div class="form-check"><input class="form-check-input" type="checkbox" name="check_example" id="check-remind-me">

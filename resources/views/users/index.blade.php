@@ -65,7 +65,7 @@
                     <div class="col-md-8">
                         <div>
                             <label class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" maxlength="25">
+                            <input type="text" name="name" class="form-control" maxlength="25" required>
                         </div>
                     </div>
                 </div>
@@ -73,11 +73,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label class="form-label" for="last_name">Email address</label>
-                        <input type="email" name="email" class="form-control" maxlength="95">
+                        <input type="email" name="email" class="form-control" maxlength="95" required>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="last_name">Phone number</label>
-                        <input type="tel" name="phone" class="form-control" maxlength="10">
+                        <input type="tel" name="phone" class="form-control" maxlength="10" required>
                     </div>
                 </div>
                 <div class="row">
@@ -85,7 +85,7 @@
                     @forelse ($all_roles_in_database as $role)
                     <div class="vstack gap-4 col-md-6">
                         <div class="d-flex gap-3">
-                            <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role" id="{{ "role" . $loop->iteration }}" value="{{ $role }}">
+                            <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role" id="{{ "role" . $loop->iteration }}" value="{{ $role }}" required>
                             <div class="pt-1 form-checked-content">
                                 <label class="mb-1 lh-relaxed" for="{{ "role" . $loop->iteration }}">{{ $role }}</label>
                                 {{-- <span class="d-block text-muted text-sm"><i class="bi bi-lock-fill me-1"></i>
@@ -161,6 +161,15 @@
                             class="bi bi-cloud-download me-2"></i>Download all </a><a href="#"
                         class="btn btn-sm btn-neutral"><i class="bi bi-gear-wide me-2"></i>Settings</a></div>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header border-bottom d-flex align-items-center">
                     <h5 class="me-auto">Total {{ $total_users }} user(s)</h5>

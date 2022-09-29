@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreTicketCategoryRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreTicketCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,9 @@ class StoreTicketCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:191', Rule::unique('categories')],
+            //'slug' => ['alpha_dash', 'string', 'max:255'],
+            'is_visible' => ['boolean'],
         ];
     }
 }

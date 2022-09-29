@@ -25,7 +25,7 @@ class StoreTicketCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:191', Rule::unique('categories')],
+            'name' => ['required', 'string', 'max:191'],
             //'slug' => ['alpha_dash', 'string', 'max:255'],
             'is_visible' => ['boolean'],
         ];

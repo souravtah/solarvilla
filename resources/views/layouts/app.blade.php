@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
     <link rel="stylesheet" type="text/css" href="../../css/utilities.css">
 </head>
-
+<?php $my_current_role = Auth::user()->getRoleNames()[0]; ?>
 <body>
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
         @include('users.navigation_left')

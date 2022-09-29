@@ -24,10 +24,10 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'     => 'required|in:1,2,3,4,5',
+            //'title'     => 'required|in:1,2,3,4,5',
             'name'      => 'required|max:25|string',
             'email'     => 'required|unique:users|max:100|email:rfc',
-            'phone'     => 'required|size:10',
+            'phone'     => 'required|unique:users|size:10',
             'role'      => 'required|exists:roles,name'
         ];
     }

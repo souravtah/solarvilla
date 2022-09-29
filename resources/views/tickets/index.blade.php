@@ -73,6 +73,45 @@
         </div>
     </div>
     </form>
+    @foreach ($ticket_categories as $ticket_category)
+    <form method="POST" action="{{ route('ticket-categories.update', ['ticket_category' => $ticket_category->id]) }}">
+        <div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
+            id="offcanvasUpdate{{ $ticket_category->id }}" aria-labelledby="offcanvasUpdateLabel">
+            <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
+                <h5 class="offcanvas-title" id="offcanvasUpdateLabel">Update Ticket Category</h5>
+                <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            @csrf
+            <input name="_method" type="hidden" value="PUT">
+            <div class="offcanvas-body vstack gap-5">
+                <div class="row g-5">
+                    <div class="col-md-12">
+                        <div>
+                            <label class="form-label">Ticket Category Name</label>
+                            <input type="text" name="name" class="form-control" maxlength="25" required value="{{ $ticket_category->name }}">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row g-5">
+                    <div class="col-md-4">
+                        <div>
+                            <label class="form-label">Is Visible</label>
+                            <select class="form-select" name="is_visible" required>
+                                <option value=1 {{ $ticket_category->is_visible == 1 ? 'selected' : '' }}>Visible</option>
+                                <option value=0 {{ $ticket_category->is_visible == 0 ? 'selected' : '' }}>Hidden</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer py-2 bg-surface-secondary">
+                <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
+                <button type="submit" class="btn btn-sm btn-primary">Save</button>
+            </div>
+        </div>
+        </form>
+    @endforeach
     <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-3">
@@ -170,13 +209,13 @@
                                     <img alt="..." src="../../img/people/img-3.jpg" class="avatar avatar-sm rounded-circle me-2">
                                     <a class="text-heading text-primary-hover font-semibold" href="{{ route('ticket_categories.show', ['user' => $ticket_category->id]) }}">{{ $ticket_category->name }}</a>
                                 </td> --}}
-                                <td>{{ $ticket_category->name }}</td>
+                                <td class="text-heading text-primary-hover font-semibold">{{ $ticket_category->name }}</td>
                                 <td>
                                     <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $ticket_category->is_visible ? 'Visible' : 'Hidden' }}</span>
                                 </td>
                                 <td>{{ $ticket_category->slug }}</td>
                                 <td class="p-1 text-end">
-                                    <a href="#offcanvasCreate" class="btn btn-sm btn-square btn-success" data-bs-toggle="offcanvas">
+                                    <a href="#offcanvasUpdate{{ $ticket_category->id }}" class="btn btn-sm btn-square btn-success" data-bs-toggle="offcanvas">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                 </td>

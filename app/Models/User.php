@@ -26,6 +26,8 @@ class User extends Authenticatable implements CanUseTickets
         'email',
         'phone',
         'password',
+        'email_verified_at',
+        'phone_verified_at',
     ];
 
     /**
@@ -45,5 +47,14 @@ class User extends Authenticatable implements CanUseTickets
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'phone_verified_at' => 'datetime',
     ];
+
+    public function isEmailVerified() {
+        return (boolean) isset($this->email_verified_at);
+    }
+
+    public function isPhoneVerified() {
+        return (boolean) isset($this->phone_verified_at);
+    }
 }

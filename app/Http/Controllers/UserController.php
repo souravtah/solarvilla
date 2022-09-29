@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-// use GuzzleHttp\Psr7\Message;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Spatie\Permission\Exceptions\RoleDoesNotExist;
 
 class UserController extends Controller
@@ -68,20 +68,25 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function edit(User $user)
-    {
+    // public function edit(User $user)
+    // {
 
-    }
+    // }
 
-    public function update(StoreUserRequest $request, user $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        // $validated              = $request->safe()->only(['user_title', 'category_id', 'message', 'is_published']);
-        // $user->title            = $validated['user_title'];
-        // $user->category_id      = $validated['category_id'];
-        // $user->description      = $validated['message'];
-        // $user->published        = $validated['is_published'];
-        // $user->save();
-        // return view('users.users.viewuser', compact('user'));
+        $validated                  = $request->safe()->only(['name', 'email', 'phone', 'role']);
+        $user->name                 = $validated['name'];
+        $user->email                = $validated['email'];
+        $user->phone                = $validated['phone'];
+        if ($user->getOriginal('email') != $validated['email']){
+        $user->email_verified_at    = null;}
+        if ($user->getOriginal('phone') != $validated['phone']){
+        $user->phone_verified_at    = null;}
+        $user->assignRole($validated['role']);
+        $user->save();
+        return redirect()->route('users.index')
+                    ->with('status', 'User '. $user->name .' updated!');
     }
 
     public function destroy(User $user)

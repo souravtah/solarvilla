@@ -14,12 +14,20 @@
             <div class="vstack gap-4">
                 <div class="d-flex align-items-center"><i class="bi bi-telephone me-2 text-muted"></i>
                     <p class="text-sm text-heading">{{ $user->phone }}</p>
+                    @if ($user->isPhoneVerified())
                     <span class="badge bg-soft-success text-success mx-2"><i class="bi bi-check2-circle me-2"></i> Verified</span>
+                    @else
+                    <span class="badge bg-soft-warning text-warning mx-2"><i class="bi bi-exclamation-circle"></i> Not verified</span>
+                    @endif
                 </div>
                 <div class="d-flex align-items-center">
                     <i class="bi bi-envelope-plus me-2 text-muted"></i>
-                    <a href="#" class="text-sm text-heading text-primary-hover">{{ $user->email }}</a>
+                    <p class="text-sm text-heading">{{ $user->email }}</p>
+                    @if ($user->isEmailVerified())
                     <span class="badge bg-soft-success text-success mx-2"><i class="bi bi-check2-circle me-2"></i> Verified</span>
+                    @else
+                    <span class="badge bg-soft-warning text-warning mx-2"><i class="bi bi-exclamation-circle"></i> Not verified</span>
+                    @endif
                 </div>
             </div>
         </div>

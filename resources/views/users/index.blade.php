@@ -41,16 +41,83 @@
 </header>
 <main class="py-6 bg-surface-secondary">
     <form method="POST" action="{{ route('users.store') }}">
-    <div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
-        id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
-        <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
-            <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new user</h5>
-            <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
+            id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
+            <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
+                <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new user</h5>
+                <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+                @csrf
+                <div class="offcanvas-body vstack gap-5">
+                    <div class="row g-5">
+                        {{-- <div class="col-md-4">
+                            <div>
+                                <label class="form-label">Title</label>
+                                <select class="form-select" name="title">
+                                    <option value="1" selected>Mr</option>
+                                    <option value="2">Mrs</option>
+                                    <option value="3">Miss</option>
+                                    <option value="4">Dr</option>
+                                    <option value="5">Er</option>
+                                </select>
+                            </div>
+                        </div> --}}
+                        <div class="col-md-12">
+                            <div>
+                                <label class="form-label">Name</label>
+                                <input type="text" name="name" class="form-control" maxlength="25" required>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label class="form-label" for="last_name">Email address</label>
+                            <input type="email" name="email" class="form-control" maxlength="95" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="last_name">Phone number (+91)</label>
+                            <input type="tel" name="phone" class="form-control" maxlength="10" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="form-label">Choose an user role from the below list:</label>
+                        @forelse ($all_roles_in_database as $role)
+                        <div class="vstack gap-4 col-md-6">
+                            <div class="d-flex gap-3">
+                                <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role" id="{{ "role" . $loop->iteration }}" value="{{ $role }}" required>
+                                <div class="pt-1 form-checked-content">
+                                    <label class="mb-1 lh-relaxed" for="{{ "role" . $loop->iteration }}">{{ $role }}</label>
+                                    {{-- <span class="d-block text-muted text-sm"><i class="bi bi-lock-fill me-1"></i>
+                                        Only you will be able to see this project
+                                    </span> --}}
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+
+                        @endforelse
+                    </div>
+                </div>
+                <div class="modal-footer py-2 bg-surface-secondary">
+                    <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                </div>
         </div>
+    </form>
+    @foreach ($users as $user)
+    <form method="POST" action="{{ route('users.update', ['user' => $user->id]) }}">
+        <div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
+            id="offcanvas{{ $user->id }}" aria-labelledby="offcanvasCreateLabel">
+            <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
+                <h5 class="offcanvas-title" id="offcanvasCreateLabel">Edit user</h5>
+                <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
             @csrf
+            <input name="_method" type="hidden" value="PUT">
             <div class="offcanvas-body vstack gap-5">
                 <div class="row g-5">
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <div>
                             <label class="form-label">Title</label>
                             <select class="form-select" name="title">
@@ -61,23 +128,23 @@
                                 <option value="5">Er</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="col-md-8">
+                    </div> --}}
+                    <div class="col-md-12">
                         <div>
                             <label class="form-label">Name</label>
-                            <input type="text" name="name" class="form-control" maxlength="25" required>
+                            <input type="text" name="name" class="form-control" maxlength="25" required value="{{ $user->name }}">
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <label class="form-label" for="last_name">Email address</label>
-                        <input type="email" name="email" class="form-control" maxlength="95" required>
+                        <input type="email" name="email" class="form-control" maxlength="95" required value="{{ $user->email }}">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="last_name">Phone number</label>
-                        <input type="tel" name="phone" class="form-control" maxlength="10" required>
+                    <div class="col-md-4">
+                        <label class="form-label" for="last_name">Phone number (+91)</label>
+                        <input type="tel" name="phone" class="form-control" maxlength="10" required value={{ $user->phone }}>
                     </div>
                 </div>
                 <div class="row">
@@ -85,7 +152,7 @@
                     @forelse ($all_roles_in_database as $role)
                     <div class="vstack gap-4 col-md-6">
                         <div class="d-flex gap-3">
-                            <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role" id="{{ "role" . $loop->iteration }}" value="{{ $role }}" required>
+                            <input class="form-check-input flex-shrink-0 text-lg" type="radio" name="role" id="{{ "role" . $loop->iteration }}" value="{{ $role }}" required {{ $user->getRoleNames()[0] == $role ? 'checked' : ''}}>
                             <div class="pt-1 form-checked-content">
                                 <label class="mb-1 lh-relaxed" for="{{ "role" . $loop->iteration }}">{{ $role }}</label>
                                 {{-- <span class="d-block text-muted text-sm"><i class="bi bi-lock-fill me-1"></i>
@@ -103,8 +170,9 @@
                 <button type="button" class="btn btn-sm btn-neutral" data-bs-dismiss="offcanvas">Close</button>
                 <button type="submit" class="btn btn-sm btn-primary">Save</button>
             </div>
-    </div>
+        </div>
     </form>
+    @endforeach
     <div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="modalExport" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow-3">
@@ -203,13 +271,33 @@
                                     <img alt="..." src="../../img/people/img-3.jpg" class="avatar avatar-sm rounded-circle me-2">
                                     <a class="text-heading text-primary-hover font-semibold" href="{{ route('users.show', ['user' => $user->id]) }}">{{ $user->name }}</a>
                                 </td>
-                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->phone }}
+                                    @if ($user->isPhoneVerified())
+                                    <span class="badge bg-soft-success text-success">
+                                        <i class="bi bi-check2-circle"></i>
+                                    </span>
+                                    @else
+                                    <span class="badge bg-soft-warning text-warning">
+                                        <i class="bi bi-exclamation-circle"></i>
+                                    </span>
+                                    @endif
+                                </td>
                                 <td>
                                     <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $user->roles[0]->name ?? 'No Role' }}</span>
                                 </td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->email }}
+                                    @if ($user->isEmailVerified())
+                                    <span class="badge bg-soft-success text-success">
+                                        <i class="bi bi-check2-circle"></i>
+                                    </span>
+                                    @else
+                                    <span class="badge bg-soft-warning text-warning">
+                                        <i class="bi bi-exclamation-circle"></i>
+                                    </span>
+                                    @endif
+                                </td>
                                 <td class="p-1 text-end">
-                                    <a href="#offcanvasCreate" class="btn btn-sm btn-square btn-success" data-bs-toggle="offcanvas">
+                                    <a href="#offcanvas{{ $user->id }}" class="btn btn-sm btn-square btn-success" data-bs-toggle="offcanvas">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                 </td>

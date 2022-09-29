@@ -145,16 +145,19 @@
             </ul>
             <div class="mt-auto"></div>
             <div class="my-4 px-lg-6 position-relative">
-                <div class="dropup w-full"><button
-                        class="btn-primary d-flex w-full py-3 ps-3 pe-4 align-items-center shadow shadow-3-hover rounded-3"
-                        type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="me-3"><img alt="..."
-                                src="../../img/people/img-profile.jpg" class="avatar avatar-sm rounded-circle">
-                        </span><span class="flex-fill text-start text-sm font-semibold">{{ Auth::user()->name }}
-                        </span><span><i class="bi bi-chevron-expand text-white text-opacity-70"></i></span></button>
+                <div class="dropup w-full">
+                    <button class="btn-primary d-flex w-full py-3 ps-3 pe-4 align-items-center shadow shadow-3-hover rounded-3"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="me-3">
+                            <img alt="..." src="../../img/people/img-profile.jpg" class="avatar avatar-sm rounded-circle">
+                        </span>
+                        <span class="flex-fill text-start text-sm font-semibold">{{ Auth::user()->name }}</span>
+                        <span><i class="bi bi-chevron-expand text-white text-opacity-70"></i></span>
+                    </button>
                     <div class="dropdown-menu dropdown-menu-end w-full">
-                        <div class="dropdown-header"><span class="d-block text-sm text-muted mb-1">Signed in
-                                as</span> <span class="d-block text-heading font-semibold">{{ Auth::user()->name
-                                }}</span>
+                        <div class="dropdown-header">
+                            <span class="d-block text-sm text-muted mb-1">Signed in as</span>
+                            <span class="d-block text-heading font-semibold">{{ $my_current_role }}
                         </div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('home') }}">

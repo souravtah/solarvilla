@@ -12,7 +12,7 @@ class TicketCategoryController extends Controller
     {
         $ticket_categories                      = TicketCategory::paginate(3);
         $total_ticket_categories                = $ticket_categories->toArray()['total'];
-        return view('tickets.index', compact('ticket_categories', 'total_ticket_categories'));
+        return view('tickets.category-index', compact('ticket_categories', 'total_ticket_categories'));
     }
 
     public function store(StoreTicketCategoryRequest $request)

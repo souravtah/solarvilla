@@ -14,7 +14,8 @@ class TicketController extends Controller
 
     public function index()
     {
-
+        $tickets                    = Ticket::paginate(3);
+        return view('tickets.index', compact('tickets'));
     }
 
 
@@ -37,6 +38,8 @@ class TicketController extends Controller
         $ticket->due_date           = Carbon::createFromFormat("F j, Y", $validated['due_date'])->format('Y-m-d');
         $ticket->save();
         $ticket->attachCategories($validated['category']);
+        return redirect()->route('tickets.index')
+                    ->with('status', 'Ticket created!');
     }
 
 

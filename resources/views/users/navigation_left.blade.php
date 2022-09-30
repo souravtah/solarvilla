@@ -72,7 +72,7 @@
                                 [
                                     'sub_menu_name' => 'Ticket history',
                                     'sub_menu_icon' => 'bi bi-ticket-fill',
-                                    'sub_menu_route' => 'users.index',
+                                    'sub_menu_route' => 'tickets.index',
                                 ],
                             ],
                         ],

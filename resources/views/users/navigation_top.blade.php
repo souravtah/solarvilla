@@ -69,7 +69,7 @@
                     <div class="dropdown-menu dropdown-menu-end">
                         <div class="dropdown-header">
                             <span class="d-block text-sm text-muted mb-1">Signed in as</span>
-                            <span class="d-block text-heading font-semibold">{{ $my_current_role }}</span>
+                            <span class="d-block text-heading font-semibold">{{ $myCurrentRole }}</span>
                         </div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('home') }}">

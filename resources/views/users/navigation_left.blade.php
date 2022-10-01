@@ -104,43 +104,59 @@
         'Technician' => [],
         'Client' => [
                         [
-                            'menu_name' => 'Raise a Ticket12',
-                            'icon' => 'bi bi-plus-circle-dotted',
+                            'menu_name' => 'Get help',
+                            'icon' => 'bi bi-question-diamond',
                             'sub_menu' => [
                                 [
-                                    'sub_menu_name' => 'menu41',
-                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_name' => 'Raise a support ticket',
+                                    'sub_menu_icon' => 'bi bi-ticket',
                                     'sub_menu_route' => 'users.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'menu31',
-                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_name' => 'Call us',
+                                    'sub_menu_icon' => 'bi bi-telephone-outbound',
                                     'sub_menu_route' => 'users.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'menu127',
-                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_name' => 'Request a phone call',
+                                    'sub_menu_icon' => 'bi bi-telephone-inbound',
                                     'sub_menu_route' => 'users.index',
                                 ],
                             ],
                         ],
                         [
-                            'menu_name' => 'Raise a Ticket12',
-                            'icon' => 'bi bi-plus-circle-dotted',
+                            'menu_name' => 'History',
+                            'icon' => 'bi bi-clock-history',
                             'sub_menu' => [
                                 [
-                                    'sub_menu_name' => 'menu41',
-                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_name' => 'My purchases',
+                                    'sub_menu_icon' => 'bi bi-bag-heart-fill',
                                     'sub_menu_route' => 'users.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'menu31',
-                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_name' => 'My support tickets',
+                                    'sub_menu_icon' => 'bi bi-ticket-fill',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                            ],
+                        ],
+                        [
+                            'menu_name' => 'Settings',
+                            'icon' => 'bi bi-gear-wide',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Privacy settings',
+                                    'sub_menu_icon' => 'bi bi-shield-check',
                                     'sub_menu_route' => 'users.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'menu127',
-                                    'sub_menu_icon' => 'bi bi-plus-circle-dotted',
+                                    'sub_menu_name' => 'Notification settings',
+                                    'sub_menu_icon' => 'bi bi-bell',
+                                    'sub_menu_route' => 'users.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'Website preference',
+                                    'sub_menu_icon' => 'bi bi-browser-safari',
                                     'sub_menu_route' => 'users.index',
                                 ],
                             ],
@@ -184,19 +200,11 @@
         <div class="collapse navbar-collapse" id="sidebarCollapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#sidebar-home" data-bs-toggle="collapse"
-                        role="button" aria-expanded="false" aria-controls="sidebar-home">
-                        <i class="bi bi-house-heart"></i> Solar Home
+                    <a class="nav-link py-2" href="{{ route('home') }}">
+                        <i class="bi bi-house-heart"></i> Dashboard
                     </a>
-                    <div class="collapse" id="sidebar-home">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('home') }}" class="nav-link"><i class="bi bi-house"></i> Dashboard</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
-                @foreach($left_navbar['Admin'] as $key => $value)
+                @foreach($left_navbar[$myCurrentRole] as $key => $value)
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebar-{{ $key }}" data-bs-toggle="collapse"
                         role="button" aria-expanded="false" aria-controls="sidebar-{{ $key }}">
@@ -228,7 +236,7 @@
                     <div class="dropdown-menu dropdown-menu-end w-full">
                         <div class="dropdown-header">
                             <span class="d-block text-sm text-muted mb-1">Signed in as</span>
-                            <span class="d-block text-heading font-semibold">{{ $my_current_role }}
+                            <span class="d-block text-heading font-semibold">{{ $myCurrentRole }}
                         </div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('home') }}">

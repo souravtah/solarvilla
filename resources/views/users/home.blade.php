@@ -6,16 +6,18 @@
         <div class="border-bottom pt-6">
             <div class="row align-items-center">
                 <div class="col-sm-6 col-12">
-                    <h1 class="h2 ls-tight">Welcome to SolarVilla <i class="bi bi-house-heart"></i></h1>
+                    <h1 class="h2 ls-tight">Welcome back to SolarVilla <i class="bi bi-house-heart"></i></h1>
                 </div>
                 <div class="col-sm-6 col-12"></div>
             </div>
             <ul class="nav nav-tabs overflow-x border-0">
-                <li class="nav-item"><a href="general.html" class="nav-link active">General</a></li>
+                @role('Client')
+                <li class="nav-item"><a href="general.html" class="nav-link active"><i class="bi bi-question-diamond"></i> Get Help</a></li>
                 <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
                 <li class="nav-item"><a href="billing.html" class="nav-link">Billing</a></li>
                 <li class="nav-item"><a href="security.html" class="nav-link">Security</a></li>
                 <li class="nav-item"><a href="notifications.html" class="nav-link">Notifications</a></li>
+                @endrole
             </ul>
         </div>
     </div>

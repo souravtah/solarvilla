@@ -26,7 +26,7 @@
             <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link {{ Route::currentRouteNamed('users.index') ? 'active font-bold' : '' }}">View all</a></li>
                 @foreach ($all_roles_in_database as $role)
                 <li class="nav-item">
-                    <a href="{{ route('users.rolewise.index', ['roleName' => $role]) }}" class="nav-link {{ (request()->is('users/'.$role)) ? 'active font-bold' : '' }}">{{ $role }}</a>
+                    <a href="{{ route('users.rolewise.index', ['roleName' => $role]) }}" class="nav-link {{ (request()->is('users/role/'.$role)) ? 'active font-bold' : '' }}">{{ $role }}</a>
                 </li>
                 @endforeach
                 <li class="nav-item">

@@ -11,7 +11,7 @@
     @vite(['resources/js/app.js'])
     {{-- <link rel="stylesheet" type="text/css" href="../../css/utilities.css"> --}}
 </head>
-<?php $my_current_role = Auth::user()->getRoleNames()[0]; ?>
+<?php $myCurrentRole = Auth::user()->getRoleNames()[0]; ?>
 <body>
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
         @include('users.navigation_left')

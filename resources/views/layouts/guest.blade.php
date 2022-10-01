@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="color-scheme" content="dark light">
     <title>{{ config('app.name', 'SolarVilla') }}</title>
-    @vite('resources/sass/app.scss')
+    {{-- @vite('resources/sass/app.scss') --}}
 </head>
 <body>
     @yield('content')

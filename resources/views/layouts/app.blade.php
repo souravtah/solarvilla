@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="color-scheme" content="dark light">
     <title>{{ config('app.name', 'SolarVilla') }}</title>
-    {{-- <link rel="stylesheet" href="../../cdn.jsdelivr.net/npm/bootstrap-icons%401.7.2/font/bootstrap-icons.css"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="../../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../../css/utilities.css">
+    {{-- <link rel="stylesheet" type="text/css" href="../../css/main.css"> --}}
+    @vite(['resources/js/app.js'])
+    {{-- <link rel="stylesheet" type="text/css" href="../../css/utilities.css"> --}}
 </head>
 <?php $my_current_role = Auth::user()->getRoleNames()[0]; ?>
 <body>
@@ -20,6 +20,7 @@
             @yield('content')
         </div>
     </div>
-    <script src="../../js/main.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> --}}
 </body>
 </html>

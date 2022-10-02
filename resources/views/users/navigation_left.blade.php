@@ -142,7 +142,7 @@
                         ],
                         [
                             'menu_name' => 'Settings',
-                            'icon' => 'bi bi-gear-wide',
+                            'icon' => 'bi bi-gear',
                             'sub_menu' => [
                                 [
                                     'sub_menu_name' => 'Privacy settings',

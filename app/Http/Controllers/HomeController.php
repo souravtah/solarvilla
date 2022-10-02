@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('users.home');
     }
+
+    public function get_help()
+    {
+        return view('users.client.get-help');
+    }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TicketLabelController;
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('users/{user}/activities', [UserController::class, 'activity'])->name('users.activity');
     Route::get('users/{user}/settings', [UserController::class, 'setting'])->name('users.setting');
     Route::delete('users/{user}/force-delete', [UserController::class, 'force_delete'])->name('users.force_delete');
+    Route::get('users/help/get-help', [HomeController::class, 'get_help'])->name('users.get_help');
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');

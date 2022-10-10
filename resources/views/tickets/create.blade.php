@@ -3,7 +3,7 @@
 <div class="flex-lg-1">
     <form method="POST" action="{{ route('tickets.store') }}">
     @csrf
-    <header class="position-sticky top-0 overlap-10 bg-surface-primary border-bottom">
+    {{-- <header class="position-sticky top-0 overlap-10 bg-surface-primary border-bottom">
         <div class="container-fluid py-4">
             <div class="row align-items-center">
                 <div class="col">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </header> --}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -40,16 +40,16 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="vstack gap-8 mt-4">
-                        <input type="text" name="title" class="form-control form-control-flush text-2xl font-bold"
-                            placeholder="Type your query here...">
-                        <div class="card">
+                        <input type="text" name="title" class="form-control border text-2xl font-bold"
+                            placeholder="Type your question here...">
+                        <div class="card border">
                             <div>
                                 <div class="textarea-autosize p-6">
                                     <textarea name="message" class="form-control border-0 shadow-none p-0" rows="4" placeholder="Enter your problem/query in details..."></textarea>
                                 </div>
                                 <div class="d-flex align-items-center px-6 py-3 border-top">
                                     <div class="flex-fill d-flex align-items-center">
-                                        <h6 class="font-semibold text-xs text-muted text-opacity-70">You may click picture from the camera icon at right</h6>
+                                        <h6 class="font-semibold text-xs text-muted text-opacity-70">(Optional) You may click picture of reference from the camera icon at right -></h6>
                                     </div>
                                     <div class="text-end">
                                         <div class="hstack gap-5 align-items-center">
@@ -62,9 +62,9 @@
                             </div>
                         </div>
                         <div class="mb-6">
-                            <h6 class="mb-3">Attachments</h6>
-                            <div class="card">
-                                <div class="card-body pb-0">
+                            <h6 class="mb-3">Attach a reference picture (Optional)</h6>
+                            <div class="card border">
+                                <div class="card-body">
                                     <div class="rounded border-2 border-dashed border-primary-hover position-relative">
                                         <div class="d-flex justify-content-center px-5 py-5"><label for="file_upload"
                                                 class="position-absolute w-full h-full top-0 start-0 cursor-pointer"><input
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card position-sticky top-24">
+                    <div class="card border position-sticky top-24">
                         <div class="card-body pb-0">
                             <h6 class="mb-4">Ticket type</h6>
                             <div>
@@ -152,6 +152,15 @@
                                                         <i class="bi bi-calendar-event"></i>
                                                     </a>
                                                 </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div>
+                                            <h6 class="text-sm text-muted font-semibold">Raise the issue</h6>
+                                            <button type="submit" class="btn btn-warning btn-sm w-full mt-3">
+                                                <i class="bi bi-send"></i> Submit Ticket
+                                            </button>
+                                            <small class="d-block mt-2 text-muted">Our support team will be notified. You would soon get a call from us regarding this issue.</small>
                                         </div>
                                     </div>
                                 </div>

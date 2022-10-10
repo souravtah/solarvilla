@@ -14,7 +14,7 @@ class TicketController extends Controller
 
     public function index()
     {
-        $tickets                    = Ticket::paginate(3);
+        $tickets                    = Ticket::where('user_id', Auth::id())->opened()->paginate(3);
         return view('tickets.index', compact('tickets'));
     }
 
@@ -35,17 +35,18 @@ class TicketController extends Controller
         $ticket->title              = $validated['title'];
         $ticket->message            = $validated['message'];
         $ticket->priority           = $validated['ticketPriority'];
+        if (isset($validated['due_date']))
         $ticket->due_date           = Carbon::createFromFormat("F j, Y", $validated['due_date'])->format('Y-m-d');
         $ticket->save();
         $ticket->attachCategories($validated['category']);
-        return redirect()->route('tickets.index')
+        return redirect()->route('tickets.show', ['ticket' => $ticket->id])
                     ->with('status', 'Ticket created!');
     }
 
 
     public function show(Ticket $ticket)
     {
-        //
+        return view('tickets.show', compact('ticket'));
     }
 
     public function edit(Ticket $ticket)

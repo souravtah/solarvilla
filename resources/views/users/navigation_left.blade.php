@@ -110,7 +110,7 @@
                                 [
                                     'sub_menu_name' => 'Raise a support ticket',
                                     'sub_menu_icon' => 'bi bi-ticket',
-                                    'sub_menu_route' => 'users.index',
+                                    'sub_menu_route' => 'tickets.create',
                                 ],
                                 [
                                     'sub_menu_name' => 'Call us',
@@ -136,7 +136,7 @@
                                 [
                                     'sub_menu_name' => 'My support tickets',
                                     'sub_menu_icon' => 'bi bi-ticket-fill',
-                                    'sub_menu_route' => 'users.index',
+                                    'sub_menu_route' => 'tickets.index',
                                 ],
                             ],
                         ],

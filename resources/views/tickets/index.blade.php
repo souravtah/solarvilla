@@ -37,15 +37,12 @@
                 </div>
                 <div class="px-4 py-4 border-top border-bottom d-flex flex-column flex-sm-row gap-3">
                     <div class="scrollable-x">
-                        <div class="btn-group" style="min-width:700px"><a href="#"
-                                class="btn btn-sm btn-neutral text-primary" aria-current="page">View all</a> <a href="#"
-                                class="btn btn-sm btn-neutral">Admin <span class="text-muted text-xs">(5)</span></a> <a
-                                href="#" class="btn btn-sm btn-neutral">Publisher <span
-                                    class="text-muted text-xs">(3)</span></a> <a href="#"
-                                class="btn btn-sm btn-neutral">Manager <span class="text-muted text-xs">(2)</span></a>
+                        <div class="btn-group" style="min-width:700px">
+                            <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-neutral text-primary">Open Tickets</a>
+                            <a href="#" class="btn btn-sm btn-neutral">Resolved tickets<span class="text-muted text-xs">(5)</span></a>
                         </div>
                     </div>
-                    <div class="ms-auto hstack gap-2">
+                    {{-- <div class="ms-auto hstack gap-2">
                         <div class="input-group input-group-sm input-group-inline"><span
                                 class="input-group-text pe-2"><i class="bi bi-search"></i> </span><input type="email"
                                 class="form-control" placeholder="Search" aria-label="Search"></div>
@@ -53,7 +50,7 @@
                                     class="bi bi-funnel me-2"></i> <span>Filters</span> <span
                                     class="vr opacity-20 mx-3"></span> <span
                                     class="text-xs text-primary">2</span></button></div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover table-nowrap">
@@ -71,7 +68,7 @@
                             @foreach ($tickets as $ticket)
                             <tr>
                                 <td>
-                                    <a class="text-heading text-primary-hover font-semibold" href="#">{{ $ticket->title }}</a>
+                                    <a class="text-heading text-primary-hover font-semibold" href="{{ route('tickets.show', ['ticket' => $ticket->id]) }}">{{ $ticket->title }}</a>
                                 </td>
                                 <td>{{ $ticket->message }}</td>
                                 <td>
@@ -79,7 +76,7 @@
                                 </td>
                                 <td>{{ $ticket->status }}</td>
                                 <td>
-                                    <span class="badge text-uppercase bg-soft-danger text-danger rounded-pill">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $ticket->due_date)->format("F j, Y") }}</span>
+                                    <span class="badge text-uppercase bg-soft-danger text-danger rounded-pill">{{ $ticket->due_date ? \Carbon\Carbon::createFromFormat('Y-m-d', $ticket->due_date)->format("F j, Y") : 'No due date' }}</span>
                                 </td>
                                 <td class="text-end">
                                     <a href="#" class="btn btn-sm btn-square btn-neutral me-1">

@@ -112,16 +112,16 @@
                                     'sub_menu_icon' => 'bi bi-ticket',
                                     'sub_menu_route' => 'tickets.create',
                                 ],
-                                [
-                                    'sub_menu_name' => 'Call us',
-                                    'sub_menu_icon' => 'bi bi-telephone-outbound',
-                                    'sub_menu_route' => 'users.index',
-                                ],
-                                [
-                                    'sub_menu_name' => 'Request a phone call',
-                                    'sub_menu_icon' => 'bi bi-telephone-inbound',
-                                    'sub_menu_route' => 'users.index',
-                                ],
+                                // [
+                                //     'sub_menu_name' => 'Call us',
+                                //     'sub_menu_icon' => 'bi bi-telephone-outbound',
+                                //     'sub_menu_route' => 'users.index',
+                                // ],
+                                // [
+                                //     'sub_menu_name' => 'Request a phone call',
+                                //     'sub_menu_icon' => 'bi bi-telephone-inbound',
+                                //     'sub_menu_route' => 'users.index',
+                                // ],
                             ],
                         ],
                         [
@@ -270,3 +270,4 @@
         </div>
     </div>
 </nav>
+

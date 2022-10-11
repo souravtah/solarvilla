@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
+    Route::post('tickets/create', [TicketController::class, 'store_call_request'])->name('tickets.create_call');
 
     Route::resource('users', UserController::class)->except(['create']);
     Route::resource('ticket-categories', TicketCategoryController::class)->except(['show', 'edit', 'create']);

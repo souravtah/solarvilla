@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use Illuminate\Http\Request;
+use App\Models\TicketCategory;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('users.home');
+        $ticket_categories          = TicketCategory::visible()->get();
+        $opened_tickets             = Ticket::where('title', '!=', 'Call Request')
+                                            ->where('user_id', Auth::id())
+                                            ->opened()->count();
+        $opened_calls               = Ticket::where('title', '=', 'Call Request')
+                                            ->where('user_id', Auth::id())
+                                            ->opened()->count();
+
+        return view('users.home', compact('ticket_categories', 'opened_tickets', 'opened_calls'));
     }
 
     public function get_help()

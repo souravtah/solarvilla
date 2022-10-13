@@ -41,7 +41,7 @@
 </header>
 <main class="py-6 bg-surface-secondary">
     <form method="POST" action="{{ route('users.store') }}">
-        <div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
             id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
             <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
                 <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new user</h5>
@@ -107,7 +107,7 @@
     </form>
     @foreach ($users as $user)
     <form method="POST" action="{{ route('users.update', ['user' => $user->id]) }}">
-        <div class="offcanvas offcanvas-end w-full w-lg-1/3" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
             id="offcanvas{{ $user->id }}" aria-labelledby="offcanvasCreateLabel">
             <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
                 <h5 class="offcanvas-title" id="offcanvasCreateLabel">Edit user</h5>

@@ -19,7 +19,7 @@ use App\Http\Controllers\TicketCategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guests.home');
 })->name('index_page');
 
 Auth::routes();

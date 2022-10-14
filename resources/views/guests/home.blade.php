@@ -58,7 +58,7 @@
             <div class="row g-4 g-lg-5 align-items-center">
                 <!-- Vector image START -->
                 <div class="col-lg-6 text-center">
-                    <img src="{{ asset('assets/images/IMG20220922133838_small.jpg') }}" class="rounded-3" alt="">
+                    <img src="{{ asset('assets/images/solarvilla/product_images/image_index_page.jpg') }}" class="rounded-3" alt="">
                 </div>
                 <!-- Vector image END -->
 
@@ -175,7 +175,7 @@
             <!-- Title -->
             <div class="row mb-4">
                 <div class="col-12 text-center">
-                    <h2 class="mb-0">Our Awesome Vehicles</h2>
+                    <h2 class="mb-0">Our Solar Products</h2>
                 </div>
             </div>
 
@@ -185,12 +185,12 @@
                     <div class="card shadow text-center align-items-center h-100 p-4">
                         <!-- Image -->
                         <div class="icon-xxl bg-light rounded-circle">
-                            <img src="assets/images/category/cab/seadan.svg" class="w-90px" alt="">
+                            <img src="{{ asset('assets\images\solarvilla\product_images\images (10).jpeg') }}" class="w-90px" alt="">
                         </div>
                         <!-- Card body -->
                         <div class="card-body px-0 pb-0">
-                            <h5 class="card-title"><a href="#" class="stretched-link">Sedan</a></h5>
-                            <span>(6 Cars)</span>
+                            <h5 class="card-title"><a href="#" class="stretched-link">Solar Lamp Post</a></h5>
+                            <span>(6 Types)</span>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                     <div class="card shadow text-center align-items-center h-100 p-4">
                         <!-- Image -->
                         <div class="icon-xxl bg-light rounded-circle">
-                            <img src="assets/images/category/cab/micro.svg" class="w-90px" alt="">
+                            <img src="{{ asset('assets\images\solarvilla\product_images\images (10).jpeg') }}" class="w-90px" alt="">
                         </div>
                         <!-- Card body -->
                         <div class="card-body px-0 pb-0">
@@ -215,7 +215,7 @@
                     <div class="card shadow text-center align-items-center h-100 p-4">
                         <!-- Image -->
                         <div class="icon-xxl bg-light rounded-circle">
-                            <img src="assets/images/category/cab/suv-2.svg" class="w-90px" alt="">
+                            <img src="{{ asset('assets\images\solarvilla\product_images\images (10).jpeg') }}" class="w-90px" alt="">
                         </div>
                         <!-- Card body -->
                         <div class="card-body px-0 pb-0">
@@ -230,7 +230,7 @@
                     <div class="card shadow text-center align-items-center h-100 p-4">
                         <!-- Image -->
                         <div class="icon-xxl bg-light rounded-circle">
-                            <img src="assets/images/category/cab/suv.svg" class="w-90px" alt="">
+                            <img src="{{ asset('assets\images\solarvilla\product_images\images (10).jpeg') }}" class="w-90px" alt="">
                         </div>
                         <!-- Card body -->
                         <div class="card-body px-0 pb-0">
@@ -245,7 +245,7 @@
                     <div class="card shadow text-center align-items-center h-100 p-4">
                         <!-- Image -->
                         <div class="icon-xxl bg-light rounded-circle">
-                            <img src="assets/images/category/cab/pickup.svg" class="w-90px" alt="">
+                            <img src="{{ asset('assets\images\solarvilla\product_images\images (10).jpeg') }}" class="w-90px" alt="">
                         </div>
                         <!-- Card body -->
                         <div class="card-body px-0 pb-0">
@@ -260,7 +260,7 @@
                     <div class="card shadow text-center align-items-center h-100 p-4">
                         <!-- Image -->
                         <div class="icon-xxl bg-light rounded-circle">
-                            <img src="assets/images/category/cab/coupe.svg" class="w-90px" alt="">
+                            <img src="{{ asset('assets\images\solarvilla\product_images\images (10).jpeg') }}" class="w-90px" alt="">
                         </div>
                         <!-- Card body -->
                         <div class="card-body px-0 pb-0">
@@ -283,7 +283,7 @@
             <!-- Title -->
             <div class="row mb-3 mb-sm-4">
                 <div class="col-12 text-center">
-                    <h2>Why Choose Us</h2>
+                    <h2>Why Choose SolarVilla</h2>
                 </div>
             </div>
 
@@ -295,9 +295,8 @@
                         <!-- Icon -->
                         <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4"><i
                                 class="bi bi-lightning-fill fs-5"></i></div>
-                        <h5>Advance Booking</h5>
-                        <p class="mb-0">Happiness prosperous impression had conviction For every delay in they
-                            Extremity now. </p>
+                        <h5>Best service</h5>
+                        <p class="mb-0">Our after sale service is the best in the trade. SolarVilla family has served over 120+ customers.</p>
                     </div>
                     <!-- Card END -->
                 </div>
@@ -381,7 +380,7 @@
 
     <!-- =======================
     Action box START -->
-    <section class="pt-0 pt-lg-8">
+    {{-- <section class="pt-0 pt-lg-8">
         <div class="container position-relative">
             <!-- Mockup -->
             <div class="position-absolute bottom-0 end-0 z-index-99 me-8 d-none d-lg-block">
@@ -452,7 +451,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- =======================
     Action box END -->
 
@@ -647,7 +646,7 @@
 
     <!-- =======================
     Client START-->
-    <section class="pt-0 py-md-5">
+    {{-- <section class="pt-0 py-md-5">
         <div class="container">
             <div class="row g-4 align-items-center">
                 <!-- Image -->
@@ -676,7 +675,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- =======================
     Client END-->
 

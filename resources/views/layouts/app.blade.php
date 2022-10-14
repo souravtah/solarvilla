@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="color-scheme" content="dark light">
     <title>{{ config('app.name', 'SolarVilla') }}</title>
+    <!-- Favicon -->
+	<link rel="shortcut icon" href="{{ asset('assets/images/solarvilla/solar-power-icon.ico') }}">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    {{-- <link rel="stylesheet" type="text/css" href="../../css/main.css"> --}}
     @vite(['resources/js/app.js'])
-    {{-- <link rel="stylesheet" type="text/css" href="../../css/utilities.css"> --}}
 </head>
 <?php $myCurrentRole = Auth::user()->getRoleNames()[0]; ?>
 <body>

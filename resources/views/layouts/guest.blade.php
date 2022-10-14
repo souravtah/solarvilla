@@ -22,12 +22,12 @@
 	</script>
 
 	<!-- Favicon -->
-	{{-- <link rel="shortcut icon" href="assets/images/favicon.ico"> --}}
+	<link rel="shortcut icon" href="{{ asset('assets/images/solarvilla/solar-power-icon.ico') }}">
 
 	<!-- Google Font -->
-	{{-- <link rel="preconnect" href="../fonts.googleapis.com/index.html">
-	<link rel="preconnect" href="../fonts.gstatic.com/index.html" crossorigin>
-	<link rel="stylesheet" href="../fonts.googleapis.com/css21708.css?family=DM+Sans:wght@400;500;700&amp;family=Poppins:wght@400;500;700&amp;display=swap"> --}}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/font-awesome/css/all.min.css') }}">

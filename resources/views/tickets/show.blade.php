@@ -60,7 +60,7 @@
                                             <div class="flex-fill">
                                                 <small class="d-block mb-1 text-muted">Yet to be completed</small>
                                                 <div class="text-sm">
-                                                    <span class="text-heading text-sm font-bold">You would be assigned a technician <i class="text-primary bi bi-person-check-fill"></i></span>
+                                                    <span class="text-heading text-sm font-bold">You would be assigned an executive <i class="text-primary bi bi-person-check-fill"></i></span>
                                                 </div>
                                                 <div class="mt-2">
                                                     <p class="text-sm text-muted">You would be notified once this part of the process is completed</p>
@@ -79,7 +79,7 @@
                                             </div>
                                             <div class="flex-fill">
                                                 <small class="d-block mb-1 text-muted">Yet to be completed</small>
-                                                <div class="text-sm"><span class="font-bold">The techician team would contact you <i class="text-primary bi bi-calendar-check-fill"></i> & visit your place <i class="text-primary bi bi-tools"></i></span>
+                                                <div class="text-sm"><span class="font-bold">The executive team would contact you <i class="text-primary bi bi-calendar-check-fill"></i> & visit your place <i class="text-primary bi bi-tools"></i></span>
                                                 </div>
                                                 <div class="mt-2">
                                                     <p class="text-sm text-muted">You would be notified once this part of the process is completed</p>

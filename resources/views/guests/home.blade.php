@@ -1,825 +1,171 @@
 @extends('layouts.guest')
 
 @section('content')
-<!-- Header START -->
-<header class="navbar-light header-sticky">
-    <!-- Logo Nav START -->
-    <nav class="navbar navbar-expand-xl">
-        <div class="container">
-            <!-- Logo START -->
-            <a class="navbar-brand" href="index.html">
-                <img class="light-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
-                <img class="dark-mode-item navbar-brand-item" src="assets/images/logo-light.svg" alt="logo">
-            </a>
-            <!-- Logo END -->
 
-            <!-- Responsive navbar toggler -->
-            <button class="navbar-toggler ms-auto ms-sm-0 p-0 p-sm-2" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-animation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="d-none d-sm-inline-block small">Menu</span>
-            </button>
-
-            <!-- Responsive category toggler -->
-            <button class="navbar-toggler ms-sm-auto mx-3 me-md-0 p-0 p-sm-2" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarCategoryCollapse"
-                aria-controls="navbarCategoryCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-grid-3x3-gap-fill fa-fw"></i><span
-                    class="d-none d-sm-inline-block small">Category</span>
-            </button>
-
-            <!-- Main navbar START -->
-            <div class="navbar-collapse collapse" id="navbarCollapse">
-                <ul class="navbar-nav navbar-nav-scroll me-auto">
-
-                    <!-- Nav item Listing -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="listingMenu"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listings</a>
-                        <ul class="dropdown-menu" aria-labelledby="listingMenu">
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Hotel</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="index.html">Hotel Home</a></li>
-                                    <li> <a class="dropdown-item" href="index-hotel-chain.html">Hotel Chain</a></li>
-                                    <li> <a class="dropdown-item" href="index-resort.html">Hotel Resort</a></li>
-                                    <li> <a class="dropdown-item" href="hotel-grid.html">Hotel Grid</a></li>
-                                    <li> <a class="dropdown-item" href="hotel-list.html">Hotel List</a></li>
-                                    <li> <a class="dropdown-item" href="hotel-detail.html">Hotel Detail</a></li>
-                                    <li> <a class="dropdown-item" href="room-detail.html">Room Detail</a></li>
-                                    <li> <a class="dropdown-item" href="hotel-booking.html">Hotel Booking</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Flight</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="index-flight.html">Flight Home</a></li>
-                                    <li> <a class="dropdown-item" href="flight-list.html">Flight List</a></li>
-                                    <li> <a class="dropdown-item" href="flight-detail.html">Flight Detail</a></li>
-                                    <li> <a class="dropdown-item" href="flight-booking.html">Flight Booking</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Tour</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="index-tour.html">Tour Home</a></li>
-                                    <li> <a class="dropdown-item" href="tour-grid.html">Tour Grid</a></li>
-                                    <li> <a class="dropdown-item" href="tour-detail.html">Tour Detail</a></li>
-                                    <li> <a class="dropdown-item" href="tour-booking.html">Tour Booking</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Cab</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="index-cab.html">Cab Home</a></li>
-                                    <li> <a class="dropdown-item" href="cab-list.html">Cab List</a></li>
-                                    <li> <a class="dropdown-item" href="cab-detail.html">Cab Detail</a></li>
-                                    <li> <a class="dropdown-item" href="cab-booking.html">Cab Booking</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Add Listing</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="join-us.html">Join us</a></li>
-                                    <li> <a class="dropdown-item" href="add-listing.html">Add Listing</a></li>
-                                    <li> <a class="dropdown-item" href="add-listing-minimal.html">Add Listing
-                                            Minimal</a></li>
-                                    <li> <a class="dropdown-item" href="listing-added.html">Listing Added</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Hero</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="hero-inline-form.html">Hero Inline
-                                            Form</a></li>
-                                    <li> <a class="dropdown-item" href="hero-multiple-search.html">Hero Multiple
-                                            Search</a></li>
-                                    <li> <a class="dropdown-item" href="hero-image-gallery.html">Hero Image
-                                            Gallery</a></li>
-                                    <li> <a class="dropdown-item" href="hero-split.html">Hero Split</a></li>
-                                </ul>
-                            </li>
-
-                            <li> <a class="dropdown-item" href="booking-confirm.html">Booking Confirmed</a></li>
-                            <li> <a class="dropdown-item" href="compare-listing.html">Compare Listing</a></li>
-                            <li> <a class="dropdown-item" href="offer-detail.html">Offer Detail</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Nav item Pages -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="pagesMenu"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                        <ul class="dropdown-menu" aria-labelledby="pagesMenu">
-
-                            <li> <a class="dropdown-item" href="about.html">About</a></li>
-                            <li> <a class="dropdown-item" href="contact.html">Contact</a></li>
-                            <li> <a class="dropdown-item" href="contact-2.html">Contact 2</a></li>
-                            <li> <a class="dropdown-item" href="team.html">Our Team</a></li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Authentication</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="sign-in.html">Sign In</a></li>
-                                    <li> <a class="dropdown-item" href="sign-up.html">Sign Up</a></li>
-                                    <li> <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                                    </li>
-                                    <li> <a class="dropdown-item" href="two-factor-auth.html">Two factor
-                                            authentication</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Blog</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="blog.html">Blog</a></li>
-                                    <li> <a class="dropdown-item" href="blog-detail.html">Blog Detail</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Help</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="help-center.html">Help Center</a></li>
-                                    <li> <a class="dropdown-item" href="help-detail.html">Help Detail</a></li>
-                                    <li> <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
-                                    </li>
-                                    <li> <a class="dropdown-item" href="terms-of-service.html">Terms of
-                                            Service</a></li>
-                                </ul>
-                            </li>
-
-                            <li> <a class="dropdown-item" href="pricing.html">Pricing</a></li>
-                            <li> <a class="dropdown-item" href="faq.html">FAQs</a></li>
-                            <li> <a class="dropdown-item" href="error.html">Error 404</a></li>
-                            <li> <a class="dropdown-item" href="coming-soon.html">Coming Soon</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- Nav item Account -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="accounntMenu"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Accounts</a>
-                        <ul class="dropdown-menu" aria-labelledby="accounntMenu">
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">User Profile</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="account-profile.html">My Profile</a> </li>
-                                    <li> <a class="dropdown-item" href="account-bookings.html">My Bookings</a>
-                                    </li>
-                                    <li> <a class="dropdown-item" href="account-travelers.html">Travelers</a>
-                                    </li>
-                                    <li> <a class="dropdown-item" href="account-payment-details.html">Payment
-                                            Details</a> </li>
-                                    <li> <a class="dropdown-item" href="account-wishlist.html">Wishlist</a> </li>
-                                    <li> <a class="dropdown-item" href="account-settings.html">Settings</a> </li>
-                                    <li> <a class="dropdown-item" href="account-delete.html">Delete Profile</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <!-- Dropdown submenu -->
-                            <li class="dropdown-submenu dropend">
-                                <a class="dropdown-item dropdown-toggle" href="#">Agent Dashboard</a>
-                                <ul class="dropdown-menu" data-bs-popper="none">
-                                    <li> <a class="dropdown-item" href="agent-dashboard.html">Dashboard</a> </li>
-                                    <li> <a class="dropdown-item" href="agent-listings.html">Listings</a> </li>
-                                    <li> <a class="dropdown-item" href="agent-bookings.html">Bookings</a> </li>
-                                    <li> <a class="dropdown-item" href="agent-activities.html">Activities</a>
-                                    </li>
-                                    <li> <a class="dropdown-item" href="agent-earnings.html">Earnings</a> </li>
-                                    <li> <a class="dropdown-item" href="agent-reviews.html">Reviews</a> </li>
-                                    <li> <a class="dropdown-item" href="agent-settings.html">Settings</a> </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <div class="dropdown-item">Master Admin <small>(Coming Soon)</small></div>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- Nav item link-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="advanceMenu" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-h"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end min-w-auto" data-bs-popper="none">
-                            <li>
-                                <a class="dropdown-item" href="../support.webestica.com/index.html"
-                                    target="_blank">
-                                    <i class="text-warning fa-fw bi bi-life-preserver me-2"></i>Support
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="docs/index.html" target="_blank">
-                                    <i class="text-danger fa-fw bi bi-card-text me-2"></i>Documentation
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="rtl/index.html" target="_blank">
-                                    <i class="text-info fa-fw bi bi-toggle-off me-2"></i>RTL demo
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                    href="../themes.getbootstrap.com/store/webestica/index.html" target="_blank">
-                                    <i class="text-success fa-fw bi bi-cloud-download-fill me-2"></i>Buy Booking!
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="docs/alerts.html" target="_blank">
-                                    <i class="text-orange fa-fw bi bi-puzzle-fill me-2"></i>Components
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- Main navbar END -->
-
-            <!-- Nav category menu START -->
-            <div class="navbar-collapse collapse" id="navbarCategoryCollapse">
-                <ul class="navbar-nav navbar-nav-scroll nav-pills-primary-soft text-center ms-auto p-2 p-xl-0">
-                    <!-- Nav item Hotel -->
-                    <li class="nav-item"> <a class="nav-link" href="index.html"><i
-                                class="fa-solid fa-hotel me-2"></i>Hotel</a> </li>
-
-                    <!-- Nav item Flight -->
-                    <li class="nav-item"> <a class="nav-link" href="index-flight.html"><i
-                                class="fa-solid fa-plane me-2"></i>Flight</a> </li>
-
-                    <!-- Nav item Tour -->
-                    <li class="nav-item"> <a class="nav-link" href="index-tour.html"><i
-                                class="fa-solid fa-globe-americas me-2"></i>Tour</a> </li>
-
-                    <!-- Nav item Cabs -->
-                    <li class="nav-item"> <a class="nav-link active" href="index-cab.html"><i
-                                class="fa-solid fa-car me-2"></i>Cab</a></li>
-                </ul>
-            </div>
-            <!-- Nav category menu END -->
-
-            <!-- Profile and Notification START -->
-            <ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
-
-                <!-- Notification dropdown START -->
-                <li class="nav-item dropdown ms-0 ms-md-3">
-                    <!-- Notification button -->
-                    <a class="nav-notification btn btn-light p-0 mb-0" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                        <i class="bi bi-bell fa-fw"></i>
-                    </a>
-                    <!-- Notification dote -->
-                    <span class="notif-badge animation-blink"></span>
-
-                    <!-- Notification dropdown menu START -->
-                    <div
-                        class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md shadow-lg p-0">
-                        <div class="card">
-                            <!-- Card header -->
-                            <div
-                                class="card-header d-flex justify-content-between align-items-center border-bottom">
-                                <h6 class="m-0">Notifications <span
-                                        class="badge bg-danger bg-opacity-10 text-danger ms-2">4 new</span></h6>
-                                <a class="small" href="#">Clear all</a>
-                            </div>
-
-                            <!-- Card body START -->
-                            <div class="card-body p-0">
-                                <ul class="list-group list-group-flush list-unstyled p-2">
-                                    <!-- Notification item -->
-                                    <li>
-                                        <a href="#"
-                                            class="list-group-item list-group-item-action rounded notif-unread border-0 mb-1 p-3">
-                                            <h6 class="mb-2">New! Booking flights from New York ✈️</h6>
-                                            <p class="mb-0 small">Find the flexible ticket on flights around the
-                                                world. Start searching today</p>
-                                            <span>Wednesday</span>
-                                        </a>
-                                    </li>
-                                    <!-- Notification item -->
-                                    <li>
-                                        <a href="#"
-                                            class="list-group-item list-group-item-action rounded border-0 mb-1 p-3">
-                                            <h6 class="mb-2">Sunshine saving are here 🌞 save 30% or more on a
-                                                stay</h6>
-                                            <span>15 Nov 2022</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Card body END -->
-
-                            <!-- Card footer -->
-                            <div class="card-footer text-center border-top">
-                                <a href="#" class="btn btn-sm btn-link mb-0 p-0">See all incoming
-                                    activity</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Notification dropdown menu END -->
-                </li>
-                <!-- Notification dropdown END -->
-
-                <!-- Profile dropdown START -->
-                <li class="nav-item ms-3 dropdown">
-                    <!-- Avatar -->
-                    <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button"
-                        data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img class="avatar-img rounded-2" src="assets/images/avatar/01.jpg" alt="avatar">
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
-                        aria-labelledby="profileDropdown">
-                        <!-- Profile info -->
-                        <li class="px-3 mb-3">
-                            <div class="d-flex align-items-center">
-                                <!-- Avatar -->
-                                <div class="avatar me-3">
-                                    <img class="avatar-img rounded-circle shadow"
-                                        src="assets/images/avatar/01.jpg" alt="avatar">
-                                </div>
-                                <div>
-                                    <a class="h6 mt-2 mt-sm-0" href="#">Lori Ferguson</a>
-                                    <p class="small m-0">example@gmail.com</p>
-                                </div>
-                            </div>
-                        </li>
-
-                        <!-- Links -->
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#"><i
-                                    class="bi bi-bookmark-check fa-fw me-2"></i>My Bookings</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-heart fa-fw me-2"></i>My
-                                Wishlist</a></li>
-                        <li><a class="dropdown-item" href="#"><i
-                                    class="bi bi-gear fa-fw me-2"></i>Settings</a></li>
-                        <li><a class="dropdown-item" href="#"><i
-                                    class="bi bi-info-circle fa-fw me-2"></i>Help Center</a></li>
-                        <li><a class="dropdown-item bg-danger-soft-hover" href="#"><i
-                                    class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <!-- Dark mode switch START -->
-                        <li>
-                            <div class="modeswitch-wrap" id="darkModeSwitch">
-                                <div class="modeswitch-item">
-                                    <div class="modeswitch-icon"></div>
-                                </div>
-                                <span>Dark mode</span>
-                            </div>
-                        </li>
-                        <!-- Dark mode switch END -->
-                    </ul>
-                </li>
-                <!-- Profile dropdown END -->
-            </ul>
-            <!-- Profile and Notification START -->
-
-        </div>
-    </nav>
-    <!-- Logo Nav END -->
-</header>
-<div id="sticky-space" class="" style="height: 0px;"></div>
-<!-- Header END -->
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
-
-    <!-- =======================
-    Main Banner START -->
-    <section class="pt-0 pt-lg-5">
+    <section class="pt-4 pt-md-5">
         <div class="container">
-            <div class="row">
+            <div class="row mb-5">
+                <div class="col-xl-10">
+                    <!-- Title -->
+                    <h1>World is shifting to Solar energy. Are you?</h1>
+                    <p class="lead mb-0">Let's join hands to make your place cost efficient, energy efficient & easier to manage. Install our Solar panel for your Homes, Businesses, Farms.</p>
+                </div>
+            </div>
 
-                <div class="col-lg-10 ms-auto position-relative">
-                    <img src="assets/images/bg/03.jpg" class="rounded-3" alt="">
+            <!-- Contact info -->
+            <div class="row g-4">
 
-                    <!-- Search START -->
-                    <div class="col-11 col-sm-10 col-lg-8 col-xl-6 position-lg-middle ms-lg-8 ms-xl-7">
-                        <div class="card shadow pb-0 mt-n7 mt-sm-n8 mt-lg-0">
+                <!-- Contact item START -->
+                <div class="col-md-6 col-xl-6">
+                    <div class="card card-body shadow text-center align-items-center h-100">
+                        <!-- Icon -->
+                        <div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-circle mb-2"><i class="bi bi-ticket-perforated-fill fs-5"></i></i></div>
+                        <!-- Title -->
+                        <h5>Check status / Raise support ticket</h5>
+                        <p>Support ticket let us assist you better on your journey of transforming into renewable energy.</p>
+                        <!-- Buttons -->
+                        <a href="#" class="btn btn-link text-decoration-underline p-0 mb-0"><i class="bi bi-ticket-perforated me-1"></i></i>Click here</a>
+                    </div>
+                </div>
+                <!-- Contact item END -->
 
-                            <!-- Card header -->
-                            <div class="card-header border-bottom p-3 p-sm-4">
-                                <h5 class="card-title mb-0">Book Your Online Cab</h5>
-                            </div>
-
-                            <!-- Card body START -->
-                            <form class="card-body form-control-border p-3 p-sm-4">
-                                <!-- Tabs START -->
-                                <div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <div class="form-check form-check-inline active" id="cab2-one-way-tab"
-                                        data-bs-toggle="pill" data-bs-target="#cab2-one-way" role="tab"
-                                        aria-controls="cab2-one-way" aria-selected="true">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="cabRadio1" value="option1" checked="">
-                                        <label class="form-check-label" for="cabRadio1">One Way</label>
-                                    </div>
-                                    <div class="form-check form-check-inline" id="cab2-round-way-tab"
-                                        data-bs-toggle="pill" data-bs-target="#cab2-round-way" role="tab"
-                                        aria-controls="cab2-round-way" aria-selected="false" tabindex="-1">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                            id="cabRadio2" value="option2">
-                                        <label class="form-check-label" for="cabRadio2">Round Trip</label>
-                                    </div>
-                                </div>
-                                <!-- Tabs END -->
-
-                                <!-- Tabs content START -->
-                                <div class="tab-content my-4" id="pills-tabContent">
-                                    <!-- One way START -->
-                                    <div class="tab-pane fade show active" id="cab2-one-way" role="tabpanel"
-                                        aria-labelledby="cab2-one-way-tab">
-                                        <div class="row g-2 g-md-4">
-                                            <!-- Pickup -->
-                                            <div class="col-md-6 position-relative">
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <label class="form-label small">Pickup</label>
-                                                    <div class="choices" data-type="select-one" tabindex="0"
-                                                        role="combobox" aria-autocomplete="list"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <div class="choices__inner"><select
-                                                                class="form-select js-choice choices__input"
-                                                                data-search-enabled="true" hidden=""
-                                                                tabindex="-1" data-choice="active">
-                                                                <option value=""
-                                                                    data-custom-properties="[object Object]">Select
-                                                                    location</option>
-                                                            </select>
-                                                            <div class="choices__list choices__list--single">
-                                                                <div class="choices__item choices__placeholder choices__item--selectable"
-                                                                    data-item="" data-id="1" data-value=""
-                                                                    data-custom-properties="[object Object]"
-                                                                    aria-selected="true">Select location</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="choices__list choices__list--dropdown"
-                                                            aria-expanded="false"><input type="search"
-                                                                name="search_terms"
-                                                                class="choices__input choices__input--cloned"
-                                                                autocomplete="off" autocapitalize="off"
-                                                                spellcheck="false" role="textbox"
-                                                                aria-autocomplete="list"
-                                                                aria-label="Select location" placeholder="">
-                                                            <div class="choices__list" role="listbox">
-                                                                <div id="choices--f8n8-item-choice-1"
-                                                                    class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
-                                                                    role="option" data-choice="" data-id="1"
-                                                                    data-value=""
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable=""
-                                                                    aria-selected="true">Select location</div>
-                                                                <div id="choices--f8n8-item-choice-2"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="2"
-                                                                    data-value="New York"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">New York</div>
-                                                                <div id="choices--f8n8-item-choice-3"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="3"
-                                                                    data-value="Canada"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">Canada</div>
-                                                                <div id="choices--f8n8-item-choice-4"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="4"
-                                                                    data-value="Paris"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">Paris</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Auto fill button -->
-                                                <div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
-                                                    <button class="btn btn-dark shadow btn-round mb-0"><i
-                                                            class="fa-solid fa-right-left"></i></button>
-                                                </div>
-                                            </div>
-
-                                            <!-- Drop -->
-                                            <div class="col-md-6 text-md-end">
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <label
-                                                        class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
-                                                    <div class="choices" data-type="select-one" tabindex="0"
-                                                        role="combobox" aria-autocomplete="list"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <div class="choices__inner"><select
-                                                                class="form-select js-choice choices__input"
-                                                                data-search-enabled="true" hidden=""
-                                                                tabindex="-1" data-choice="active">
-                                                                <option value=""
-                                                                    data-custom-properties="[object Object]">Select
-                                                                    Location</option>
-                                                            </select>
-                                                            <div class="choices__list choices__list--single">
-                                                                <div class="choices__item choices__placeholder choices__item--selectable"
-                                                                    data-item="" data-id="1" data-value=""
-                                                                    data-custom-properties="[object Object]"
-                                                                    aria-selected="true">Select Location</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="choices__list choices__list--dropdown"
-                                                            aria-expanded="false"><input type="search"
-                                                                name="search_terms"
-                                                                class="choices__input choices__input--cloned"
-                                                                autocomplete="off" autocapitalize="off"
-                                                                spellcheck="false" role="textbox"
-                                                                aria-autocomplete="list"
-                                                                aria-label="Select Location" placeholder="">
-                                                            <div class="choices__list" role="listbox">
-                                                                <div id="choices--aauy-item-choice-1"
-                                                                    class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
-                                                                    role="option" data-choice="" data-id="1"
-                                                                    data-value=""
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable=""
-                                                                    aria-selected="true">Select Location</div>
-                                                                <div id="choices--aauy-item-choice-2"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="2"
-                                                                    data-value="Canada"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">Canada</div>
-                                                                <div id="choices--aauy-item-choice-3"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="3"
-                                                                    data-value="New York"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">New York</div>
-                                                                <div id="choices--aauy-item-choice-4"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="4"
-                                                                    data-value="Paris"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">Paris</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Date -->
-                                            <div class="col-md-6">
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <label class="form-label small">Pickup Date</label>
-                                                    <input type="text"
-                                                        class="form-control flatpickr flatpickr-input"
-                                                        placeholder="Select date" readonly="readonly">
-                                                </div>
-                                            </div>
-
-                                            <!-- Time -->
-                                            <div class="col-md-6 text-md-end">
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <label class="form-label small ms-3 ms-md-0 me-md-3">Pickup
-                                                        time</label>
-                                                    <input type="text"
-                                                        class="form-control flatpickr text-md-end flatpickr-input"
-                                                        data-enabletime="true" data-nocalendar="true"
-                                                        placeholder="Select time" readonly="readonly">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <!-- One way END -->
-
-                                    <!-- Round trip START -->
-                                    <div class="tab-pane fade" id="cab2-round-way" role="tabpanel"
-                                        aria-labelledby="cab2-round-way-tab">
-                                        <div class="row g-2 g-md-4">
-                                            <!-- Pickup -->
-                                            <div class="col-md-6 position-relative">
-                                                <label class="form-label small">Pickup</label>
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <div class="choices" data-type="select-one" tabindex="0"
-                                                        role="combobox" aria-autocomplete="list"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <div class="choices__inner"><select
-                                                                class="form-select js-choice choices__input"
-                                                                data-search-enabled="true" hidden=""
-                                                                tabindex="-1" data-choice="active">
-                                                                <option value=""
-                                                                    data-custom-properties="[object Object]">Select
-                                                                    Location</option>
-                                                            </select>
-                                                            <div class="choices__list choices__list--single">
-                                                                <div class="choices__item choices__placeholder choices__item--selectable"
-                                                                    data-item="" data-id="1" data-value=""
-                                                                    data-custom-properties="[object Object]"
-                                                                    aria-selected="true">Select Location</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="choices__list choices__list--dropdown"
-                                                            aria-expanded="false"><input type="search"
-                                                                name="search_terms"
-                                                                class="choices__input choices__input--cloned"
-                                                                autocomplete="off" autocapitalize="off"
-                                                                spellcheck="false" role="textbox"
-                                                                aria-autocomplete="list"
-                                                                aria-label="Select Location" placeholder="">
-                                                            <div class="choices__list" role="listbox">
-                                                                <div id="choices--fzz5-item-choice-1"
-                                                                    class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
-                                                                    role="option" data-choice="" data-id="1"
-                                                                    data-value=""
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable=""
-                                                                    aria-selected="true">Select Location</div>
-                                                                <div id="choices--fzz5-item-choice-2"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="2"
-                                                                    data-value="New York"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">New York</div>
-                                                                <div id="choices--fzz5-item-choice-3"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="3"
-                                                                    data-value="Canada"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">Canada</div>
-                                                                <div id="choices--fzz5-item-choice-4"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="4"
-                                                                    data-value="Paris"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">Paris</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Auto fill button -->
-                                                <div class="btn-flip-icon z-index-9 mt-2 mt-md-1">
-                                                    <button class="btn btn-dark shadow btn-round mb-0"><i
-                                                            class="fa-solid fa-right-left"></i></button>
-                                                </div>
-                                            </div>
-
-                                            <!-- Drop -->
-                                            <div class="col-sm-6 text-sm-end">
-                                                <label class="form-label small ms-3 ms-md-0 me-md-3">Drop</label>
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <div class="choices" data-type="select-one" tabindex="0"
-                                                        role="combobox" aria-autocomplete="list"
-                                                        aria-haspopup="true" aria-expanded="false">
-                                                        <div class="choices__inner"><select
-                                                                class="form-select js-choice choices__input"
-                                                                data-search-enabled="true" hidden=""
-                                                                tabindex="-1" data-choice="active">
-                                                                <option value=""
-                                                                    data-custom-properties="[object Object]">Select
-                                                                    Location</option>
-                                                            </select>
-                                                            <div class="choices__list choices__list--single">
-                                                                <div class="choices__item choices__placeholder choices__item--selectable"
-                                                                    data-item="" data-id="1" data-value=""
-                                                                    data-custom-properties="[object Object]"
-                                                                    aria-selected="true">Select Location</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="choices__list choices__list--dropdown"
-                                                            aria-expanded="false"><input type="search"
-                                                                name="search_terms"
-                                                                class="choices__input choices__input--cloned"
-                                                                autocomplete="off" autocapitalize="off"
-                                                                spellcheck="false" role="textbox"
-                                                                aria-autocomplete="list"
-                                                                aria-label="Select Location" placeholder="">
-                                                            <div class="choices__list" role="listbox">
-                                                                <div id="choices--rcfl-item-choice-1"
-                                                                    class="choices__item choices__item--choice is-selected choices__placeholder choices__item--selectable is-highlighted"
-                                                                    role="option" data-choice="" data-id="1"
-                                                                    data-value=""
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable=""
-                                                                    aria-selected="true">Select Location</div>
-                                                                <div id="choices--rcfl-item-choice-2"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="2"
-                                                                    data-value="Canada"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">Canada</div>
-                                                                <div id="choices--rcfl-item-choice-3"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="3"
-                                                                    data-value="New York"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">New York</div>
-                                                                <div id="choices--rcfl-item-choice-4"
-                                                                    class="choices__item choices__item--choice choices__item--selectable"
-                                                                    role="option" data-choice="" data-id="4"
-                                                                    data-value="Paris"
-                                                                    data-select-text="Press to select"
-                                                                    data-choice-selectable="">Paris</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Date -->
-                                            <div class="col-sm-6">
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <label class="form-label small">Pickup Date</label>
-                                                    <input type="text"
-                                                        class="form-control flatpickr flatpickr-input"
-                                                        placeholder="Select date" readonly="readonly">
-                                                </div>
-                                            </div>
-
-                                            <!-- Time -->
-                                            <div class="col-sm-6 text-sm-end">
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <label class="form-label small ms-3 ms-md-0 me-md-3">Pickup
-                                                        time</label>
-                                                    <input type="text"
-                                                        class="form-control flatpickr text-sm-end flatpickr-input"
-                                                        data-enabletime="true" data-nocalendar="true"
-                                                        placeholder="Select time" readonly="readonly">
-                                                </div>
-                                            </div>
-
-                                            <!-- Date -->
-                                            <div class="col-sm-6">
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <label class="form-label small">Return Date</label>
-                                                    <input type="text"
-                                                        class="form-control flatpickr flatpickr-input"
-                                                        placeholder="Select date" readonly="readonly">
-                                                </div>
-                                            </div>
-
-                                            <!-- Time -->
-                                            <div class="col-sm-6 text-sm-end">
-                                                <div class="form-fs-lg form-control-transparent">
-                                                    <label class="form-label small ms-3 ms-md-0 me-md-3">Return
-                                                        time</label>
-                                                    <input type="text"
-                                                        class="form-control flatpickr text-sm-end flatpickr-input"
-                                                        data-enabletime="true" data-nocalendar="true"
-                                                        placeholder="Select time" readonly="readonly">
-                                                </div>
-                                            </div>
-                                        </div> <!-- Row END -->
-                                    </div>
-                                    <!-- Round trip END -->
-                                </div>
-                                <!-- Tabs content END -->
-
-                                <!-- Button -->
-                                <div class="d-grid">
-                                    <button class="btn btn-dark mb-0">Search Cabs</button>
-                                </div>
-
-                            </form>
-                            <!-- Card-body END -->
+                <!-- Contact item START -->
+                <div class="col-md-6 col-xl-6">
+                    <div class="card card-body shadow text-center align-items-center h-100">
+                        <!-- Icon -->
+                        <div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle mb-2"><i class="bi bi-headset fs-5"></i></div>
+                        <!-- Title -->
+                        <h5>Call us</h5>
+                        <p>Alternatively you may call us directly by clicking on the numbers given below</p>
+                        <!-- Buttons -->
+                        <div class="d-grid gap-3 d-sm-block">
+                            <a href="tel:09876543210" class="btn btn-sm btn-primary-soft"><i class="bi bi-phone me-2"></i>Click to call +91 9876543210</a>
+                            <a href="tel:09876543210" class="btn btn-sm btn-light"><i class="bi bi-telephone-outbound-fill me-2"></i></i>Click to call +91 9876543210</a>
                         </div>
                     </div>
-                    <!-- Search END -->
                 </div>
-            </div> <!-- Row END -->
+                <!-- Contact item END -->
+
+                <!-- Contact item END -->
+            </div>
         </div>
     </section>
-    <!-- =======================
-    Main Banner END -->
+    <section class="pt-0 pt-lg-5">
+        <div class="container">
+            <div class="row g-4 g-lg-5 align-items-center">
+                <!-- Vector image START -->
+                <div class="col-lg-6 text-center">
+                    <img src="{{ asset('assets/images/IMG20220922133838_small.jpg') }}" class="rounded-3" alt="">
+                </div>
+                <!-- Vector image END -->
+
+                <!-- Contact form START -->
+                <div class="col-lg-6">
+                    <div class="card bg-light p-4">
+                        <!-- Svg decoration -->
+                        <figure class="position-absolute end-0 bottom-0 mb-n4 me-n2">
+                            <svg class="fill-orange" width="104.2px" height="95.2px">
+                                <circle cx="2.6" cy="92.6" r="2.6"></circle>
+                                <circle cx="2.6" cy="77.6" r="2.6"></circle>
+                                <circle cx="2.6" cy="62.6" r="2.6"></circle>
+                                <circle cx="2.6" cy="47.6" r="2.6"></circle>
+                                <circle cx="2.6" cy="32.6" r="2.6"></circle>
+                                <circle cx="2.6" cy="17.6" r="2.6"></circle>
+                                <circle cx="2.6" cy="2.6" r="2.6"></circle>
+                                <circle cx="22.4" cy="92.6" r="2.6"></circle>
+                                <circle cx="22.4" cy="77.6" r="2.6"></circle>
+                                <circle cx="22.4" cy="62.6" r="2.6"></circle>
+                                <circle cx="22.4" cy="47.6" r="2.6"></circle>
+                                <circle cx="22.4" cy="32.6" r="2.6"></circle>
+                                <circle cx="22.4" cy="17.6" r="2.6"></circle>
+                                <circle cx="22.4" cy="2.6" r="2.6"></circle>
+                                <circle cx="42.2" cy="92.6" r="2.6"></circle>
+                                <circle cx="42.2" cy="77.6" r="2.6"></circle>
+                                <circle cx="42.2" cy="62.6" r="2.6"></circle>
+                                <circle cx="42.2" cy="47.6" r="2.6"></circle>
+                                <circle cx="42.2" cy="32.6" r="2.6"></circle>
+                                <circle cx="42.2" cy="17.6" r="2.6"></circle>
+                                <circle cx="42.2" cy="2.6" r="2.6"></circle>
+                                <circle cx="62" cy="92.6" r="2.6"></circle>
+                                <circle cx="62" cy="77.6" r="2.6"></circle>
+                                <circle cx="62" cy="62.6" r="2.6"></circle>
+                                <circle cx="62" cy="47.6" r="2.6"></circle>
+                                <circle cx="62" cy="32.6" r="2.6"></circle>
+                                <circle cx="62" cy="17.6" r="2.6"></circle>
+                                <circle cx="62" cy="2.6" r="2.6"></circle>
+                                <circle cx="81.8" cy="92.6" r="2.6"></circle>
+                                <circle cx="81.8" cy="77.6" r="2.6"></circle>
+                                <circle cx="81.8" cy="62.6" r="2.6"></circle>
+                                <circle cx="81.8" cy="47.6" r="2.6"></circle>
+                                <circle cx="81.8" cy="32.6" r="2.6"></circle>
+                                <circle cx="81.8" cy="17.6" r="2.6"></circle>
+                                <circle cx="81.8" cy="2.6" r="2.6"></circle>
+                                <circle cx="101.7" cy="92.6" r="2.6"></circle>
+                                <circle cx="101.7" cy="77.6" r="2.6"></circle>
+                                <circle cx="101.7" cy="62.6" r="2.6"></circle>
+                                <circle cx="101.7" cy="47.6" r="2.6"></circle>
+                                <circle cx="101.7" cy="32.6" r="2.6"></circle>
+                                <circle cx="101.7" cy="17.6" r="2.6"></circle>
+                                <circle cx="101.7" cy="2.6" r="2.6"></circle>
+                            </svg>
+                        </figure>
+
+                        <!-- Card header -->
+                        <div class="card-header bg-light p-0 pb-3">
+                            <h3 class="mb-0">Get your custom quote</h3>
+                        </div>
+
+                        <!-- Card body START -->
+                        <div class="card-body p-0">
+                            <form class="row g-4">
+                                <!-- Name -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Your name *</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <!-- Email -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Mobile number (+91)*</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <!-- Mobile number -->
+                                <div class="col-12">
+                                    <label class="form-label">Email address *</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                                <!-- Message -->
+                                <div class="col-6">
+                                    <label class="form-label">Your Power consumption (in KV)</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <!-- Message -->
+                                <div class="col-6">
+                                    <label class="form-label">Your avg monthly electricity bill</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <!-- Checkbox -->
+                                <div class="col-12 form-check ms-2">
+                                    <input type="checkbox" class="form-check-input" id="submitQuote" checked>
+                                    <label class="form-check-label" for="submitQuote">
+                                        By submitting this form you agree to our terms and conditions.
+                                    </label>
+                                </div>
+                                <!-- Button -->
+                                <div class="col-12">
+                                    <button class="btn btn-dark mb-0" type="button">Email me the quote</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Card body END -->
+                    </div>
+                </div>
+                <!-- Contact form END -->
+            </div>
+        </div>
+    </section>
 
     <!-- =======================
     Fleet START -->
@@ -1337,190 +683,7 @@
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
-<!-- =======================
-Footer START -->
-<footer class="bg-dark pt-5">
-    <div class="container">
-        <!-- Row START -->
-        <div class="row g-4">
-
-            <!-- Widget 1 START -->
-            <div class="col-lg-3">
-                <!-- logo -->
-                <a href="index.html">
-                    <img class="h-40px" src="assets/images/logo-light.svg" alt="logo">
-                </a>
-                <p class="my-3 text-muted">Departure defective arranging rapturous did believe him all had
-                    supported.</p>
-                <p class="mb-2"><a href="#" class="text-muted text-primary-hover"><i
-                            class="bi bi-telephone me-2"></i>+1234 568 963</a> </p>
-                <p class="mb-0"><a href="#" class="text-muted text-primary-hover"><i
-                            class="bi bi-envelope me-2"></i>example@gmail.com</a></p>
-            </div>
-            <!-- Widget 1 END -->
-
-            <!-- Widget 2 START -->
-            <div class="col-lg-8 ms-auto">
-                <div class="row g-4">
-                    <!-- Link block -->
-                    <div class="col-6 col-md-3">
-                        <h5 class="text-white mb-2 mb-md-4">Page</h5>
-                        <ul class="nav flex-column text-primary-hover">
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">About us</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Contact us</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">News and
-                                    Blog</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Meet a Team</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Link block -->
-                    <div class="col-6 col-md-3">
-                        <h5 class="text-white mb-2 mb-md-4">Link</h5>
-                        <ul class="nav flex-column text-primary-hover">
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Sign up</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Sign in</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Privacy
-                                    Policy</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Terms</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Cookie</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Support</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Link block -->
-                    <div class="col-6 col-md-3">
-                        <h5 class="text-white mb-2 mb-md-4">Global Site</h5>
-                        <ul class="nav flex-column text-primary-hover">
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">India</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">California</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Indonesia</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Canada</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#">Malaysia</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Link block -->
-                    <div class="col-6 col-md-3">
-                        <h5 class="text-white mb-2 mb-md-4">Booking</h5>
-                        <ul class="nav flex-column text-primary-hover">
-                            <li class="nav-item"><a class="nav-link text-muted" href="#"><i
-                                        class="fa-solid fa-hotel me-2"></i>Hotel</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#"><i
-                                        class="fa-solid fa-plane me-2"></i>Flight</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#"><i
-                                        class="fa-solid fa-globe-americas me-2"></i>Tour</a></li>
-                            <li class="nav-item"><a class="nav-link text-muted" href="#"><i
-                                        class="fa-solid fa-car me-2"></i>Cabs</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Widget 2 END -->
-
-        </div><!-- Row END -->
-
-        <!-- Tops Links -->
-        <div class="row mt-5">
-            <h5 class="mb-2 text-white">Top Links</h5>
-            <ul class="list-inline text-primary-hover lh-lg">
-                <li class="list-inline-item"><a href="#" class="text-muted">Flights</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Hotels</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Tours</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Cabs</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">About</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Contact us</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Blogs</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Services</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Detail page</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Services</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Policy</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Testimonials</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Newsletters</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Podcasts</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Protests</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">NewsCyber</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Education</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Sports</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Tech and Auto</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Opinion</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted">Share Market</a></li>
-            </ul>
-        </div>
-
-        <!-- Payment and card -->
-        <div class="row g-4 justify-content-between mt-0 mt-md-2">
-
-            <!-- Payment card -->
-            <div class="col-sm-7 col-md-6 col-lg-4">
-                <h5 class="text-white mb-2">Payment &amp; Security</h5>
-                <ul class="list-inline mb-0 mt-3">
-                    <li class="list-inline-item"> <a href="#"><img
-                                src="assets/images/element/paypal.svg" class="h-30px" alt=""></a></li>
-                    <li class="list-inline-item"> <a href="#"><img src="assets/images/element/visa.svg"
-                                class="h-30px" alt=""></a></li>
-                    <li class="list-inline-item"> <a href="#"><img
-                                src="assets/images/element/mastercard.svg" class="h-30px" alt=""></a>
-                    </li>
-                    <li class="list-inline-item"> <a href="#"><img
-                                src="assets/images/element/expresscard.svg" class="h-30px" alt=""></a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Social media icon -->
-            <div class="col-sm-5 col-md-6 col-lg-3 text-sm-end">
-                <h5 class="text-white mb-2">Follow us on</h5>
-                <ul class="list-inline mb-0 mt-3">
-                    <li class="list-inline-item"> <a class="btn btn-sm px-2 bg-facebook mb-0"
-                            href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
-                    <li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-instagram mb-0"
-                            href="#"><i class="fab fa-fw fa-instagram"></i></a> </li>
-                    <li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-twitter mb-0"
-                            href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
-                    <li class="list-inline-item"> <a class="btn btn-sm shadow px-2 bg-linkedin mb-0"
-                            href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Divider -->
-        <hr class="mt-4 mb-0">
-
-        <!-- Bottom footer -->
-        <div class="row">
-            <div class="container">
-                <div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
-                    <!-- copyright text -->
-                    <div class="text-muted text-primary-hover"> Copyrights <a href="#"
-                            class="text-muted">©2022 Booking</a>. All rights reserved. </div>
-                    <!-- copyright links-->
-                    <div class="nav mt-2 mt-lg-0">
-                        <ul class="list-inline text-primary-hover mx-auto mb-0">
-                            <li class="list-inline-item me-0"><a class="nav-link py-1 text-muted"
-                                    href="#">Privacy policy</a></li>
-                            <li class="list-inline-item me-0"><a class="nav-link py-1 text-muted"
-                                    href="#">Terms and conditions</a></li>
-                            <li class="list-inline-item me-0"><a class="nav-link py-1 text-muted pe-0"
-                                    href="#">Refund policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- =======================
-Footer END -->
+@include('guests._footer')
 
 <!-- Back to top -->
 <div class="back-top"></div>

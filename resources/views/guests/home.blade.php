@@ -10,7 +10,7 @@
             <div class="row mb-5">
                 <div class="col-xl-10">
                     <!-- Title -->
-                    <h1>World is shifting to Solar energy. Are you?</h1>
+                    <h1>World is shifting to Solar energy <i class="bi bi-house-heart-fill"></i>.<br>Are you?</h1>
                     <p class="lead mb-0">Let's join hands to make your place cost efficient, energy efficient & easier to manage. Install our Solar panel for your Homes, Businesses, Farms.</p>
                 </div>
             </div>
@@ -24,10 +24,10 @@
                         <!-- Icon -->
                         <div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-circle mb-2"><i class="bi bi-ticket-perforated-fill fs-5"></i></i></div>
                         <!-- Title -->
-                        <h5>Check status / Raise support ticket</h5>
+                        <h5>Check status of your support ticket</h5>
                         <p>Support ticket let us assist you better on your journey of transforming into renewable energy.</p>
                         <!-- Buttons -->
-                        <a href="#" class="btn btn-link text-decoration-underline p-0 mb-0"><i class="bi bi-ticket-perforated me-1"></i></i>Click here</a>
+                        <a href="{{ route('tickets.view_ticket_status') }}" class="btn btn-link text-decoration-underline p-0 mb-0"><i class="bi bi-ticket-perforated me-1"></i></i>Click here</a>
                     </div>
                 </div>
                 <!-- Contact item END -->
@@ -53,6 +53,7 @@
             </div>
         </div>
     </section>
+
     <section class="pt-0 pt-lg-5">
         <div class="container">
             <div class="row g-4 g-lg-5 align-items-center">

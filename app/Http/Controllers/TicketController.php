@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\TicketCategory;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreCallRequest;
+use App\Http\Requests\StoreQuoteRequest;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 
@@ -84,4 +85,5 @@ class TicketController extends Controller
         return redirect()->route('tickets.show', ['ticket' => $ticket->id])
                     ->with('status', 'Call requested!');
     }
+
 }

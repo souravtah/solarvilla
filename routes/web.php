@@ -22,6 +22,9 @@ Route::get('/', function () {
     return view('guests.home');
 })->name('index_page');
 
+Route::post('tickets/create/quote', [HomeController::class, 'store_quote_request'])->name('tickets.create_quote');
+Route::get('tickets/view-ticket-status', [HomeController::class, 'get_ticket_id'])->name('tickets.view_ticket_status');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -41,11 +44,11 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
-    Route::post('tickets/create', [TicketController::class, 'store_call_request'])->name('tickets.create_call');
+    Route::post('tickets/create/call', [TicketController::class, 'store_call_request'])->name('tickets.create_call');
 
     Route::resource('users', UserController::class)->except(['create']);
     Route::resource('ticket-categories', TicketCategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('tickets', TicketController::class);
-    Route::resource('ticket-labels', TicketLabelController::class);
+    // Route::resource('ticket-labels', TicketLabelController::class);
 
 });

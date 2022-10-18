@@ -92,25 +92,26 @@
                             <i class="bi bi-person-heart me-2"></i> Register
                         </a>
                     </li>
+                    <!-- Dark mode switch START -->
+                    <li class="nav-item">
+                        <div class="modeswitch-wrap" id="darkModeSwitch">
+                            <div class="modeswitch-item mt-2">
+                                <div class="modeswitch-icon"></div>
+                            </div>
+                            <span>Dark mode</span>
+                        </div>
+                    </li>
+                    <!-- Dark mode switch END -->
                 </ul>
             </div>
             <!-- Nav category menu END -->
 
             <!-- Profile and Notification START -->
-            <ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
+            {{-- <ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
 
-                <!-- Dark mode switch START -->
-                <li class="nav-item ms-3">
-                    <div class="modeswitch-wrap" id="darkModeSwitch">
-                        <div class="modeswitch-item">
-                            <div class="modeswitch-icon"></div>
-                        </div>
-                        <span>Dark mode</span>
-                    </div>
-                </li>
-                <!-- Dark mode switch END -->
 
-            </ul>
+
+            </ul> --}}
             <!-- Profile and Notification START -->
 
         </div>

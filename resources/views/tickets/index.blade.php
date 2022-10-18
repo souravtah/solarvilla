@@ -17,7 +17,7 @@
         <div class="vstack gap-6">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <h5 class="me-auto">Admin Users</h5>
+                    <h5 class="me-auto">Ticket control panel</h5>
                     @if (session('status'))
                     <span class="me-auto text-success">
                             {{ session('status') }}
@@ -39,18 +39,9 @@
                     <div class="scrollable-x">
                         <div class="btn-group" style="min-width:700px">
                             <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-neutral text-primary">Open Tickets</a>
-                            <a href="#" class="btn btn-sm btn-neutral">Resolved tickets<span class="text-muted text-xs">(5)</span></a>
+                            <a href="{{ route('tickets.view_resolved') }}" class="btn btn-sm btn-neutral">Resolved tickets</a>
                         </div>
                     </div>
-                    {{-- <div class="ms-auto hstack gap-2">
-                        <div class="input-group input-group-sm input-group-inline"><span
-                                class="input-group-text pe-2"><i class="bi bi-search"></i> </span><input type="email"
-                                class="form-control" placeholder="Search" aria-label="Search"></div>
-                        <div><button type="button" class="btn btn-sm px-3 btn-neutral d-flex align-items-center"><i
-                                    class="bi bi-funnel me-2"></i> <span>Filters</span> <span
-                                    class="vr opacity-20 mx-3"></span> <span
-                                    class="text-xs text-primary">2</span></button></div>
-                    </div> --}}
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover table-nowrap">
@@ -68,9 +59,9 @@
                             @foreach ($tickets as $ticket)
                             <tr>
                                 <td>
-                                    <a class="text-heading text-primary-hover font-semibold" href="{{ route('tickets.show', ['ticket' => $ticket->id]) }}">{{ $ticket->title }}</a>
+                                    <a class="text-heading text-primary-hover font-semibold" href="{{ route('tickets.show', ['ticket' => $ticket->id]) }}">{{ Str::limit($ticket->title, 20)}}</a>
                                 </td>
-                                <td>{{ $ticket->message }}</td>
+                                <td>{{ Str::limit($ticket->message, 20) }}</td>
                                 <td>
                                     <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $ticket->priority }}</span>
                                 </td>

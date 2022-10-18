@@ -71,8 +71,8 @@
                             <!-- Content -->
                             <div class="ms-3">
                                 <h4 class="mb-1">Submit a support ticket</h4>
-                                <p class="mb-3">Prosperous impression had conviction For every delay</p>
-                                <a href="#" class="btn btn-dark mb-0">Submit ticket</a>
+                                <p class="mb-3">Login to create your support ticket.</p>
+                                <a href="{{ route('login') }}" class="btn btn-dark mb-0">Submit ticket</a>
                             </div>
                         </div>
                     </div>

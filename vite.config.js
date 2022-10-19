@@ -31,7 +31,7 @@ export default defineConfig({
                     /aria-.*/,
                     /role$/,
                     /style$/,
-                    /class$/,
+                    // /class$/,
                     /ul$/,
                     /li$/,
                     /page-.*/,
@@ -44,6 +44,8 @@ export default defineConfig({
                     /pagination/,
                     /datepicker/,
                     /flatpickr-.*/,
+                    /alert-.*/,
+                    /alert$/,
 
                 ],
             }

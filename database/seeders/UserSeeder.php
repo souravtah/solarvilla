@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
                 'name'           => 'SuperAdmin',
                 'email'          => 'superadmin@solarvilla.co.in',
                 'phone'          => '9999999990',
-                'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
+                'password'       => bcrypt('hjhskjhsu12@12022'),
                 'remember_token' => null,
         ])->assignRole(['SuperAdmin']);
 
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
                 'name'           => 'Admin',
                 'email'          => 'admin@solarvilla.co.in',
                 'phone'          => '9999999991',
-                'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
+                'password'       => bcrypt('hjhskjhsu12@12022'),
                 'remember_token' => null,
         ])->assignRole(['Admin']);
 
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 'name'           => 'BackOffice',
                 'email'          => 'backoffice@solarvilla.co.in',
                 'phone'          => '9999999992',
-                'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
+                'password'       => bcrypt('hjhskjhsu12@12022'),
                 'remember_token' => null,
         ])->assignRole(['BackOffice']);
 
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
                 'name'           => 'TeamLeader',
                 'email'          => 'teamleader@solarvilla.co.in',
                 'phone'          => '9999999993',
-                'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
+                'password'       => bcrypt('hjhskjhsu12@12022'),
                 'remember_token' => null,
         ])->assignRole(['TeamLeader']);
 
@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
                 'name'           => 'Sales',
                 'email'          => 'sales@solarvilla.co.in',
                 'phone'          => '9999999994',
-                'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
+                'password'       => bcrypt('hjhskjhsu12@12022'),
                 'remember_token' => null,
         ])->assignRole(['Sales']);
 
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
                 'name'           => 'Technician',
                 'email'          => 'technician@solarvilla.co.in',
                 'phone'          => '9999999995',
-                'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
+                'password'       => bcrypt('hjhskjhsu12@12022'),
                 'remember_token' => null,
         ])->assignRole(['Technician']);
 
@@ -75,7 +75,7 @@ class UserSeeder extends Seeder
                 'name'           => 'Client',
                 'email'          => 'client@solarvilla.co.in',
                 'phone'          => '9999999996',
-                'password'       => '$2y$10$UnLIBQB1uZZC1r5msFWTPuZCZsMBUpZINpJ48G5FmMxz6yVGP83rO',
+                'password'       => bcrypt('hjhskjhsu12@12022'),
                 'remember_token' => null,
         ])->assignRole(['Client']);
 

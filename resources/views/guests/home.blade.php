@@ -5,12 +5,24 @@
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
+    @if (session('status'))
+    <section class="pt-4 pt-md-5" role="alert">
+        <div class="container">
+            <div class="alert alert-warning py-2 m-0 bg-primary border-0 rounded-0 alert-dismissible fade show text-center overflow-hidden">
+                <p class="text-white m-0">{{ session('status') }} &nbsp; {{ session('sub_status') }}<a href="#" class="btn btn-xs btn-dark ms-2 mb-0">Learn more how we work!</a></p>
+                <!-- Close button -->
+                <button type="button" class="btn-close btn-close-white opacity-9 p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    </section>
+    @endif
+
     <section class="pt-4 pt-md-5">
         <div class="container">
             <div class="row mb-5">
-                <div class="col-xl-10">
+                <div class="col-xl-12 text-center">
                     <!-- Title -->
-                    <h1>World is shifting to Solar energy <i class="bi bi-house-heart-fill"></i>.<br>Are you?</h1>
+                    <h1>World is shifting to Solar energy <i class="bi bi-house-heart-fill"></i>.<br>Are you? <a class="btn btn-xl btn-primary" href="#">Learn more</a></h1>
                     <p class="lead mb-0">Let's join hands to make your place cost efficient, energy efficient & easier to manage. Install our Solar panel for your Homes, Businesses, Farms.</p>
                 </div>
             </div>
@@ -19,10 +31,10 @@
             <div class="row g-4">
 
                 <!-- Contact item START -->
-                <div class="col-md-6 col-xl-6">
+                <div class="col-md-6 col-xl-4">
                     <div class="card card-body shadow text-center align-items-center h-100">
                         <!-- Icon -->
-                        <div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-circle mb-2"><i class="bi bi-ticket-perforated-fill fs-5"></i></i></div>
+                        <div class="icon-lg bg-danger bg-opacity-10 text-primary rounded-circle mb-2"><i class="bi bi-ticket-perforated-fill fs-5"></i></i></div>
                         <!-- Title -->
                         <h5>Check status of your support ticket</h5>
                         <p>Support ticket let us assist you better on your journey of transforming into renewable energy.</p>
@@ -33,7 +45,26 @@
                 <!-- Contact item END -->
 
                 <!-- Contact item START -->
-                <div class="col-md-6 col-xl-6">
+                <div class="col-md-6 col-xl-4">
+                    <div class="card card-body shadow text-center align-items-center h-100">
+                        <!-- Icon -->
+                        <div class="icon-lg bg-danger bg-opacity-10 text-success rounded-circle mb-2"><i class="bi bi-envelope-plus fs-5"></i></div>
+                        <!-- Title -->
+                        <h5>Email us</h5>
+                        <p>You may write to us about your solar panel requirements</p>
+                        <!-- Buttons -->
+                        <a href="mailto:someone@example.com" class="btn btn-link text-decoration-underline p-0 mb-0"><i class="bi bi-envelope me-1"></i>example@gmail.com</a>
+                    </div>
+                </div>
+                <!-- Contact item END -->
+                <div class="col-xl-4 position-relative">
+                    <!-- Svg decoration -->
+                    <figure class="position-absolute top-0 end-0 z-index-1 mt-n4 ms-n7">
+                        <svg class="fill-warning" width="77px" height="77px">
+                            <path d="M76.997,41.258 L45.173,41.258 L67.676,63.760 L63.763,67.673 L41.261,45.171 L41.261,76.994 L35.728,76.994 L35.728,45.171 L13.226,67.673 L9.313,63.760 L31.816,41.258 L-0.007,41.258 L-0.007,35.725 L31.816,35.725 L9.313,13.223 L13.226,9.311 L35.728,31.813 L35.728,-0.010 L41.261,-0.010 L41.261,31.813 L63.763,9.311 L67.676,13.223 L45.174,35.725 L76.997,35.725 L76.997,41.258 Z"></path>
+                        </svg>
+                    </figure>
+
                     <div class="card card-body shadow text-center align-items-center h-100">
                         <!-- Icon -->
                         <div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle mb-2"><i class="bi bi-headset fs-5"></i></div>
@@ -47,8 +78,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Contact item END -->
-
                 <!-- Contact item END -->
             </div>
         </div>
@@ -118,45 +147,54 @@
                         <div class="card-header bg-light p-0 pb-3">
                             <h3 class="mb-0">Get your custom quote</h3>
                         </div>
-
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <!-- Card body START -->
                         <div class="card-body p-0">
-                            <form class="row g-4">
+                            <form class="row g-4" method="POST" action="{{ route('tickets.create_quote') }}">
+                                @csrf
                                 <!-- Name -->
                                 <div class="col-md-6">
                                     <label class="form-label">Your name *</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="name" class="form-control" required>
                                 </div>
                                 <!-- Email -->
                                 <div class="col-md-6">
                                     <label class="form-label">Mobile number (+91)*</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="mobile" minlength="10" maxlength="10" pattern="\d{10}" class="form-control" required>
                                 </div>
                                 <!-- Mobile number -->
                                 <div class="col-12">
                                     <label class="form-label">Email address *</label>
-                                    <input type="email" class="form-control" required>
+                                    <input type="email" name="email" class="form-control" required>
                                 </div>
                                 <!-- Message -->
                                 <div class="col-6">
                                     <label class="form-label">Your Power consumption (in KV)</label>
-                                    <input type="text" class="form-control">
+                                    <input type="number" name="power_consumption" class="form-control" required>
                                 </div>
                                 <!-- Message -->
                                 <div class="col-6">
                                     <label class="form-label">Your avg monthly electricity bill</label>
-                                    <input type="text" class="form-control">
+                                    <input type="number" name="avg_monthly_bill" class="form-control" required>
                                 </div>
                                 <!-- Checkbox -->
                                 <div class="col-12 form-check ms-2">
-                                    <input type="checkbox" class="form-check-input" id="submitQuote" checked>
+                                    <input type="checkbox" class="form-check-input" id="submitQuote" checked required>
                                     <label class="form-check-label" for="submitQuote">
                                         By submitting this form you agree to our terms and conditions.
                                     </label>
                                 </div>
                                 <!-- Button -->
                                 <div class="col-12">
-                                    <button class="btn btn-dark mb-0" type="button">Email me the quote</button>
+                                    <button class="btn btn-dark mb-0" type="submit">Email me the quote</button>
                                 </div>
                             </form>
                         </div>

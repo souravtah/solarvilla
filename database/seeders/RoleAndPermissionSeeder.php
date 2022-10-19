@@ -28,13 +28,12 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'download users']);
 
         // create permissions tickets
-        Permission::create(['name' => 'view tickets']);
+        Permission::create(['name' => 'view tickets list']);
         Permission::create(['name' => 'view all tickets']);
         Permission::create(['name' => 'edit tickets']);
-        Permission::create(['name' => 'delete tickets']);
+        Permission::create(['name' => 'view each tickets']);
         Permission::create(['name' => 'create tickets']);
         Permission::create(['name' => 'manage tickets']);
-
 
         Role::create(['name' => 'SuperAdmin'])->givePermissionTo(Permission::all());
         Role::create(['name' => 'Admin'])->givePermissionTo(Permission::all());
@@ -44,8 +43,9 @@ class RoleAndPermissionSeeder extends Seeder
         Role::create(['name' => 'Technician']);
         Role::create(['name' => 'Client'])
                 ->givePermissionTo([
-                    'view tickets',
-                    'create tickets'
+                    'view tickets list',
+                    'create tickets',
+                    'view each tickets'
                 ]);
     }
 }

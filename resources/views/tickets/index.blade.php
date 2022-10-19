@@ -47,6 +47,7 @@
                     <table class="table table-hover table-nowrap">
                         <thead class="table-light">
                             <tr>
+                                <th scope="col">Ticket ID</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Message</th>
                                 <th scope="col">Priority</th>
@@ -58,6 +59,7 @@
                         <tbody>
                             @foreach ($tickets as $ticket)
                             <tr>
+                                <td>{{ Str::limit($ticket->id, 10) }}</td>
                                 <td>
                                     <a class="text-heading text-primary-hover font-semibold" href="{{ route('tickets.show', ['ticket' => $ticket->id]) }}">{{ Str::limit($ticket->title, 20)}}</a>
                                 </td>

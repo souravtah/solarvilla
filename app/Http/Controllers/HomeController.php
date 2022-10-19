@@ -50,7 +50,7 @@ class HomeController extends Controller
         $ticket->save();
         $ticket->attachCategories(5);
         return redirect()->route('index_page')
-                    ->with('ticket_id', $ticket->id)
+                    //->with('ticket_id', $ticket->id)
                     ->with('status', 'We are working on your quote.')
                     ->with('sub_status', 'We will email it to you within 7 days.');
     }

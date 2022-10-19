@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="dropdown-item py-3 d-flex">
-                            <div><img alt="..." src="../../img/people/img-1.jpg" class="avatar rounded-circle">
+                            <div><img alt="..." src="{{ asset('img/people/img-1.jpg') }}" class="avatar rounded-circle">
                             </div>
                             <div class="flex-fill ms-3">
                                 <div class="text-sm lg-snug w-64 text-wrap"><a href="#"
@@ -59,7 +59,7 @@
                     <a class="d-flex align-items-center" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                             <div class="avatar avatar-sm bg-warning rounded-circle text-white">
-                                <img alt="..." src="../../img/people/img-profile.jpg">
+                                <img alt="..." src="{{ asset('img/people/img-profile.jpg') }}">
                             </div>
                         <div class="d-none d-sm-block ms-3"><span class="h6">{{ Auth::user()->name }}</span></div>
                         <div class="d-none d-md-block ms-md-2">

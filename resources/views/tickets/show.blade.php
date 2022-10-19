@@ -21,10 +21,11 @@
         <div class="row g-6">
             <div class="col-xl-8">
                 <div class="vstack gap-6">
-                    <div class="card">
+                    <div class="card border">
                         <div class="card-body">
                             <h5 class="mb-6">Your support ticket status progress is as follows:</h5>
                             <div class="list-group list-group-flush list-group-borderless ms-4">
+                                {{-- @foreach (\App\Enums\TicketStatus::cases() as $ticketStatus) --}}
                                 <div class="list-group-item px-2 py-0">
                                     <div class="border-start">
                                         <div class="d-flex ms-n6 pb-6">
@@ -35,20 +36,25 @@
                                             </div>
                                             <div>
                                                 <small class="d-block mb-1 text-muted">{{ \Carbon\Carbon::parse($ticket->created_at)->diffForHumans() }}</small>
-                                                <div>You've raised a support ticket <i class="bi bi-ticket-perforated-fill text-primary"></i> to Solarvilla Support Team</div>
-                                                {{-- <div class="d-flex gap-2 mt-2">
-                                                    <div class="position-relative bg-light border border-dashed border-warning-hover rounded-pill">
+                                                <div>You've raised a support ticket <i class="bi bi-ticket-perforated-fill text-primary"></i> to Solarvilla Support Team.
+                                                    <div class="d-inline-block mx-1">
+                                                        <a href="#" class="badge rounded-pill bg-success bg-opacity-20 bg-opacity-100-hover text-success text-white-hover">Proceed to next step</a>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex gap-2 mt-2">
+                                                    <div class="position-relative bg-light border border-dashed border-primary-hover rounded-pill">
                                                         <div class="py-2 px-3 d-flex align-items-center">
                                                             <div class="me-2">
-
+                                                                You have been notified via email/SMS.
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                {{-- @endforeach --}}
                                 <div class="list-group-item px-2 py-0">
                                     <div class="border-start">
                                         <div class="d-flex ms-n6 pb-6">

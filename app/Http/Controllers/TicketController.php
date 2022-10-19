@@ -17,7 +17,7 @@ class TicketController extends Controller
 
     public function index()
     {
-        abort_if(Gate::denies('view tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('view tickets list'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $tickets                    = Ticket::where('user_id', Auth::id())->opened()->orderBy('due_date')->latest()->paginate(3);
         return view('tickets.index', compact('tickets'));
@@ -25,9 +25,17 @@ class TicketController extends Controller
 
     public function view_resolved_tickets()
     {
-        abort_if(Gate::denies('view tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('view tickets list'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $tickets                    = Ticket::where('user_id', Auth::id())->resolved()->latest()->paginate(3);
+        $tickets                    = Ticket::where('user_id', Auth::id())->resolved()->orderBy('due_date')->latest()->paginate(3);
+        return view('tickets.index', compact('tickets'));
+    }
+
+    public function view_all_pending_tickets()
+    {
+        abort_if(Gate::denies('view all tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $tickets                    = Ticket::query()->opened()->orderBy('due_date')->latest()->paginate(3);
         return view('tickets.index', compact('tickets'));
     }
 
@@ -60,6 +68,8 @@ class TicketController extends Controller
 
     public function show(Ticket $ticket)
     {
+        abort_if(Gate::denies('view each tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('tickets.show', compact('ticket'));
     }
 

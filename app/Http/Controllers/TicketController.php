@@ -72,15 +72,13 @@ class TicketController extends Controller
     {
         abort_if(Gate::denies('view each tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $ticket->syncLabels([1,2]);
+        //$ticket->syncLabels([1,2,3]);
 
-        foreach($ticket->labels as $label)
-        {
-            $current_ticket_labels[] = $label->id;
-        }
-        $ticket_labels              = TicketLabel::all();
+        foreach($ticket->labels as $label){ $current_ticket_labels[] = $label->id; }
+        $ticket_status              = $ticket->labels[max($current_ticket_labels)-1]->name;
+        $ticket_labels              = TicketLabel::pluck('id')->toArray();
 
-        return view('tickets.show', compact('ticket', 'current_ticket_labels', 'ticket_labels'));
+        return view('tickets.show', compact('ticket', 'current_ticket_labels', 'ticket_labels', 'ticket_status'));
     }
 
     public function edit(Ticket $ticket)

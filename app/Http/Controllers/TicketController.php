@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreCallRequest;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use App\Models\TicketLabel;
 use Symfony\Component\HttpFoundation\Response;
 
 class TicketController extends Controller
@@ -62,6 +63,7 @@ class TicketController extends Controller
         $ticket->due_date           = Carbon::createFromFormat("F j, Y", $validated['due_date'])->format('Y-m-d');
         $ticket->save();
         $ticket->attachCategories($validated['category']);
+        $ticket->attachLabels(1);
         return redirect()->route('tickets.show', ['ticket' => $ticket->id])
                     ->with('status', 'Ticket created!');
     }
@@ -70,7 +72,15 @@ class TicketController extends Controller
     {
         abort_if(Gate::denies('view each tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('tickets.show', compact('ticket'));
+        $ticket->syncLabels([1,2]);
+
+        foreach($ticket->labels as $label)
+        {
+            $current_ticket_labels[] = $label->id;
+        }
+        $ticket_labels              = TicketLabel::all();
+
+        return view('tickets.show', compact('ticket', 'current_ticket_labels', 'ticket_labels'));
     }
 
     public function edit(Ticket $ticket)
@@ -101,6 +111,7 @@ class TicketController extends Controller
         $ticket->due_date           = Carbon::createFromFormat("Y-m-d H:i", $validated['due_date'])->format('Y-m-d H:i');
         $ticket->save();
         $ticket->attachCategories($validated['category']);
+        $ticket->attachLabels(1);
         return redirect()->route('tickets.show', ['ticket' => $ticket->id])
                     ->with('status', 'Call requested!');
     }

@@ -44,11 +44,12 @@ class HomeController extends Controller
         $ticket                     = new Ticket;
         $ticket->user_id            = 7;
         $ticket->title              = 'Quote Request';
-        $ticket->message            = 'Quote requested. Name: ' . $validated['name'] . ' Mobile: ' . $validated['mobile'] . 'Avg Monthly Bill: ' . $validated['avg_monthly_bill'] . 'Power Consumption: ' . $validated['power_consumption'] ;
+        $ticket->message            = 'Quote requested. Name: ' . $validated['name'] . ' Mobile: ' . $validated['mobile'] . ' Avg Monthly Bill: ' . $validated['avg_monthly_bill'] . ' Power Consumption: ' . $validated['power_consumption'] ;
         $ticket->priority           = 'critical';
         $ticket->due_date           = Carbon::now()->addDays(7)->format('Y-m-d');
         $ticket->save();
         $ticket->attachCategories(5);
+        $ticket->attachLabels(1);
         return redirect()->route('index_page')
                     //->with('ticket_id', $ticket->id)
                     ->with('status', 'We are working on your quote.')

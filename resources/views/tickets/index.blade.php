@@ -15,6 +15,39 @@
 <main class="py-6 bg-surface-secondary">
     <div class="container-fluid">
         <div class="vstack gap-6">
+            <div class="d-flex justify-content-between flex-column flex-sm-row gap-3">
+                <div class="hstack gap-2">
+                    <div class="input-group input-group-sm input-group-inline">
+                        <span class="input-group-text pe-2">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="email" class="form-control" placeholder="Search" aria-label="Search">
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-sm px-3 btn-neutral d-flex align-items-center">
+                            <i class="bi bi-funnel me-2"></i>
+                            <span>Search</span>
+                            {{-- <span class="vr opacity-20 mx-3"></span> <span class="text-xs text-primary">2</span> --}}
+                        </button>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-sm btn-neutral">
+                        <i class="bi bi-cloud-download me-2"></i>Download all
+                    </a>
+                    {{-- <a href="#" class="btn btn-sm btn-neutral"><i class="bi bi-gear-wide me-2"></i>Settings
+                    </a> --}}
+                </div>
+            </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-header d-flex align-items-center">
                     <h5 class="me-auto">Ticket control panel</h5>
@@ -37,7 +70,7 @@
                 </div>
                 <div class="px-4 py-4 border-top border-bottom d-flex flex-column flex-sm-row gap-3">
                     <div class="scrollable-x">
-                        <div class="btn-group" style="min-width:700px">
+                        <div class="btn-group">
                             <a href="{{ route('tickets.index') }}" class="btn btn-sm btn-neutral text-primary">Open Tickets</a>
                             <a href="{{ route('tickets.view_resolved') }}" class="btn btn-sm btn-neutral">Resolved tickets</a>
                         </div>
@@ -72,12 +105,12 @@
                                     <span class="badge text-uppercase bg-soft-danger text-danger rounded-pill">{{ $ticket->due_date ? \Carbon\Carbon::createFromFormat('Y-m-d', $ticket->due_date)->format("F j, Y") : 'No due date' }}</span>
                                 </td>
                                 <td class="text-end">
-                                    <a href="#" class="btn btn-sm btn-square btn-neutral me-1">
+                                    <a href="#" class="btn btn-sm btn-square btn-neutral text-danger me-1">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                    {{-- <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
                                         <i class="bi bi-trash"></i>
-                                    </button>
+                                    </button> --}}
                                 </td>
                             </tr>
                             @endforeach

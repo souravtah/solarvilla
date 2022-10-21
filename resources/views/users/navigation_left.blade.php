@@ -182,12 +182,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand d-inline-block py-lg-2 mb-lg-5 px-lg-6 me-0" href="{{ route('home') }}">
-            <img src="{{ asset('assets\images\solarvilla\logo\solarvilla-logo-light.webp') }}" alt="..."></a>
+            <img src="{{ asset('assets\images\solarvilla\logo\solarvilla-logo-light.webp') }}" alt="SolarVilla.co.in"></a>
         <div class="navbar-user d-lg-none">
             <div class="dropdown">
                 <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar-parent-child">
-                        <img alt="..." src="{{ asset('img/people/img-profile.jpg') }}"
+                        <img alt="SolarVilla.co.in" src="{{ asset('img/people/img-profile.jpg') }}"
                             class="avatar avatar- rounded-circle">
                             <span class="avatar-child avatar-badge bg-success"></span>
                     </div>
@@ -238,7 +238,7 @@
                     <button class="btn-primary d-flex w-full py-3 ps-3 pe-4 align-items-center shadow shadow-3-hover rounded-3"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="me-3">
-                            <img alt="..." src="{{ asset('img/people/img-profile.jpg') }}" class="avatar avatar-sm rounded-circle">
+                            <img alt="SolarVilla.co.in" src="{{ asset('img/people/img-profile.jpg') }}" class="avatar avatar-sm rounded-circle">
                         </span>
                         <span class="flex-fill text-start text-sm font-semibold">{{ Auth::user()->name }}</span>
                         <span><i class="bi bi-chevron-expand text-white text-opacity-70"></i></span>

@@ -72,8 +72,6 @@ class TicketController extends Controller
     {
         abort_if(Gate::denies('view each tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        //$ticket->syncLabels([1,2,3]);
-
         foreach($ticket->labels as $label){ $current_ticket_labels[] = $label->id; }
         $ticket_status              = $ticket->labels[max($current_ticket_labels)-1]->name;
         $ticket_labels              = TicketLabel::pluck('id')->toArray();
@@ -83,12 +81,17 @@ class TicketController extends Controller
 
     public function edit(Ticket $ticket)
     {
-        //
+        abort_if(Gate::denies('manage tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        return view('tickets.edit', compact('ticket'));
     }
 
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        //
+        abort_if(Gate::denies('manage tickets'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        // $ticket->syncLabels([1]);
+
     }
 
     // public function destroy(Ticket $ticket)

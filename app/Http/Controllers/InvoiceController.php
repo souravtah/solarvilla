@@ -13,9 +13,7 @@ class InvoiceController
 {
     public function index()
     {
-        $products           = Product::all();
-        $product_categories = ProductCategory::all();
-        return view('products.index', compact('product_categories', 'products'));
+        //
     }
 
     public function create()

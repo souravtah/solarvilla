@@ -11,15 +11,39 @@ class ProductSeeder extends Seeder
     {
         Product::unsetEventDispatcher();
         Product::create([
-            'name'                  => 'Product_1',
+            'name'                  => 'Product_Name_1',
             'productcategory_id'    => 1
         ]);
         Product::create([
-            'name'                  => 'Product_2',
+            'name'                  => 'Product_Name_2',
             'productcategory_id'    => 2
         ]);
         Product::create([
-            'name'                  => 'Product_3',
+            'name'                  => 'Product_Name_3',
+            'productcategory_id'    => 3
+        ]);
+        Product::create([
+            'name'                  => 'Product_Name_14',
+            'productcategory_id'    => 1
+        ]);
+        Product::create([
+            'name'                  => 'Product_Name_24',
+            'productcategory_id'    => 2
+        ]);
+        Product::create([
+            'name'                  => 'Product_Name_34',
+            'productcategory_id'    => 3
+        ]);
+        Product::create([
+            'name'                  => 'Product_Name_15',
+            'productcategory_id'    => 1
+        ]);
+        Product::create([
+            'name'                  => 'Product_Name_25',
+            'productcategory_id'    => 2
+        ]);
+        Product::create([
+            'name'                  => 'Product_36',
             'productcategory_id'    => 3
         ]);
     }

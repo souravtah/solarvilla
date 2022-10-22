@@ -52,12 +52,12 @@
                         ],
                         [
                             'menu_name' => 'Buy Items',
-                            'icon' => 'bi bi-gear',
+                            'icon' => 'bi bi-bag-check',
                             'sub_menu' => [
                                 [
-                                    'sub_menu_name' => 'Create Invoice',
-                                    'sub_menu_icon' => 'bi bi-gear-wide-connected',
-                                    'sub_menu_route' => 'invoices.index',
+                                    'sub_menu_name' => 'Select products',
+                                    'sub_menu_icon' => 'bi bi-bag-plus-fill',
+                                    'sub_menu_route' => 'products.index',
                                 ],
                                 // [
                                 //     'sub_menu_name' => 'Label management',

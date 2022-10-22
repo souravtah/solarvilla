@@ -20,7 +20,7 @@
         <div class="navbar-user d-none d-sm-block">
             <div class="hstack gap-3 ms-4">
                 <div class="dropdown">
-                    <a href="#" class="nav-link px-3 text-base text-muted text-opacity-70 text-opacity-100-hover" id="dropdown-notifications" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{-- <a href="#" class="nav-link px-3 text-base text-muted text-opacity-70 text-opacity-100-hover" id="dropdown-notifications" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-cart-fill"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end px-2" aria-labelledby="dropdown-notifications">
@@ -53,7 +53,7 @@
                         <div class="dropdown-item py-2 text-center">
                             <a href="#" class="font-semibold text-muted text-primary-hover">View all</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="dropdown">
                     <a class="d-flex align-items-center" href="#" role="button"

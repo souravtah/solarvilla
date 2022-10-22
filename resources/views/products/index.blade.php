@@ -5,13 +5,15 @@
         <div class="border-bottom pt-6">
             <div class="row align-items-center">
                 <div class="col-sm-12 col-12">
-                    <h1 class="h2 ls-tight">Applications</h1>
+                    <h1 class="h2 ls-tight">Add products</h1>
                 </div>
             </div>
             <ul class="nav nav-tabs overflow-x border-0">
-                <li class="nav-item"><a href="#" class="nav-link active">View all</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Most recent</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Popular</a></li>
+                <li class="nav-item"><a href="{{ route('products.index') }}" class="nav-link active">View all</a></li>
+                <li class="nav-item"><a href="{{ route('carts.index') }}" class="nav-link">My Cart ({{ $cart_count }})</a></li>
+                @if (session('success'))
+                <li class="nav-item"><p class="nav-link text-success"><-- Click here to go to cart</p></li>
+                @endif
             </ul>
         </div>
     </div>
@@ -89,41 +91,6 @@
                                     </label>
                                 </div>
                                 @endforeach
-                                {{-- <div class="form-item-checkable"><input class="form-item-check" type="radio"
-                                        name="filter-category" id="filter-category-2"> <label class="item w-full"
-                                        for="filter-category-2"><span
-                                            class="form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2"><i
-                                                class="bi bi-body-text text-xl me-3"></i> <span
-                                                class="text-body text-sm font-semibold">CMS</span></span></label>
-                                </div>
-                                <div class="form-item-checkable"><input class="form-item-check" type="radio"
-                                        name="filter-category" id="filter-category-3"> <label class="item w-full"
-                                        for="filter-category-3"><span
-                                            class="form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2"><i
-                                                class="bi bi-hdd-stack text-xl me-3"></i> <span
-                                                class="text-body text-sm font-semibold">Database</span></span></label>
-                                </div>
-                                <div class="form-item-checkable"><input class="form-item-check" type="radio"
-                                        name="filter-category" id="filter-category-4"> <label class="item w-full"
-                                        for="filter-category-4"><span
-                                            class="form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2"><i
-                                                class="bi bi-cart-4 text-lg me-3"></i> <span
-                                                class="text-body text-sm font-semibold">E-commerce</span></span></label>
-                                </div>
-                                <div class="form-item-checkable"><input class="form-item-check" type="radio"
-                                        name="filter-category" id="filter-category-5"> <label class="item w-full"
-                                        for="filter-category-5"><span
-                                            class="form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2"><i
-                                                class="bi bi-credit-card text-xl me-3"></i> <span
-                                                class="text-body text-sm font-semibold">Payment</span></span></label>
-                                </div>
-                                <div class="form-item-checkable"><input class="form-item-check" type="radio"
-                                        name="filter-category" id="filter-category-6"> <label class="item w-full"
-                                        for="filter-category-6"><span
-                                            class="form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2"><i
-                                                class="bi bi-shield-check text-xl me-3"></i> <span
-                                                class="text-body text-sm font-semibold">Security</span></span></label>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -169,11 +136,26 @@
                                             <img alt="..." class="w-10 h-10" src="../../img/social/amazon.svg">
                                         </div>
                                         <div class="text-end">
-                                            <button type="button" class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"
+                                            {{-- <button type="button" class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"
                                                 data-bs-target="#modalAddProduct">
                                                 <i class="bi bi-cart-plus-fill"></i>
                                                 <span>Add to Cart</span>
-                                            </button>
+                                            </button> --}}
+                                            <form method="POST" action="{{ route('add_to_cart') }}">
+                                                @csrf
+                                                <input type="hidden" name="productId" value="{{ $product->id }}">
+                                                @if (in_array($product->id, $current_selected_products))
+                                                <div class="d-flex align-items-center text-success text-sm font-semibold">
+                                                    <i class="bi bi-check-circle-fill me-1"></i> <span>Product added</span>
+                                                </div>
+                                                @else
+                                                <a href="{{ route('add_to_cart') }}" type="button" class="btn btn-sm btn-neutral rounded-pill"
+                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                                    <i class="bi bi-cart-plus-fill"></i>
+                                                    <span>Add to Cart</span>
+                                                </a>
+                                                @endif
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="mt-6">

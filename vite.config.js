@@ -47,6 +47,7 @@ export default defineConfig({
                     /alert-.*/,
                     /alert$/,
                     /form-.*/,
+                    ///btn-.*/,
 
                 ],
             }

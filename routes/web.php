@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
@@ -51,6 +52,10 @@ Route::middleware('auth')->group(function () {
     Route::get('tickets/view/resolved', [TicketController::class, 'view_resolved_tickets'])->name('tickets.view_resolved');
     Route::post('tickets/create/call', [TicketController::class, 'store_call_request'])->name('tickets.create_call');
 
+    Route::post('add-to-cart', [ProductController::class, 'add_to_cart'])->name('add_to_cart');
+    Route::post('delete-item-from-cart', [CartController::class, 'delete_a_cart_item'])->name('delete_a_cart_item');
+    Route::post('empty-cart', [CartController::class, 'empty_cart'])->name('empty_cart');
+
     Route::resource('users', UserController::class)->except(['create']);
     Route::resource('ticket-categories', TicketCategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('tickets', TicketController::class)->except(['destroy']);
@@ -58,5 +63,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('invoices', InvoiceController::class)->except(['destroy']);
     Route::resource('products', ProductController::class);
     Route::resource('product-categories', ProductCategoryController::class);
+    Route::resource('carts', CartController::class);
 
 });

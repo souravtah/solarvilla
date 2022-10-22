@@ -35,6 +35,18 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'create tickets']);
         Permission::create(['name' => 'manage tickets']);
 
+        // create permissions users
+        Permission::create(['name' => 'view products']);
+        Permission::create(['name' => 'edit products']);
+        Permission::create(['name' => 'delete products']);
+        Permission::create(['name' => 'create products']);
+
+        // create permissions users
+        Permission::create(['name' => 'view productCategories']);
+        Permission::create(['name' => 'edit productCategories']);
+        Permission::create(['name' => 'delete productCategories']);
+        Permission::create(['name' => 'create productCategories']);
+
         Role::create(['name' => 'SuperAdmin'])->givePermissionTo(Permission::all());
         Role::create(['name' => 'Admin'])->givePermissionTo(Permission::all());
         Role::create(['name' => 'BackOffice']);

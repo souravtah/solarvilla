@@ -9,6 +9,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TicketLabelController;
 use App\Http\Controllers\TicketCategoryController;
+use App\Http\Controllers\ProductCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,8 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class)->except(['create']);
     Route::resource('ticket-categories', TicketCategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('tickets', TicketController::class)->except(['destroy']);
-    Route::resource('ticket-labels', TicketLabelController::class);
+    Route::resource('ticket-labels', TicketLabelController::class)->except(['destroy']);
     Route::resource('invoices', InvoiceController::class)->except(['destroy']);
-    Route::resource('products', ProductController::class)->except(['destroy']);
+    Route::resource('products', ProductController::class);
+    Route::resource('product-categories', ProductCategoryController::class);
 
 });

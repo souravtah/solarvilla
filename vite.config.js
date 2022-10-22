@@ -32,8 +32,8 @@ export default defineConfig({
                     /role$/,
                     /style$/,
                     // /class$/,
-                    /ul$/,
-                    /li$/,
+                    // /ul$/,
+                    // /li$/,
                     /page-.*/,
                     /rel$/,
                     /d-.*/,
@@ -46,6 +46,7 @@ export default defineConfig({
                     /flatpickr-.*/,
                     /alert-.*/,
                     /alert$/,
+                    /form-.*/,
 
                 ],
             }

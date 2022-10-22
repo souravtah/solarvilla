@@ -2,26 +2,26 @@
     id="topbar">
     <div class="container-fluid">
         <div class="hstack gap-2">
-            <button type="button" class="btn btn-sm btn-square bg-tertiary bg-opacity-20 bg-opacity-100-hover text-tertiary text-white-hover">C</button>
+            {{-- <button type="button" class="btn btn-sm btn-square bg-tertiary bg-opacity-20 bg-opacity-100-hover text-tertiary text-white-hover">C</button>
             <button type="button" class="btn btn-sm btn-square bg-primary bg-opacity-20 bg-opacity-100-hover text-primary text-white-hover">D</button>
             <button type="button" class="btn btn-sm btn-square bg-warning bg-opacity-20 bg-opacity-100-hover text-warning text-white-hover">A</button>
             <button type="button" class="btn btn-sm btn-square btn-neutral border-dashed shadow-none">
                 <i class="bi bi-plus-lg"></i>
-            </button>
+            </button> --}}
         </div>
-        <form class="form-inline ms-auto me-4 d-none d-md-flex">
+        {{-- <form class="form-inline ms-auto me-4 d-none d-md-flex">
             <div class="input-group input-group-inline shadow-none">
                 <span class="input-group-text border-0 shadow-none ps-0 pe-3">
                     <i class="bi bi-search"></i>
                 </span>
                 <input type="text" class="form-control form-control-flush" placeholder="Search" aria-label="Search">
             </div>
-        </form>
+        </form> --}}
         <div class="navbar-user d-none d-sm-block">
             <div class="hstack gap-3 ms-4">
                 <div class="dropdown">
                     <a href="#" class="nav-link px-3 text-base text-muted text-opacity-70 text-opacity-100-hover" id="dropdown-notifications" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-bell-fill"></i>
+                        <i class="bi bi-cart-fill"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end px-2" aria-labelledby="dropdown-notifications">
                         <div class="dropdown-item d-flex align-items-center">

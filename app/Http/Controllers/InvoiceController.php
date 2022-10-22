@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\ProductCategory;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
@@ -10,6 +12,13 @@ use LaravelDaily\Invoices\Classes\InvoiceItem;
 class InvoiceController
 {
     public function index()
+    {
+        $products           = Product::all();
+        $product_categories = ProductCategory::all();
+        return view('products.index', compact('product_categories', 'products'));
+    }
+
+    public function create()
     {
         // $client = new Party([
         //     'name'          => 'Demo Client',
@@ -63,10 +72,6 @@ class InvoiceController
         // And return invoice itself to browser or have a different view
         return $invoice->stream();
         return view('invoices.index', compact('invoice'));
-    }
-
-    public function create()
-    {
     }
 
     public function store(Request $request)

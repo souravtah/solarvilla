@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\ProductCategory;
+use App\Models\Product;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 //use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Product extends Model
+class ProductCategory extends Model
 {
     use SoftDeletes;
 
     public $guarded = [];
 
-    public function category()
+    public function products()
     {
-        return $this->belongsTo(ProductCategory::class);
+        return $this->hasMany(Product::class);
     }
 }

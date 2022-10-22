@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('label_ticket', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
             $table->foreignId('label_id');
             $table->foreignId('ticket_id');
         });

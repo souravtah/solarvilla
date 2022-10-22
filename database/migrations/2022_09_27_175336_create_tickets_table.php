@@ -14,7 +14,7 @@ return new class extends Migration
         $tableName = config('laravel_ticket.table_names.tickets', 'tickets');
 
         Schema::create($tableName, function (Blueprint $table) {
-            $table->id()->from(6100);
+            $table->bigIncrements('id')->from(6100);
             $table->uuid('uuid')->nullable();
             $table->foreignId('user_id');
             $table->string('title');

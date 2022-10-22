@@ -14,7 +14,7 @@ return new class extends Migration
         $tableName = config('laravel_ticket.table_names.messages', 'messages');
 
         Schema::create($tableName['table'], function (Blueprint $table) use ($tableName) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->foreignId('user_id');
             $table->foreignId($tableName['columns']['ticket_foreing_id']);
             $table->text('message');

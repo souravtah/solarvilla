@@ -3,6 +3,38 @@
         'SuperAdmin' => [],
         'Admin' => [
                         [
+                            'menu_name' => 'Product management',
+                            'icon' => 'bi bi-diagram-3-fill',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Product List',
+                                    'sub_menu_icon' => 'bi bi-diagram-3',
+                                    'sub_menu_route' => 'products.index',
+                                ],
+                                // [
+                                //     'sub_menu_name' => 'Label management',
+                                //     'sub_menu_icon' => 'bi bi-tags',
+                                //     'sub_menu_route' => 'ticket-labels.index',
+                                // ],
+                            ],
+                        ],
+                        [
+                            'menu_name' => 'Product Category',
+                            'icon' => 'bi bi-diagram-2-fill',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Category List',
+                                    'sub_menu_icon' => 'bi bi-diagram-2',
+                                    'sub_menu_route' => 'product-categories.index',
+                                ],
+                                // [
+                                //     'sub_menu_name' => 'Label management',
+                                //     'sub_menu_icon' => 'bi bi-tags',
+                                //     'sub_menu_route' => 'ticket-labels.index',
+                                // ],
+                            ],
+                        ],
+                        [
                             'menu_name' => 'User management',
                             'icon' => 'bi bi-person-bounding-box',
                             'sub_menu' => [
@@ -96,12 +128,12 @@
                                     'sub_menu_route' => 'users.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'Category management',
+                                    'sub_menu_name' => 'Ticket Categories',
                                     'sub_menu_icon' => 'bi bi-gear-wide-connected',
                                     'sub_menu_route' => 'ticket-categories.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'Label management',
+                                    'sub_menu_name' => 'Ticket Labels',
                                     'sub_menu_icon' => 'bi bi-tags',
                                     'sub_menu_route' => 'ticket-labels.index',
                                 ],

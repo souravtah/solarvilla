@@ -18,22 +18,22 @@
                                 // ],
                             ],
                         ],
-                        // [
-                        //     'menu_name' => 'Ticket settings',
-                        //     'icon' => 'bi bi-gear',
-                        //     'sub_menu' => [
-                        //         [
-                        //             'sub_menu_name' => 'Category management',
-                        //             'sub_menu_icon' => 'bi bi-gear-wide-connected',
-                        //             'sub_menu_route' => 'ticket-categories.index',
-                        //         ],
-                        //         [
-                        //             'sub_menu_name' => 'Label management',
-                        //             'sub_menu_icon' => 'bi bi-tags',
-                        //             'sub_menu_route' => 'ticket-labels.index',
-                        //         ],
-                        //     ],
-                        // ],
+                        [
+                            'menu_name' => 'Buy Items',
+                            'icon' => 'bi bi-gear',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Create Invoice',
+                                    'sub_menu_icon' => 'bi bi-gear-wide-connected',
+                                    'sub_menu_route' => 'invoices.index',
+                                ],
+                                // [
+                                //     'sub_menu_name' => 'Label management',
+                                //     'sub_menu_icon' => 'bi bi-tags',
+                                //     'sub_menu_route' => 'ticket-labels.index',
+                                // ],
+                            ],
+                        ],
                         [
                             'menu_name' => 'Resolve Ticket',
                             'icon' => 'bi bi-ticket-perforated',

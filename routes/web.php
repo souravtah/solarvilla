@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TicketLabelController;
 use App\Http\Controllers\TicketCategoryController;
 /*
@@ -52,5 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('ticket-categories', TicketCategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('tickets', TicketController::class)->except(['destroy']);
     Route::resource('ticket-labels', TicketLabelController::class);
+    Route::resource('invoices', InvoiceController::class)->except(['destroy']);
+    Route::resource('products', ProductController::class)->except(['destroy']);
 
 });

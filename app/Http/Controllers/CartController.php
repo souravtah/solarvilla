@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EmptyCartRequest;
 use App\Http\Requests\DeleteACartProductRequest;
+use App\Http\Requests\EvaluateCartRequest;
 
 class CartController
 {
@@ -23,8 +24,10 @@ class CartController
     {
     }
 
-    public function store(Request $request)
+    public function store(EvaluateCartRequest $request)
     {
+        $validated                  = $request->safe()->all();
+        dd($validated);
     }
 
     public function show(int $id)

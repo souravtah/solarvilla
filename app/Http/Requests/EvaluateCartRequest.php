@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class EmptyCartRequest extends FormRequest
+class EvaluateCartRequest extends FormRequest
 {
     /**
      * @return array<string, mixed>
@@ -13,6 +14,9 @@ class EmptyCartRequest extends FormRequest
     {
         return [
             'productIds.*'          => 'required|exists:products,id',
+            'price.*'               => 'required|numeric',
+            'quantity.*'            => 'required|numeric',
+            'description.*'         => 'required|string',
         ];
     }
 }

@@ -133,7 +133,7 @@
                                 <div class="card-body pb-5">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <img alt="..." class="w-10 h-10" src="../../img/social/amazon.svg">
+                                            <img alt="..." class="w-10 h-10" src="{{ $product->image }}">
                                         </div>
                                         <div class="text-end">
                                             {{-- <button type="button" class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"

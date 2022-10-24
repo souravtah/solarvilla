@@ -85,7 +85,7 @@
                                     <input class="form-item-check" type="radio" name="filter-category" id="filter-category-1">
                                     <label class="item w-full" for="filter-category-1">
                                         <span class="form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2">
-                                            <i class="bi bi-bar-chart-line text-lg me-3"></i>
+                                            <i class="bi bi-diagram-2 text-lg me-3"></i>
                                             <span class="text-body text-sm font-semibold">{{ $product_category->name }}</span>
                                         </span>
                                     </label>

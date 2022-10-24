@@ -13,10 +13,12 @@ class EvaluateCartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'productIds.*'          => 'required|exists:products,id',
-            'price.*'               => 'required|numeric',
-            'quantity.*'            => 'required|numeric',
-            'description.*'         => 'required|string',
+            'product_id.*'          => 'required|numeric|exists:products,id',
+            'product_name.*'        => 'required|string|exists:products,name',
+            'price.*'               => 'required|numeric|min:1',
+            'quantity.*'            => 'required|numeric|min:1',
+            'description.*'         => 'string|nullable',
+            'discount.*'            => 'required|numeric|min:0',
         ];
     }
 }

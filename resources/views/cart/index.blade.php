@@ -46,7 +46,7 @@
                                     <form id="emptyCart" method="POST" action="{{ route('empty_cart') }}">
                                         @csrf
                                         @foreach ($product_ids as $id)
-                                        <input type="hidden" name="productIds[]" value="{{ $id }}">
+                                        <input type="hidden" name="product_id[]" value="{{ $id }}">
                                         @endforeach
                                         <button onclick="myFunctionFormEmptyCart()" class="btn btn-danger btn-sm">
                                             <i class="bi bi-trash"></i> Clear cart
@@ -63,31 +63,29 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th scope="col">Item name</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Description</th>
-                                            <th></th>
+                                            <th scope="col">Price in Rupees(₹)</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Item Description</th>
+                                            <th scope="col">Less(₹)</th>
                                         </tr>
                                     </thead>
                                     <tbody>@foreach ($products as $product)
                                         <tr>
-                                            <td>{{ $product->name }}</td>
-                                            <td><input type="number" class="form-control" name="price[]" value="{{ $product->price }}"></td>
-                                            <td><input type="number" class="form-control" name="quantity[]" value="1"></td>
-                                            <td><input type="text" class="form-control" name="description[]" value="{{ $product->short_description }}"></td>
-                                            <td class="text-end">
-                                                <form id="removeACartItem" method="POST" action="{{ route('delete_a_cart_item') }}">
+                                            <input type="hidden" name="product_id[]" value="{{ $product->id }}" readonly>
+                                            <td nowrap><input type="text" name="product_name[]" value="{{ $product->name }}" readonly></td>
+                                            <td><input type="number" class="form-control px-0" name="price[]" min="1" value="{{ $product->price }}" nowrap></td>
+                                            <td><input type="number" class="form-control px-0" name="quantity[]" min="1" value="1"></td>
+                                            <td><input type="text" class="form-control px-0" name="description[]" value="{{ $product->short_description }}"></td>
+                                            <td><input type="number" class="form-control px-0" name="discount[]" min="0" value="0"></td>
+                                            {{-- <td class="text-end">
+                                                <form id="removeACartItem{{ $product->id }}" method="POST" action="{{ route('delete_a_cart_item') }}">
                                                     @csrf
-                                                    <input type="hidden" name="productId" value="{{ $product->id }}">
-                                                    {{-- <a href="{{ route('delete_a_cart_item') }}" type="button" class="btn btn-sm btn-square btn-danger"
-                                                        onclick="event.preventDefault(); this.closest('form').submit();">
-                                                        <i class="bi bi-trash"></i>
-                                                    </a> --}}
-                                                    <button onclick="myFunctionFormRemoveACartItem()" class="btn btn-sm btn-square btn-danger">
+                                                    <input type="hidden" id="{{ $product->id }}" name="productId" value="{{ $product->id }}">
+                                                    <button onclick="myFunctionFormRemoveACartItem({{ $product->id }})" class="btn btn-sm btn-square btn-danger">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
                                                 </form>
-                                            </td>
+                                            </td> --}}
                                         </tr>@endforeach
                                     </tbody>
                                 </table>
@@ -98,12 +96,12 @@
                     <aside class="col-lg-4 ps-xl-5">
                         <hr class="d-lg-none">
                         <div class="p-4 h-100 ms-auto border-start">
-                            <div class="px-lg-2">
+                            <div class="text-center px-lg-2">
                                 <button onclick="myFunctionFormEvaluateCartItems()" class="btn btn-primary btn-shadow d-block w-100 mt-4">
-                                    <i class="ci-locked fs-lg me-2"></i>Secure Checkout
+                                    <i class="bi bi-shield-check"></i> Checkout & Generate Invoice <i class="bi bi-filetype-pdf"></i>
                                 </button>
                                 <div class="text-center pt-2 pb-3">
-                                    <small class="text-form text-muted">100% money back guarantee</small>
+                                    <small class="text-form text-muted">100% value for money guaranteed</small>
                                 </div>
                             </div>
                         </div>
@@ -114,8 +112,8 @@
     </main>
     <script type="text/javascript">
 
-        function myFunctionFormRemoveACartItem() {
-            var formRemoveACartItem = document.getElementById("removeACartItem");
+        function myFunctionFormRemoveACartItem(productId) {
+            var formRemoveACartItem = document.getElementById("removeACartItem" + productId);
             formRemoveACartItem.submit();
         }
 

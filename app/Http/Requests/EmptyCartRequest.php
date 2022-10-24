@@ -12,7 +12,7 @@ class EmptyCartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'productIds.*'          => 'required|exists:products,id',
+            'product_id.*'          => 'required|exists:products,id',
         ];
     }
 }

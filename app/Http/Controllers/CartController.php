@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EmptyCartRequest;
 use App\Http\Requests\DeleteACartProductRequest;
 use App\Http\Requests\EvaluateCartRequest;
+use LaravelDaily\Invoices\Invoice;
+// use LaravelDaily\Invoices\Classes\Party;
+use LaravelDaily\Invoices\Classes\Buyer;
+use LaravelDaily\Invoices\Classes\InvoiceItem;
 
 class CartController
 {
@@ -27,7 +31,39 @@ class CartController
     public function store(EvaluateCartRequest $request)
     {
         $validated                  = $request->safe()->all();
-        dd($validated);
+        $customer = new Buyer([
+            'name'          => 'Sample Buyer Name',
+            'custom_fields' => [
+                'phone' => '+91 3131251100',
+            ],
+        ]);
+
+        $notes = [
+            'We really appreciate your business and if there is anything else we can do, please let us know!',
+        ];
+        $notes = implode("<br>", $notes);
+
+        foreach($validated['product_id'] as $key => $value)
+        {
+            $items[] = (new InvoiceItem())
+                        ->title($validated['product_name'][$key])
+                        ->description($validated['description'][$key] ? $validated['description'][$key] : ' ')
+                        ->pricePerUnit($validated['price'][$key])
+                        ->quantity($validated['quantity'][$key])
+                        ->discount($validated['discount'][$key]);
+        }
+
+        $invoice = Invoice::make()
+            ->buyer($customer)
+            //->discountByPercent(10)
+            ->taxRate(12)
+            ->shipping(200)
+            ->addItems($items)
+            ->notes($notes)
+            ->logo(public_path('assets/images/solarvilla/logo/solarvilla-logo-light.webp'));
+
+        return $invoice->stream();
+
     }
 
     public function show(int $id)
@@ -56,8 +92,8 @@ class CartController
 
     public function empty_cart(EmptyCartRequest $request)
     {
-        $validated                  = $request->safe()->only(['productIds']);
-        Auth::user()->products()->detach($validated['productIds']);
+        $validated                  = $request->safe()->only(['product_id']);
+        Auth::user()->products()->detach($validated['product_id']);
 
         return back();
     }

@@ -29,7 +29,7 @@
 
             p {
                 margin-top: 0;
-                margin-bottom: 1rem;
+                margin-bottom: 0;//margin-bottom: 1rem;
             }
 
             strong {
@@ -191,7 +191,7 @@
 
                         @if($invoice->seller->vat)
                             <p class="seller-vat">
-                                {{ __('invoices::invoice.vat') }}: {{ $invoice->seller->vat }}
+                                {{ 'GST' }}: {{ $invoice->seller->vat }}
                             </p>
                         @endif
 
@@ -229,7 +229,7 @@
 
                         @if($invoice->buyer->vat)
                             <p class="buyer-vat">
-                                {{ __('invoices::invoice.vat') }}: {{ $invoice->buyer->vat }}
+                                {{ 'GST' }}: {{ $invoice->buyer->vat }}
                             </p>
                         @endif
 
@@ -324,7 +324,7 @@
                 @if($invoice->tax_rate)
                     <tr>
                         <td colspan="{{ $invoice->table_columns - 2 }}" class="border-0"></td>
-                        <td class="text-right pl-0">{{ __('invoices::invoice.tax_rate') }}</td>
+                        <td class="text-right pl-0">{{ 'GST' }}</td>
                         <td class="text-right pr-0">
                             {{ $invoice->tax_rate }}%
                         </td>

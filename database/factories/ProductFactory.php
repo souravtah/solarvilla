@@ -20,7 +20,7 @@ class ProductFactory extends Factory
             'productcategory_id'    => fake()->numberBetween($min = 1, $max = 3),
             'slug'                  => 'product-Name-1' . fake()->numberBetween($min = 10, $max = 9000),
             'price'                 => fake()->numberBetween($min = 1000, $max = 9000),
-            'short_description'     => fake()->sentence,
+            'short_description'     => 'This is a short product description.',//fake()->sentence,
             'long_description'      => fake()->paragraph($nbSentences = 3, $variableNbSentences = true),
             'image'                 => fake()->imageUrl(200,200,'animals', true),
         ];

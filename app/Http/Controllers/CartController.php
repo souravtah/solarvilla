@@ -60,7 +60,8 @@ class CartController
             ->shipping(200)
             ->addItems($items)
             ->notes($notes)
-            ->logo(public_path('assets/images/solarvilla/logo/solarvilla-logo-light.webp'));
+            ->logo(public_path('assets/images/solarvilla/logo/solarvilla-logo-light.webp'))
+            ->save();
 
         return $invoice->stream();
 

@@ -168,7 +168,7 @@
                                 <!-- Email -->
                                 <div class="col-md-6">
                                     <label class="form-label">Mobile number (+91)*</label>
-                                    <input type="text" name="mobile" minlength="10" maxlength="10" pattern="\d{10}" class="form-control" required>
+                                    <input name="phone" type="phone" minlength="10" maxlength="10" pattern="\d{10}" class="form-control" required>
                                 </div>
                                 <!-- Mobile number -->
                                 <div class="col-12">

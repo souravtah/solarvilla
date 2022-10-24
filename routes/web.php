@@ -22,12 +22,14 @@ use App\Http\Controllers\ProductCategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('guests.home');
-})->name('index_page');
+Route::view('/', 'guests.home')->name('index_page');
 
 Route::post('tickets/create/quote', [HomeController::class, 'store_quote_request'])->name('tickets.create_quote');
+Route::post('tickets/create/message', [HomeController::class, 'store_message_request'])->name('tickets.create_message');
 Route::get('tickets/view-ticket-status', [HomeController::class, 'get_ticket_id'])->name('tickets.view_ticket_status');
+Route::view('about-solarvilla', 'guests.about-us')->name('about_us');
+Route::view('solarvilla-ceo-speaks', 'guests.ceo-speaks')->name('ceo_speaks');
+Route::view('contact-solarvilla', 'guests.contact-us')->name('contact_us');
 
 Auth::routes();
 

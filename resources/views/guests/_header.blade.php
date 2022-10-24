@@ -67,9 +67,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="AboutMenu" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Mission SolarVilla</a>
                         <ul class="dropdown-menu" aria-labelledby="AboutMenu">
-                            <li> <a class="dropdown-item" href="#">About Us</a></li>
-                            <li> <a class="dropdown-item" href="#">CEO Speaks</a></li>
-                            <li> <a class="dropdown-item" href="#">Write to us</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('about_us') }}">About Us</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('ceo_speaks') }}">CEO Speaks</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('contact_us') }}">Write to us</a></li>
                         </ul>
                     </li>
                 </ul>

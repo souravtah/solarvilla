@@ -25,9 +25,9 @@ class CartController
         return view('cart.index', compact('cart_count', 'products', 'product_ids'));
     }
 
-    public function create()
-    {
-    }
+    // public function create()
+    // {
+    // }
 
     public function store(EvaluateCartRequest $request)
     {
@@ -57,64 +57,28 @@ class CartController
             'address'                   => $validated['address'],
         ]);
 
-        // return redirect()->route('invoices.index')
-        //             ->with('status', 'Invoice generated.');
+        Auth::user()->products()->detach($validated['product_id']);
 
-        return redirect()->route('invoices.show', ['invoice' => $invoice_number])
-                    ->with('status', 'Invoice generated.');
-
-        // $customer = new Buyer([
-        //     'name'          => 'Sample Buyer Name',
-        //     'custom_fields' => [
-        //         'phone' => '+91 3131251100',
-        //     ],
-        // ]);
-
-        // $notes = [
-        //     'We really appreciate your business and if there is anything else we can do, please let us know!',
-        // ];
-        // $notes = implode("<br>", $notes);
-
-        // foreach($validated['product_id'] as $key => $value)
-        // {
-        //     $items[] = (new InvoiceItem())
-        //                 ->title($validated['product_name'][$key])
-        //                 ->description($validated['description'][$key] ? $validated['description'][$key] : ' ')
-        //                 ->pricePerUnit($validated['price'][$key])
-        //                 ->quantity($validated['quantity'][$key])
-        //                 ->discount($validated['discount'][$key]);
-        // }
-
-        // $invoice = Invoice::make()
-        //     ->buyer($customer)
-        //     //->discountByPercent(10)
-        //     ->taxRate(12)
-        //     ->date(now()->addWeeks(3))
-        //     ->shipping(200)
-        //     ->addItems($items)
-        //     ->notes($notes)
-        //     ->logo(public_path('assets/images/solarvilla/logo/solarvilla-logo-light.webp'))
-        //     ->save();
-
-        // return $invoice->stream();
+        return redirect()->route('invoices.show', ['invoice' => $invoice_number]);
+                    //->with('status', 'Invoice generated.');
 
     }
 
-    public function show(int $id)
-    {
-    }
+    // public function show(int $id)
+    // {
+    // }
 
-    public function edit(int $id)
-    {
-    }
+    // public function edit(int $id)
+    // {
+    // }
 
-    public function update(Request $request, int $id)
-    {
-    }
+    // public function update(Request $request, int $id)
+    // {
+    // }
 
-    public function destroy(int $id)
-    {
-    }
+    // public function destroy(int $id)
+    // {
+    // }
 
     public function delete_a_cart_item(DeleteACartProductRequest $request)
     {

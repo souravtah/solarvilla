@@ -29,7 +29,7 @@
                         <!-- Phone -->
                         <div class="col-md-6 mb-4 form-control-bg-light">
                             <label class="form-label">Phone number (+91)</label>
-                            <input name="phone" type="phone" class="form-control" required>
+                            <input name="phone" type="phone" maxlength="10" class="form-control" required>
                         </div>
                         <!-- Email -->
                         <div class="col-md-6 mb-4 form-control-bg-light">

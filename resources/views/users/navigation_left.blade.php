@@ -59,11 +59,11 @@
                                     'sub_menu_icon' => 'bi bi-bag-plus-fill',
                                     'sub_menu_route' => 'products.index',
                                 ],
-                                // [
-                                //     'sub_menu_name' => 'Label management',
-                                //     'sub_menu_icon' => 'bi bi-tags',
-                                //     'sub_menu_route' => 'ticket-labels.index',
-                                // ],
+                                [
+                                    'sub_menu_name' => 'Older orders',
+                                    'sub_menu_icon' => 'bi bi-clock-history',
+                                    'sub_menu_route' => 'invoices.index',
+                                ],
                             ],
                         ],
                         [

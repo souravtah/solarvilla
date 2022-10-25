@@ -109,7 +109,7 @@
                                 <!-- Phone -->
                                 <div class="col-md-6 mb-4 form-control-bg-light">
                                     <label class="form-label">Phone number (+91):</label>
-                                    <input name="phone" type="phone" class="form-control">
+                                    <input name="phone" maxlength="10" type="phone" class="form-control">
                                 </div>
                                 <!-- Email -->
                                 <div class="col-md-6 mb-4 form-control-bg-light">
@@ -124,7 +124,7 @@
                             </div>
                             <div class="col-12 text-center px-lg-2">
                                 <button onclick="myFunctionFormEvaluateCartItems()" class="btn btn-primary btn-shadow d-block w-100 mt-4">
-                                    <i class="bi bi-shield-check"></i> Proceed securely to next page <i class="bi bi-arrow-right-circle"></i>
+                                    <i class="bi bi-shield-check"></i> Securely generate invoice <i class="bi bi-arrow-right-circle"></i>
                                 </button>
                                 <div class="text-center pt-2 pb-3">
                                     <small class="text-form text-muted">100% value for money guaranteed</small>

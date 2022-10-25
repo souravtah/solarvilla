@@ -10,8 +10,8 @@
                 </div>
                 <ul class="nav nav-tabs overflow-x border-0">
                     <li class="nav-item"><a href="{{ route('products.index') }}" class="nav-link">View all</a></li>
-                    <li class="nav-item"><a href="{{ route('carts.index') }}" class="nav-link active">My Cart
-                            ({{ $cart_count }})</a></li>
+                    <li class="nav-item"><a href="{{ route('carts.index') }}" class="nav-link active">My Cart ({{ $cart_count }})</a></li>
+                    {{-- <li class="nav-item"><a href="{{ route('invoices.index') }}" class="nav-link">Invoice</a></li> --}}
                 </ul>
             </div>
         </div>
@@ -30,17 +30,17 @@
 
                 <div class="row">
                     <!-- Content-->
-                    <section class="card-body col-lg-8 pt-2 pt-lg-4 pb-4 mb-3">
+                    <section class="card-body col-md-8 pt-2 pt-lg-4 pb-4 mb-3">
                         <div class="pt-2 px-4 pe-lg-0 ps-xl-5">
                             <!-- Header-->
                             <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom pb-3">
                                 <div class="py-1">
                                     <a class="btn btn-warning btn-sm" href="{{ route('products.index') }}">
-                                        <i class="bi bi-arrow-left-square"></i> Add more products
+                                        <i class="bi bi-arrow-left-square"></i> Add products
                                     </a>
                                 </div>
-                                <div class="d-none d-sm-block py-1 fs-sm">You have {{ $cart_count }} products in your cart
-                                </div>
+                                {{-- <div class="d-none d-sm-block py-1 fs-sm">You have {{ $cart_count }} products in your cart
+                                </div> --}}
                                 <div class="py-1">
                                     @if ($cart_count)
                                     <form id="emptyCart" method="POST" action="{{ route('empty_cart') }}">
@@ -92,13 +92,39 @@
                             </div>
                         </div>
                     </section>
+                    @if ($cart_count)
                     <!-- Sidebar-->
-                    <aside class="col-lg-4 ps-xl-5">
+                    <aside class="col-md-4 ps-xl-5">
                         <hr class="d-lg-none">
-                        <div class="p-4 h-100 ms-auto border-start">
-                            <div class="text-center px-lg-2">
+                        <div class="row p-4 h-100 ms-auto border-start">
+                            <div class="text-center">
+                                <small class="text-form text-muted">Enter Buyer's details:</small>
+                            </div>
+                            <div class="mt-4 row">
+                                <!-- Name -->
+                                <div class="col-md-12 mb-4 form-control-bg-light">
+                                    <label class="form-label">Buyer's name: *</label>
+                                    <input name="name" type="text" class="form-control" required>
+                                </div>
+                                <!-- Phone -->
+                                <div class="col-md-6 mb-4 form-control-bg-light">
+                                    <label class="form-label">Phone number (+91):</label>
+                                    <input name="phone" type="phone" class="form-control">
+                                </div>
+                                <!-- Email -->
+                                <div class="col-md-6 mb-4 form-control-bg-light">
+                                    <label class="form-label">Email address:</label>
+                                    <input name="email" type="email" class="form-control">
+                                </div>
+                                <!-- Address -->
+                                <div class="col-md-12 mb-4 form-control-bg-light">
+                                    <label class="form-label">Address:</label>
+                                    <textarea name="address" class="form-control" required rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center px-lg-2">
                                 <button onclick="myFunctionFormEvaluateCartItems()" class="btn btn-primary btn-shadow d-block w-100 mt-4">
-                                    <i class="bi bi-shield-check"></i> Checkout & Generate Invoice <i class="bi bi-filetype-pdf"></i>
+                                    <i class="bi bi-shield-check"></i> Proceed securely to next page <i class="bi bi-arrow-right-circle"></i>
                                 </button>
                                 <div class="text-center pt-2 pb-3">
                                     <small class="text-form text-muted">100% value for money guaranteed</small>
@@ -106,6 +132,7 @@
                             </div>
                         </div>
                     </aside>
+                    @endif
                 </div>
             </form>
         </div>

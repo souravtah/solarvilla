@@ -19,6 +19,10 @@ class EvaluateCartRequest extends FormRequest
             'quantity.*'            => 'required|numeric|min:1',
             'description.*'         => 'string|nullable',
             'discount.*'            => 'required|numeric|min:0',
+            'name'                  => 'required|string|max:191',
+            'phone'                 => 'numeric|digits:10|nullable',
+            'email'                 => 'email|string|nullable',
+            'address'               => 'string|nullable',
         ];
     }
 }

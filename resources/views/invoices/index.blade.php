@@ -193,7 +193,7 @@
                     </div>
                 </div> <!-- / .row -->
             </div> --}}
-            @include('vendor.invoices.templates.default')
+            {{-- @include('vendor.invoices.templates.default') --}}
         </div>
     </div> <!-- / .row -->
 </div>

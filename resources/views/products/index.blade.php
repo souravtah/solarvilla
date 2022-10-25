@@ -14,6 +14,7 @@
                 @if (session('success'))
                 <li class="nav-item"><p class="nav-link text-success"><-- Click here to go to cart</p></li>
                 @endif
+                {{-- <li class="nav-item"><a href="{{ route('invoices.index') }}" class="nav-link">Invoice</a></li> --}}
             </ul>
         </div>
     </div>

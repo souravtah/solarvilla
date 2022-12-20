@@ -52,11 +52,13 @@ class User extends Authenticatable implements CanUseTickets
         'phone_verified_at' => 'datetime',
     ];
 
-    public function isEmailVerified() {
+    public function isEmailVerified() :bool
+    {
         return (boolean) isset($this->email_verified_at);
     }
 
-    public function isPhoneVerified() {
+    public function isPhoneVerified() :bool
+    {
         return (boolean) isset($this->phone_verified_at);
     }
 

@@ -5,7 +5,9 @@ namespace App\Models;
 use App\Models\Product;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 //use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductCategory extends Model
@@ -14,7 +16,7 @@ class ProductCategory extends Model
 
     public $guarded = [];
 
-    public function products()
+    public function products() :HasMany
     {
         return $this->hasMany(Product::class);
     }

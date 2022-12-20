@@ -6,6 +6,7 @@ use App\Models\User;
 
 use App\Models\ProductCategory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +17,7 @@ class Product extends Model
 
     public $guarded = [];
 
-    public function category()
+    public function category() :BelongsTo
     {
         return $this->belongsTo(ProductCategory::class);
     }

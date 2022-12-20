@@ -8,6 +8,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileUpdateRequest extends FormRequest
 {
+    public mixed $password;
+
     public function rules()
     {
         return [

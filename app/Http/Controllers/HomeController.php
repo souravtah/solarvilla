@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Ticket;
 use App\Models\TicketCategory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreQuoteRequest;
 use App\Http\Requests\StoreMessageRequest;
@@ -15,7 +16,7 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      */
-    public function index()
+    public function index() :view
     {
         $this->middleware('auth');
         $ticket_categories          = TicketCategory::visible()->get();
@@ -29,12 +30,12 @@ class HomeController extends Controller
         return view('users.home', compact('ticket_categories', 'opened_tickets', 'opened_calls'));
     }
 
-    public function get_help()
+    public function get_help() :view
     {
         return view('users.client.get-help');
     }
 
-    public function get_ticket_id()
+    public function get_ticket_id() :view
     {
         return view('guests.get-ticket-status');
     }

@@ -58,11 +58,14 @@ Route::middleware('auth')->group(function () {
     Route::post('delete-item-from-cart', [CartController::class, 'delete_a_cart_item'])->name('delete_a_cart_item');
     Route::post('empty-cart', [CartController::class, 'empty_cart'])->name('empty_cart');
 
+    Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+    Route::get('invoices/{invoice}/{challan?}', [InvoiceController::class, 'show'])->name('invoices.show');
+
     Route::resource('users', UserController::class)->except(['create']);
     Route::resource('ticket-categories', TicketCategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('tickets', TicketController::class)->except(['destroy']);
     Route::resource('ticket-labels', TicketLabelController::class)->except(['destroy']);
-    Route::resource('invoices', InvoiceController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
+    //Route::resource('invoices', InvoiceController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
     Route::resource('products', ProductController::class);
     Route::resource('product-categories', ProductCategoryController::class);
     Route::resource('carts', CartController::class)->except(['create', 'show', 'edit', 'update', 'destroy']);

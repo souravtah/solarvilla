@@ -6,7 +6,7 @@
                 <div class="border-bottom pt-6">
                     <div class="row align-items-center">
                         <div class="col-sm col-12">
-                            <h1 class="h2 ls-tight">Invoices</h1>
+                            <h1 class="h2 ls-tight">Invoices/Challan</h1>
                         </div>
                         <div class="col-sm-auto col-12 mt-4 mt-sm-0">
                             {{-- <div class="hstack gap-2 justify-content-sm-end"><a href="#modalExport"
@@ -31,13 +31,15 @@
                 <div class="vstack gap-4">
                     <div class="d-flex justify-content-between flex-column flex-sm-row gap-3">
                         <div class="hstack gap-2">
-                            <div class="input-group input-group-sm input-group-inline"><span
-                                    class="input-group-text pe-2"><i class="bi bi-search"></i> </span><input
-                                    type="email" class="form-control" placeholder="Search" aria-label="Search"></div>
-                            <div><button type="button" class="btn btn-sm px-3 btn-neutral d-flex align-items-center"><i
-                                        class="bi bi-search me-2"></i> <span>Search</span> <span
-                                        class="vr opacity-20 mx-3"></span> <span
-                                        class="text-xs text-primary">2</span></button></div>
+                            <div class="input-group input-group-sm input-group-inline">
+                                <span class="input-group-text pe-2"><i class="bi bi-search"></i> </span>
+                                <input type="email" class="form-control" placeholder="Search Invoice number.." aria-label="Search">
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-sm px-3 btn-neutral d-flex align-items-center">
+                                    <i class="bi bi-search me-2"></i> <span>Search</span>
+                                </button>
+                            </div>
                         </div>
                         {{-- <div class="btn-group"><a href="#" class="btn btn-sm btn-neutral"><i
                                     class="bi bi-cloud-download me-2"></i>Download all </a><a href="#"
@@ -60,6 +62,7 @@
                                     <tr>
                                         <th scope="col">Customer's Name</th>
                                         <th scope="col">View Invoice</th>
+                                        <th scope="col">View Challan</th>
                                         <th scope="col">Created at</th>
                                         {{-- <th></th> --}}
                                     </tr>
@@ -70,7 +73,11 @@
                                             {{ $invoice->buyer->name }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('invoices.show', ['invoice' => $invoice->invoice_number]) }}">{{ $invoice->invoice_number }}</a></td>
+                                            <a href="{{ route('invoices.show', ['invoice' => $invoice->invoice_number]) }}" target="_blank">{{ $invoice->invoice_number }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('invoices.show', ['invoice' => $invoice->invoice_number, 'challan' => 'Challan']) }}" target="_blank">{{ $invoice->invoice_number }}</a>
+                                        </td>
                                         <td>
                                             <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">
                                                 {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $invoice->created_at)->format("F j, Y") }}

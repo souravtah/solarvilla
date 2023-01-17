@@ -59,7 +59,7 @@ class CartController
 
         Auth::user()->products()->detach($validated['product_id']);
 
-        return redirect()->route('invoices.show', ['invoice' => $invoice_number]);
+        return redirect()->route('invoices.index');
                     //->with('status', 'Invoice generated.');
 
     }

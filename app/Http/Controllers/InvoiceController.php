@@ -11,7 +11,10 @@ class InvoiceController
 {
     public function index()
     {
-        $invoices = \App\Models\Invoice::with('buyer')->orderBy('invoice_number')->paginate();
+        $invoices = \App\Models\Invoice::with('buyer')
+                                        ->where('user_id', auth()->id())
+                                        ->orderByDesc('updated_at')
+                                        ->paginate();
 
         return view('invoices.index', compact('invoices'));
     }
@@ -76,9 +79,12 @@ class InvoiceController
     // {
     // }
 
-    public function show(String $invoice_number)
+    public function show(String $invoice_number, String $challan = '')
     {
-        $invoice = \App\Models\Invoice::with('buyer')->where('invoice_number', '=', $invoice_number)->get();
+        $invoice = \App\Models\Invoice::with('buyer')
+                                ->where('invoice_number', '=', $invoice_number)
+                                ->where('user_id', auth()->id())
+                                ->get();
 
         if($invoice->count())
         {
@@ -106,17 +112,19 @@ class InvoiceController
             ];
             $notes = implode("<br>", $notes);
 
-            $invoice = Invoice::make()
+            $file_name = ($challan == '') ? ' Invoice' : ' Challan';
+
+            $invoice = Invoice::make($challan)
                 ->series($invoice_number)
                 ->buyer($customer)
-                ->taxRate(12)
-                ->date(now())
+                ->taxRate(18)
+                ->date($invoice->pluck('updated_at')[0])
                 ->shipping(200)
                 ->addItems($items)
                 ->notes($notes)
-                ->filename($invoice->pluck('buyer')[0]->name)
-                ->logo(public_path('assets/images/solarvilla/logo/solarvilla-logo-light.webp'));
-                //->save();
+                ->filename($invoice->pluck('buyer')[0]->name . $file_name)
+                ->logo(public_path('assets/images/solarvilla/logo/solarvilla-logo-light.webp'))
+                ->save('public');
             return $invoice->stream();
 
 

@@ -81,15 +81,27 @@
                             <h5>Categories</h5>
                             <p class="text-sm text-muted mt-1">Show products in these categories:</p>
                             <div class="vstack gap-3 mt-4">
+                                <div class="form-item-checkable mb-3">
+                                    <a href="{{ route('products.index') }}">
+                                        <label class="item w-full" for="filter-category-0">
+                                            <span class="<?php if($category_id == 0) echo "bg-primary"; ?> form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2">
+                                                <i class="bi bi-diagram-2 text-lg me-3"></i>
+                                                <span class="text-body text-sm font-semibold">All Products</span>
+                                            </span>
+                                        </label>
+                                    </a>
+                                </div>
                                 @foreach ($product_categories as $product_category)
-                                <div class="form-item-checkable">
-                                    <input class="form-item-check" type="radio" name="filter-category" id="filter-category-1">
-                                    <label class="item w-full" for="filter-category-1">
-                                        <span class="form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2">
+                                <div class="form-item-checkable mb-3">
+                                    {{-- <input class="form-item-check" type="radio" onclick="javascript: submit()" name="filter-category" id="filter-category-{{ $product_category->id }}" value="{{ $product_category->id }}"> --}}
+                                    <a href="{{ route('products.show', ['product' => $product_category->id]) }}">
+                                    <label class="item w-full" for="filter-category-{{ $product_category->id }}">
+                                        <span class="<?php if($product_category->id == $category_id) echo "bg-primary"; ?> form-item-click d-flex align-items-center border border-primary-hover text-heading p-3 rounded-2">
                                             <i class="bi bi-diagram-2 text-lg me-3"></i>
                                             <span class="text-body text-sm font-semibold">{{ $product_category->name }}</span>
                                         </span>
                                     </label>
+                                    </a>
                                 </div>
                                 @endforeach
                             </div>
@@ -102,32 +114,10 @@
                     <div class="d-flex flex-column flex-sm-row justify-content-between gap-3">
                         <div class="input-group input-group-sm input-group-inline"><span
                                 class="input-group-text pe-2"><i class="bi bi-search"></i> </span><input
-                                type="text" class="form-control" placeholder="Search" aria-label="Search">
+                                type="text" class="form-control" placeholder="Search product name" aria-label="Search">
                         </div><a href="#" class="btn btn-sm btn-warning text-nowrap">Search</a>
                     </div>
                     <div class="row g-3 g-xl-5 mt-1">
-                        {{-- <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <img alt="..." class="w-10 h-10"
-                                                src="../../img/social/airbnb.svg">
-                                        </div>
-                                        <div class="text-end">
-                                            <div class="d-flex align-items-center text-success text-sm font-semibold">
-                                                <i class="bi bi-check-circle-fill me-1"></i> <span>Installed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">GitHub</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         @foreach ($products as $product)
                         <div class="col-lg-4 col-sm-6">
                             <div class="card shadow-4-hover">
@@ -150,271 +140,22 @@
                                                     <i class="bi bi-check-circle-fill me-1"></i> <span>Product added</span>
                                                 </div>
                                                 @else
-                                                <a href="{{ route('add_to_cart') }}" type="button" class="btn btn-sm btn-neutral rounded-pill"
-                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                                <button type="submit" class="btn btn-sm btn-neutral rounded-pill">
                                                     <i class="bi bi-cart-plus-fill"></i>
                                                     <span>Add to Cart</span>
-                                                </a>
+                                                </button>
                                                 @endif
                                             </form>
                                         </div>
                                     </div>
                                     <div class="mt-6">
                                         <h6 class="mb-2">{{ $product->name }}</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
+                                        <p class="text-sm text-muted">{{ $product->short_description }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
-                        {{--
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/bootstrap.svg"></div>
-                                        <div class="text-end">
-                                            <div
-                                                class="d-flex align-items-center text-success text-sm font-semibold">
-                                                <i class="bi bi-check-circle-fill me-1"></i> <span>Installed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Bootstrap</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/dribbble.svg"></div>
-                                        <div class="text-end"><button type="button"
-                                                class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"
-                                                data-bs-target="#modalAddProduct"><i
-                                                    class="bi bi-plus-lg me-1"></i> <span>Install</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Dribbble</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/spotify.svg"></div>
-                                        <div class="text-end"><button type="button"
-                                                class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"
-                                                data-bs-target="#modalAddProduct"><i
-                                                    class="bi bi-plus-lg me-1"></i> <span>Install</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Spotify</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/uber.svg"></div>
-                                        <div class="text-end">
-                                            <div
-                                                class="d-flex align-items-center text-success text-sm font-semibold">
-                                                <i class="bi bi-check-circle-fill me-1"></i> <span>Installed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Uber</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/codepen.svg"></div>
-                                        <div class="text-end"><button type="button"
-                                                class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"
-                                                data-bs-target="#modalAddProduct"><i
-                                                    class="bi bi-plus-lg me-1"></i> <span>Install</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Codepen</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/slack.svg"></div>
-                                        <div class="text-end">
-                                            <div
-                                                class="d-flex align-items-center text-success text-sm font-semibold">
-                                                <i class="bi bi-check-circle-fill me-1"></i> <span>Installed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Slack</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/airbnb.svg"></div>
-                                        <div class="text-end">
-                                            <div
-                                                class="d-flex align-items-center text-success text-sm font-semibold">
-                                                <i class="bi bi-check-circle-fill me-1"></i> <span>Installed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">GitHub</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/amazon.svg"></div>
-                                        <div class="text-end"><button type="button"
-                                                class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"
-                                                data-bs-target="#modalAddProduct"><i
-                                                    class="bi bi-plus-lg me-1"></i> <span>Install</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Amazon S3</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/bootstrap.svg"></div>
-                                        <div class="text-end">
-                                            <div
-                                                class="d-flex align-items-center text-success text-sm font-semibold">
-                                                <i class="bi bi-check-circle-fill me-1"></i> <span>Installed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Bootstrap</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/dribbble.svg"></div>
-                                        <div class="text-end"><button type="button"
-                                                class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"
-                                                data-bs-target="#modalAddProduct"><i
-                                                    class="bi bi-plus-lg me-1"></i> <span>Install</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Dribbble</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/codepen.svg"></div>
-                                        <div class="text-end"><button type="button"
-                                                class="btn btn-sm btn-neutral rounded-pill" data-bs-toggle="modal"
-                                                data-bs-target="#modalAddProduct"><i
-                                                    class="bi bi-plus-lg me-1"></i> <span>Install</span></button>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Codepen</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card shadow-4-hover">
-                                <div class="card-body pb-5">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div><img alt="..." class="w-10 h-10"
-                                                src="../../img/social/slack.svg"></div>
-                                        <div class="text-end">
-                                            <div
-                                                class="d-flex align-items-center text-success text-sm font-semibold">
-                                                <i class="bi bi-check-circle-fill me-1"></i> <span>Installed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-6">
-                                        <h6 class="mb-2">Slack</h6>
-                                        <p class="text-sm text-muted">In certain circumstances and owing to the
-                                            claims of duty.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('productcategory_id');
+            $table->foreignId('product_category_id');
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
             $table->string('image')->nullable();

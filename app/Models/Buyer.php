@@ -17,4 +17,9 @@ class Buyer extends Model
     {
         return $this->belongsTo(Invoice::class,  'invoice_number',  'invoice_number');
     }
+
+    public function quotation()
+    {
+        return $this->belongsTo(Quotation::class,  'quotation_number',  'invoice_number');
+    }
 }

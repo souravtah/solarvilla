@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::post('add-to-cart', [ProductController::class, 'add_to_cart'])->name('add_to_cart');
     Route::post('delete-item-from-cart', [CartController::class, 'delete_a_cart_item'])->name('delete_a_cart_item');
     Route::post('empty-cart', [CartController::class, 'empty_cart'])->name('empty_cart');
+    Route::post('quotation-cart', [CartController::class, 'store_quotation'])->name('store_quotation');
 
     Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices.index');
     Route::get('invoices-all', [InvoiceController::class, 'index_all'])->name('invoices.index-all');

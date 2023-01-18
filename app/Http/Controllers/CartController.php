@@ -12,6 +12,7 @@ use LaravelDaily\Invoices\Classes\Buyer;
 use App\Http\Requests\EvaluateCartRequest;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 use App\Http\Requests\DeleteACartProductRequest;
+use App\Models\Quotation;
 
 class CartController
 {
@@ -54,6 +55,43 @@ class CartController
 
         \App\Models\Buyer::create([
             'invoice_number'            => $invoice_number,
+            'name'                      => $validated['name'],
+            'phone'                     => $validated['phone'],
+            'email'                     => $validated['email'],
+            'address'                   => $validated['address'],
+        ]);
+
+        Auth::user()->products()->detach($validated['product_id']);
+
+        return redirect()->route('invoices.index');
+                    //->with('status', 'Invoice generated.');
+
+    }
+
+    public function store_quotation(EvaluateCartRequest $request)
+    {
+        $validated                  = $request->safe()->all();
+        $quotation_number           = strtoupper(uniqid());
+        $auth_user_id               = Auth::id();
+
+        foreach($validated['product_id'] as $key => $value)
+        {
+            $quotation = new Quotation;
+            $quotation->user_id               = $auth_user_id;
+            $quotation->quotation_number      = $quotation_number;
+            $quotation->product_id            = $validated['product_id'][$key];
+            $quotation->product_name          = $validated['product_name'][$key];
+            $quotation->price                 = $validated['price'][$key];
+            $quotation->quantity              = $validated['quantity'][$key];
+            $quotation->description           = $validated['description'][$key];
+            $quotation->discount              = $validated['discount'][$key];
+            $quotation->created_at            = \Carbon\Carbon::parse($validated['invoice_date'])->format('Y-m-d H:i');
+            $quotation->updated_at            = \Carbon\Carbon::parse($validated['invoice_date'])->format('Y-m-d H:i');
+            $quotation->save();
+        }
+
+        \App\Models\Buyer::create([
+            'invoice_number'            => $quotation_number,
             'name'                      => $validated['name'],
             'phone'                     => $validated['phone'],
             'email'                     => $validated['email'],

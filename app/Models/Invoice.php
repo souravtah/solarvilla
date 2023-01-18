@@ -22,6 +22,7 @@ class Invoice extends Model
                             'quantity',
                             'description',
                             'discount',
+                            'shipping',
                             'updated_at',
                             'created_at'];
 

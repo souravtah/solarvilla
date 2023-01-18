@@ -12,7 +12,7 @@ class Invoice extends Model
     //use HasFactory;
 
     //public $guarded = [];
-    public $timestamps = false;
+    //public $timestamps = false;
 
     protected $fillable = ['user_id',
                             'invoice_number',

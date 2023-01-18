@@ -19,9 +19,11 @@
                         </div>
                     </div>
                     <ul class="nav nav-tabs overflow-x border-0">
+                        @role('Admin')
+                        <li class="nav-item"><a href="{{ route('invoices.index-all') }}" class="nav-link active">View all</a></li>
+                        @else
                         <li class="nav-item"><a href="{{ route('invoices.index') }}" class="nav-link active">View all</a></li>
-                        {{-- <li class="nav-item"><a href="#" class="nav-link">Most recent</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Popular</a></li> --}}
+                        @endrole
                     </ul>
                 </div>
             </div>
@@ -47,7 +49,7 @@
                     </div>
                     <div class="card">
                         <div class="card-header border-bottom d-flex align-items-center">
-                            <h5 class="me-auto">All Invoices</h5>
+                            <h5 class="me-auto">{{ count($invoices->unique('invoice_number')) }} Invoice(s)</h5>
                             {{-- <div class="dropdown"><a class="text-muted" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                                         class="bi bi-three-dots-vertical"></i></a>

@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::post('empty-cart', [CartController::class, 'empty_cart'])->name('empty_cart');
 
     Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+    Route::get('invoices-all', [InvoiceController::class, 'index_all'])->name('invoices.index-all');
     Route::get('invoices/{invoice}/{challan?}', [InvoiceController::class, 'show'])->name('invoices.show');
 
     Route::get('product-categories/{product_categories}/restore', [ProductCategoryController::class, 'restore'])->name('product_categories.restore');

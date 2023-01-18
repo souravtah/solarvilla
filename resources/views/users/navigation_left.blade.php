@@ -60,9 +60,9 @@
                                     'sub_menu_route' => 'products.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'Older orders',
+                                    'sub_menu_name' => 'All past orders',
                                     'sub_menu_icon' => 'bi bi-clock-history',
-                                    'sub_menu_route' => 'invoices.index',
+                                    'sub_menu_route' => 'invoices.index-all',
                                 ],
                             ],
                         ],
@@ -155,7 +155,7 @@
                                     'sub_menu_route' => 'products.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'Older orders',
+                                    'sub_menu_name' => 'Past orders',
                                     'sub_menu_icon' => 'bi bi-clock-history',
                                     'sub_menu_route' => 'invoices.index',
                                 ],

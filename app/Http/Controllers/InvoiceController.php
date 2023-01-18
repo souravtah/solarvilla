@@ -13,9 +13,18 @@ class InvoiceController
     public function index()
     {
         $invoices = \App\Models\Invoice::with('buyer')
-                                        ->where('user_id', auth()->id())
-                                        ->orderByDesc('updated_at')
-                                        ->paginate();
+                                    ->where('user_id', auth()->id())
+                                    ->orderByDesc('updated_at')
+                                    ->paginate();
+
+        return view('invoices.index', compact('invoices'));
+    }
+
+    public function index_all()
+    {
+        $invoices = \App\Models\Invoice::with('buyer')
+                                    ->orderByDesc('updated_at')
+                                    ->paginate();
 
         return view('invoices.index', compact('invoices'));
     }

@@ -46,6 +46,7 @@ class CartController
             $invoice->quantity              = $validated['quantity'][$key];
             $invoice->description           = $validated['description'][$key];
             $invoice->discount              = $validated['discount'][$key];
+            $invoice->shipping              = $validated['shipping'];
             $invoice->created_at            = \Carbon\Carbon::parse($validated['invoice_date'])->format('Y-m-d H:i');
             $invoice->updated_at            = \Carbon\Carbon::parse($validated['invoice_date'])->format('Y-m-d H:i');
             $invoice->save();

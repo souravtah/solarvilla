@@ -120,7 +120,7 @@ class InvoiceController
                 ->buyer($customer)
                 ->taxRate(18)
                 ->date($invoice->pluck('updated_at')[0])
-                ->shipping(200)
+                ->shipping($invoice->pluck('shipping')[0])
                 ->addItems($items)
                 ->notes($notes)
                 ->filename($invoice->pluck('buyer')[0]->name . $file_name)

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedInteger('price');
             $table->unsignedInteger('quantity');
             $table->string('description');
-            $table->unsignedInteger('discount');
+            $table->unsignedInteger('discount')->default(0);
+            $table->unsignedInteger('shipping')->default(0);
             $table->timestamps();
         });
     }

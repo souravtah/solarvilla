@@ -121,17 +121,22 @@
                                     <label class="form-label">Address:</label>
                                     <input name="address" type="text" class="form-control">
                                 </div>
-                                <div class="col-md-12 mb-4 form-control-bg-light">
-                                    <h6 class="text-sm text-muted font-semibold">Invoice date (optional)</h6>
+                                <div class="col-md-6 mb-4 form-control-bg-light">
+                                    <h6 class="text-sm font-semibold">Invoice date</h6>
                                     <div class="mt-3">
                                         <div class="datepicker d-flex gap-2 align-items-center">
-                                            <input type="text" name="invoice_date" class="form-control form-control-flush text-sm text-muted font-semibold flatpickr-input"
-                                                placeholder="Invoice date" data-input="today" defaultDate="today">
-                                                <a href="#" class="text-muted text-primary-hover" data-toggle="">
+                                            <input type="text" name="invoice_date" class="form-control form-control-flush text-sm font-semibold flatpickr-input"
+                                                placeholder="Select Invoice date" data-input="today" defaultDate="today">
+                                                <a href="#" class="text-primary-hover" data-toggle="">
                                                     <i class="bi bi-calendar-event"></i>
                                                 </a>
                                             </div>
                                     </div>
+                                </div>
+                                <!-- Shipping -->
+                                <div class="col-md-6 mb-4 form-control-bg-light">
+                                    <label class="form-label">Shipping Costs (₹)</label>
+                                    <input name="shipping" type="number" class="form-control" min="0" value="0">
                                 </div>
                             </div>
                             <div class="col-12 text-center">

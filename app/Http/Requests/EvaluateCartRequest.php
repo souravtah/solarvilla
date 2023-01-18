@@ -23,6 +23,7 @@ class EvaluateCartRequest extends FormRequest
             'phone'                 => 'numeric|digits:10|nullable',
             'email'                 => 'email|string|nullable',
             'address'               => 'string|nullable',
+            'invoice_date'          => 'date|nullable',
         ];
     }
 }

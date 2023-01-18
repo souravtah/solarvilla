@@ -11,7 +11,19 @@ class Invoice extends Model
 {
     //use HasFactory;
 
-    public $guarded = [];
+    //public $guarded = [];
+    public $timestamps = false;
+
+    protected $fillable = ['user_id',
+                            'invoice_number',
+                            'product_id',
+                            'product_name',
+                            'price',
+                            'quantity',
+                            'description',
+                            'discount',
+                            'updated_at',
+                            'created_at'];
 
     public function buyer()
     {

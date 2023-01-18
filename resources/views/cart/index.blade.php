@@ -119,11 +119,23 @@
                                 <!-- Address -->
                                 <div class="col-md-12 mb-4 form-control-bg-light">
                                     <label class="form-label">Address:</label>
-                                    <textarea name="address" class="form-control" required rows="4"></textarea>
+                                    <input name="address" type="text" class="form-control">
+                                </div>
+                                <div class="col-md-12 mb-4 form-control-bg-light">
+                                    <h6 class="text-sm text-muted font-semibold">Invoice date (optional)</h6>
+                                    <div class="mt-3">
+                                        <div class="datepicker d-flex gap-2 align-items-center">
+                                            <input type="text" name="invoice_date" class="form-control form-control-flush text-sm text-muted font-semibold flatpickr-input"
+                                                placeholder="Invoice date" data-input="today" defaultDate="today">
+                                                <a href="#" class="text-muted text-primary-hover" data-toggle="">
+                                                    <i class="bi bi-calendar-event"></i>
+                                                </a>
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 text-center px-lg-2">
-                                <button onclick="myFunctionFormEvaluateCartItems()" class="btn btn-primary btn-shadow d-block w-100 mt-4">
+                            <div class="col-12 text-center">
+                                <button onclick="myFunctionFormEvaluateCartItems()" class="btn btn-primary btn-shadow w-100 mt-4">
                                     <i class="bi bi-shield-check"></i> Securely generate invoice <i class="bi bi-arrow-right-circle"></i>
                                 </button>
                                 <div class="text-center pt-2 pb-3">

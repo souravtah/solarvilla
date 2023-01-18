@@ -37,16 +37,18 @@ class CartController
 
         foreach($validated['product_id'] as $key => $value)
         {
-            Invoice::create([
-                'user_id'               => $auth_user_id,
-                'invoice_number'        => $invoice_number,
-                'product_id'            => $validated['product_id'][$key],
-                'product_name'          => $validated['product_name'][$key],
-                'price'                 => $validated['price'][$key],
-                'quantity'              => $validated['quantity'][$key],
-                'description'           => $validated['description'][$key],
-                'discount'              => $validated['discount'][$key],
-            ]);
+            $invoice = new Invoice;
+            $invoice->user_id               = $auth_user_id;
+            $invoice->invoice_number        = $invoice_number;
+            $invoice->product_id            = $validated['product_id'][$key];
+            $invoice->product_name          = $validated['product_name'][$key];
+            $invoice->price                 = $validated['price'][$key];
+            $invoice->quantity              = $validated['quantity'][$key];
+            $invoice->description           = $validated['description'][$key];
+            $invoice->discount              = $validated['discount'][$key];
+            $invoice->created_at            = \Carbon\Carbon::parse($validated['invoice_date'])->format('Y-m-d H:i');
+            $invoice->updated_at            = \Carbon\Carbon::parse($validated['invoice_date'])->format('Y-m-d H:i');
+            $invoice->save();
         }
 
         \App\Models\Buyer::create([

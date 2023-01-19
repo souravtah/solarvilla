@@ -30,7 +30,7 @@ class ProductController
     public function product_listing()
     {
         $product_categories = ProductCategory::all();
-        $products           = Product::withTrashed()->with('product_category')->orderByDesc('updated_at')->paginate();
+        $products           = Product::withTrashed()->with('product_category')->orderByDesc('updated_at')->paginate(5);
         $total_products     = Product::withTrashed()->count();
         return view('products.listing', compact('products', 'total_products', 'product_categories'));
     }
@@ -45,18 +45,17 @@ class ProductController
         return back()->with('success', true);
     }
 
-    public function create()
-    {
-    }
+    // public function create()
+    // {
+    // }
 
     public function store(StoreProductRequest $request)
     {
-        $validated                  = $request->safe()->only(['name', 'description']);
+        $validated                  = $request->safe()->all();
         $validated                  = $validated + array('slug' => Str::slug($validated['name']));
         $product                    = Product::create($validated);
 
-        return redirect()->route('products.product-listing')
-                    ->with('status', 'Product '. $product->name .' created!');
+        return back()->with('status', 'Product '. $product->name .' created!');
     }
 
     public function show(Int $category_id)
@@ -68,24 +67,24 @@ class ProductController
         $cart_count         = count($current_selected_products);
 
         return view('products.index', compact('category_id', 'product_categories', 'products', 'cart_count', 'current_selected_products'));
-
-
     }
 
-    public function edit(Product $product)
-    {
-    }
+    // public function edit(Product $product)
+    // {
+    // }
 
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(StoreProductRequest $request, Product $product)
     {
-        $validated                     = $request->safe()->only(['name', 'description']);
+        $validated                     = $request->safe()->all();
         $product->name                 = $validated['name'];
+        $product->product_category_id  = $validated['product_category_id'];
         $product->slug                 = Str::slug($validated['name']);
-        $product->description          = $validated['description'];
+        $product->price                = $validated['price'];
+        $product->short_description    = $validated['short_description'];
+        $product->long_description     = $validated['long_description'];
         $product->save();
 
-        return redirect()->route('products.product-listing')
-                    ->with('status', 'Product '. $product->name .' updated!');
+        return back()->with('status', 'Product '. $product->name .' updated!');
     }
 
     public function destroy(Product $product)
@@ -101,6 +100,6 @@ class ProductController
     {
         $product       = Product::onlyTrashed()->findOrFail($id);
         $product->restore();
-        return redirect()->route('products.product-listing')->with('status', 'Product '. $product->name .' restored!');
+        return back()->with('status', 'Product '. $product->name .' restored!');
     }
 }

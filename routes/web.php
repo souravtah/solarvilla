@@ -75,7 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('tickets', TicketController::class)->except(['destroy']);
     Route::resource('ticket-labels', TicketLabelController::class)->except(['destroy']);
     //Route::resource('invoices', InvoiceController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
-    Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class)->except(['create', 'edit']);
     Route::resource('product-categories', ProductCategoryController::class)->except(['create', 'show', 'edit']);
     Route::resource('carts', CartController::class)->except(['create', 'show', 'edit', 'update', 'destroy']);
 

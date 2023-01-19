@@ -10,11 +10,11 @@
                 </div>
                 <div class="col-sm-auto col-12 mt-4 mt-sm-0">
                     <div class="hstack gap-2 justify-content-sm-end">
-                        <a href="#modalExport" class="btn btn-sm btn-neutral border-base" data-bs-toggle="modal">
+                        {{-- <a href="#modalExport" class="btn btn-sm btn-neutral border-base" data-bs-toggle="modal">
                             <span class="pe-2"><i class="bi bi-people-fill"></i>
                             </span>
                             <span>Share</span>
-                        </a>
+                        </a> --}}
                         <a href="#offcanvasCreate" class="btn btn-sm btn-primary" data-bs-toggle="offcanvas">
                             <span class="pe-2"><i class="bi bi-plus-square-dotted"></i> </span>
                             <span>Create</span>

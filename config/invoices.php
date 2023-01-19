@@ -54,7 +54,7 @@ return [
          * Supported tags {VALUE}, {SYMBOL}, {CODE}
          * Example: 1.99 €
          */
-        'format' => '{SYMBOL}{VALUE}',
+        'format' => '{SYMBOL} {VALUE}',
     ],
 
     'paper' => [
@@ -79,10 +79,10 @@ return [
          */
         'attributes' => [
             'name'          => 'SolarVilla MultiTrade Pvt. Ltd',
-            'address'       => 'xyz',
+            'address'       => 'Kalna Road, Pirpukur, Bardhaman',
             'code'          => '713101',
-            'vat'           => '123456789',
-            'phone'         => '9876543210',
+            'vat'           => '19ABICS1267KIZV',
+            'phone'         => '+918945867283',
             'custom_fields' => [
                 /*
                  * Custom attributes for Seller::class
@@ -90,9 +90,11 @@ return [
                  * Used to display additional info on Seller section in invoice
                  * attribute => value
                  */
-                'BANK Account No.' => 'SBI',
-                'BANK IFSC CODE' => 'IFSC00001',
-                'BANK Account NAME' => 'SOLARVILLA MULTITRADE PVT. LTD',
+
+                'E-mail'                 => 'solarvillabdn@gmail.com',
+                // 'BANK Account No.' => 'SBI',
+                // 'BANK IFSC CODE' => 'IFSC00001',
+                // 'BANK Account NAME' => 'SOLARVILLA MULTITRADE PVT. LTD',
             ],
         ],
     ],

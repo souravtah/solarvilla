@@ -68,17 +68,17 @@
                         ],
                         [
                             'menu_name' => 'Make Quotations',
-                            'icon' => 'bi bi-bag-check',
+                            'icon' => 'bi bi-file-earmark-text',
                             'sub_menu' => [
                                 [
                                     'sub_menu_name' => 'Select products',
                                     'sub_menu_icon' => 'bi bi-bag-plus-fill',
-                                    'sub_menu_route' => 'products.index',
+                                    'sub_menu_route' => 'quotations.index',
                                 ],
                                 [
                                     'sub_menu_name' => 'All past quotations',
-                                    'sub_menu_icon' => 'bi bi-clock-history',
-                                    'sub_menu_route' => 'invoices.index-all',
+                                    'sub_menu_icon' => 'bi bi-file-text',
+                                    'sub_menu_route' => 'quotations.listing-all',
                                 ],
                             ],
                         ],
@@ -161,7 +161,7 @@
         'Sales' => [],
         'Technician' => [],
         'Client' => [
-                        [
+            [
                             'menu_name' => 'Buy Items',
                             'icon' => 'bi bi-bag-check',
                             'sub_menu' => [
@@ -171,9 +171,25 @@
                                     'sub_menu_route' => 'products.index',
                                 ],
                                 [
-                                    'sub_menu_name' => 'Past orders',
+                                    'sub_menu_name' => 'All past orders',
                                     'sub_menu_icon' => 'bi bi-clock-history',
-                                    'sub_menu_route' => 'invoices.index',
+                                    'sub_menu_route' => 'invoices.index-all',
+                                ],
+                            ],
+                        ],
+                        [
+                            'menu_name' => 'Make Quotations',
+                            'icon' => 'bi bi-file-earmark-text',
+                            'sub_menu' => [
+                                [
+                                    'sub_menu_name' => 'Select products',
+                                    'sub_menu_icon' => 'bi bi-bag-plus-fill',
+                                    'sub_menu_route' => 'quotations.index',
+                                ],
+                                [
+                                    'sub_menu_name' => 'All past quotations',
+                                    'sub_menu_icon' => 'bi bi-file-text',
+                                    'sub_menu_route' => 'quotations.listing-all',
                                 ],
                             ],
                         ],

@@ -185,13 +185,13 @@
 
                         @if($invoice->seller->code)
                             <p class="seller-code">
-                                {{ __('invoices::invoice.code') }}: {{ $invoice->seller->code }}
+                                {{ 'PIN' }}: {{ $invoice->seller->code }}
                             </p>
                         @endif
 
                         @if($invoice->seller->vat)
                             <p class="seller-vat">
-                                {{ 'GST' }}: {{ $invoice->seller->vat }}
+                                {{ 'GSTIN' }}: {{ $invoice->seller->vat }}
                             </p>
                         @endif
 
@@ -235,7 +235,7 @@
 
                         @if($invoice->buyer->phone)
                             <p class="buyer-phone">
-                                {{ __('invoices::invoice.phone') }}: {{ $invoice->buyer->phone }}
+                                {{ __('invoices::invoice.phone') }}: +91{{ $invoice->buyer->phone }}
                             </p>
                         @endif
 
@@ -364,7 +364,7 @@
             </p>
         @endif
 
-        <p>
+        <p class="text-uppercase">
             {{ trans('invoices::invoice.amount_in_words') }}: {{ $invoice->getTotalAmountInWords() }}
         </p>
         <p>

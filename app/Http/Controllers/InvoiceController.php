@@ -93,7 +93,7 @@ class InvoiceController
     {
         $invoice = \App\Models\Invoice::with('buyer')
                                 ->where('invoice_number', '=', $invoice_number)
-                                ->where('user_id', auth()->id())
+                                //->where('user_id', auth()->id())
                                 ->get();
 
         if($invoice->count())
@@ -118,7 +118,7 @@ class InvoiceController
             ]);
 
             $notes = [
-                'We really appreciate your business and if there is anything else we can do, please let us know!',
+                '',
             ];
             $notes = implode("<br>", $notes);
 
@@ -133,7 +133,7 @@ class InvoiceController
                 ->addItems($items)
                 ->notes($notes)
                 ->filename($invoice->pluck('buyer')[0]->name . $file_name)
-                ->logo(public_path('assets/images/solarvilla/logo/solarvilla-logo-light.webp'))
+                ->logo(public_path('assets/images/solarvilla/logo/solarvilla-logo-small.jpeg'))
                 ->save('public');
             return $invoice->stream();
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\TicketLabelController;
 use App\Http\Controllers\TicketCategoryController;
 use App\Http\Controllers\ProductCategoryController;
@@ -57,7 +58,13 @@ Route::middleware('auth')->group(function () {
     Route::post('add-to-cart', [ProductController::class, 'add_to_cart'])->name('add_to_cart');
     Route::post('delete-item-from-cart', [CartController::class, 'delete_a_cart_item'])->name('delete_a_cart_item');
     Route::post('empty-cart', [CartController::class, 'empty_cart'])->name('empty_cart');
-    Route::post('quotation-cart', [CartController::class, 'store_quotation'])->name('store_quotation');
+
+    // Route::post('quotation-store', [QuotationController::class, 'store'])->name('quotations.store');
+    // Route::get('quotations', [QuotationController::class, 'index'])->name('quotations.index');
+    Route::get('quotations-cart', [QuotationController::class, 'cart'])->name('quotations.cart.index');
+    Route::get('quotations-listing', [QuotationController::class, 'listing'])->name('quotations.listing');
+    Route::get('quotations-listing-all', [QuotationController::class, 'listing_all'])->name('quotations.listing-all');
+    // Route::get('quotations/{quotation}', [QuotationController::class, 'show'])->name('quotations.show');
 
     Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices.index');
     Route::get('invoices-all', [InvoiceController::class, 'index_all'])->name('invoices.index-all');
@@ -75,6 +82,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('tickets', TicketController::class)->except(['destroy']);
     Route::resource('ticket-labels', TicketLabelController::class)->except(['destroy']);
     //Route::resource('invoices', InvoiceController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('quotations', QuotationController::class)->except(['create', 'edit', 'update', 'destroy']);
     Route::resource('products', ProductController::class)->except(['create', 'edit']);
     Route::resource('product-categories', ProductCategoryController::class)->except(['create', 'show', 'edit']);
     Route::resource('carts', CartController::class)->except(['create', 'show', 'edit', 'update', 'destroy']);

@@ -4,14 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use Ramsey\Uuid\Type\Integer;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddProductRequest;
 use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
-use App\Http\Requests\SelectProductCategoryRequest;
 
 class ProductController
 {

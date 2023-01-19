@@ -159,12 +159,12 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="border-0 pl-0 party-header" width="48.5%">
-                        {{ __('invoices::invoice.seller') }}
+                    <th class="border-0 pl-0" width="48.5%">
+                        {{ 'Quotation from:' }}
                     </th>
                     <th class="border-0" width="3%"></th>
-                    <th class="border-0 pl-0 party-header">
-                        {{ __('invoices::invoice.buyer') }}
+                    <th class="border-0 pl-0">
+                        {{ 'Quotation to:' }}
                     </th>
                 </tr>
             </thead>
@@ -253,12 +253,13 @@
         <table class="table table-items">
             <thead>
                 <tr>
+                    <th scope="col" class="border-0 pl-0">{{ 'Sl. No.' }}</th>
                     <th scope="col" class="border-0 pl-0">{{ __('invoices::invoice.description') }}</th>
                     @if($invoice->hasItemUnits)
                         <th scope="col" class="text-center border-0">{{ __('invoices::invoice.units') }}</th>
                     @endif
                     <th scope="col" class="text-center border-0">{{ __('invoices::invoice.quantity') }}</th>
-                    <th scope="col" class="text-right border-0">{{ __('invoices::invoice.price') }}</th>
+                    <th scope="col" class="text-right border-0">{{ 'Rate (₹)' }}</th>
                     @if($invoice->hasItemDiscount)
                         <th scope="col" class="text-right border-0">{{ __('invoices::invoice.discount') }}</th>
                     @endif
@@ -272,6 +273,9 @@
                 {{-- Items --}}
                 @foreach($invoice->items as $item)
                 <tr>
+                    <td class="pl-0">
+                        {{ $loop->iteration }}
+                    </td>
                     <td class="pl-0">
                         {{ $item->title }}
 
@@ -358,18 +362,19 @@
             </tbody>
         </table>
 
-        @if($invoice->notes)
-            <p>
-                {{ trans('invoices::invoice.notes') }}: {!! $invoice->notes !!}
-            </p>
-        @endif
-
-        <p>
+        <p class="text-uppercase">
             {{ trans('invoices::invoice.amount_in_words') }}: {{ $invoice->getTotalAmountInWords() }}
         </p>
         <p>
-            {{ trans('invoices::invoice.pay_until') }}: {{ $invoice->getPayUntilDate() }}
+            {{ 'Quotation valid until' }}: {{ $invoice->getPayUntilDate() }}
         </p>
+
+        @if($invoice->notes)
+            </br></br>
+            <p>
+                {!! $invoice->notes !!}
+            </p>
+        @endif
 
         <script type="text/php">
             if (isset($pdf) && $PAGE_COUNT > 1) {

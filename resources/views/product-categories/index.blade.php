@@ -5,7 +5,7 @@
         <div class="border-bottom pt-6">
             <div class="row align-items-center">
                 <div class="col-sm col-12">
-                    <h1 class="h2 ls-tight">Product Listing</h1>
+                    <h1 class="h2 ls-tight">Product Categories</h1>
                 </div>
                 <div class="col-sm-auto col-12 mt-4 mt-sm-0">
                     <div class="hstack gap-2 justify-content-sm-end">
@@ -22,17 +22,17 @@
                 </div>
             </div>
             <ul class="nav nav-tabs overflow-x border-0">
-                <li class="nav-item"><a href="{{ route('products.product-listing') }}" class="nav-link {{ Route::currentRouteNamed('products.product-listing') ? 'active font-bold' : '' }}">View all</a></li>
+                <li class="nav-item"><a href="{{ route('product-categories.index') }}" class="nav-link {{ Route::currentRouteNamed('product-categories.index') ? 'active font-bold' : '' }}">View all</a></li>
             </ul>
         </div>
     </div>
 </header>
 <main class="py-6 bg-surface-secondary">
-    <form method="POST" action="{{ route('products.store') }}">
+    <form method="POST" action="{{ route('product-categories.store') }}">
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
             id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
             <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
-                <h5 class="offcanvas-title" id="offcanvasCreateLabel">Add a new product</h5>
+                <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new user</h5>
                 <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
                 @csrf
@@ -65,7 +65,7 @@
                         </div>
                         {{-- <div class="col-md-4">
                             <label class="form-label" for="last_name">Slug</label>
-                            <input type="text" name="phone" class="form-control" maxlength="10" required value={{ $product->id }}>
+                            <input type="text" name="phone" class="form-control" maxlength="10" required value={{ $product_category->id }}>
                         </div> --}}
                     </div>
                     {{-- <div class="row">
@@ -79,12 +79,12 @@
                 </div>
         </div>
     </form>
-    @foreach ($products as $product)
-    <form method="POST" action="{{ route('products.update', ['product' => $product->id]) }}">
+    @foreach ($product_categories as $product_category)
+    <form method="POST" action="{{ route('product-categories.update', ['product_category' => $product_category->id]) }}">
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
-            id="offcanvas{{ $product->id }}" aria-labelledby="offcanvasCreateLabel">
+            id="offcanvas{{ $product_category->id }}" aria-labelledby="offcanvasCreateLabel">
             <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
-                <h5 class="offcanvas-title" id="offcanvasCreateLabel">Edit product</h5>
+                <h5 class="offcanvas-title" id="offcanvasCreateLabel">Edit product category</h5>
                 <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             @csrf
@@ -105,8 +105,8 @@
                     </div> --}}
                     <div class="col-md-12">
                         <div>
-                            <label class="form-label">Product Name</label>
-                            <input type="text" name="name" class="form-control" maxlength="25" required value="{{ $product->name }}">
+                            <label class="form-label">Product Category Name</label>
+                            <input type="text" name="name" class="form-control" maxlength="25" required value="{{ $product_category->name }}">
                         </div>
                     </div>
                 </div>
@@ -114,11 +114,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label class="form-label" for="last_name">Short description</label>
-                        <input type="text" name="short_description" class="form-control" maxlength="95" required value="{{ $product->short_description }}">
+                        <input type="text" name="description" class="form-control" maxlength="95" required value="{{ $product_category->description }}">
                     </div>
                     {{-- <div class="col-md-4">
                         <label class="form-label" for="last_name">Slug</label>
-                        <input type="text" name="phone" class="form-control" maxlength="10" required value={{ $product->id }}>
+                        <input type="text" name="phone" class="form-control" maxlength="10" required value={{ $product_category->id }}>
                     </div> --}}
                 </div>
                 {{-- <div class="row">
@@ -210,7 +210,7 @@
             @endif
             <div class="card">
                 <div class="card-header border-bottom d-flex align-items-center">
-                    <h5 class="me-auto">Total {{ $total_products }} products</h5>
+                    <h5 class="me-auto">Total {{ $total_product_categories }} product categories</h5>
                     @if (session('status'))
                     <span class="me-auto text-success">
                             {{ session('status') }}
@@ -227,35 +227,31 @@
                     <table class="table table-hover table-nowrap">
                         <thead class="table-light">
                             <tr>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Product Category Name</th>
-                                <th scope="col">Price (₹)</th>
-                                <th scope="col">Short description</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Slug</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Deleted at</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>@forelse ($products as $product)
+                        <tbody>@forelse ($product_categories as $product_category)
                             <tr>
                                 <td>
-                                    <p class="text-heading font-semibold" ><span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $product->name }}</span></p>
+                                    <p class="text-heading font-semibold" >{{ $product_category->name }}</p>
                                 </td>
                                 <td>
-                                    <p class="text-heading font-semibold" ><span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $product->product_category->name }}</span></p>
+                                    <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $product_category->slug ?? 'No slug' }}</span>
                                 </td>
                                 <td>
-                                    <span class="text-heading font-semibold">{{ $product->price ?? '0' }}</span>
+                                    <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $product_category->description ?? 'No description' }}</span>
                                 </td>
                                 <td>
-                                    <span class="text-heading font-semibold">{{ $product->short_description ?? 'No description' }}</span>
+                                    <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $product_category->deleted_at?->diffForHumans() ?? 'Active' }}</span>
                                 </td>
-                                <td>
-                                    <span class="text-heading font-semibold">{{ $product->deleted_at?->diffForHumans() ?? 'Active' }}</span>
-                                </td>
-                                @if (is_null($product->deleted_at))
+                                @if (is_null($product_category->deleted_at))
                                 <td class="p-1 text-end">
-                                    <a href="#offcanvas{{ $product->id }}" class="btn btn-sm btn-square btn-success" data-bs-toggle="offcanvas">
+                                    <a href="#offcanvas{{ $product_category->id }}" class="btn btn-sm btn-square btn-success" data-bs-toggle="offcanvas">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                 </td>
@@ -264,15 +260,15 @@
 
                                 </td>
                                 @endif
-                                @if (! is_null($product->deleted_at))
+                                @if (! is_null($product_category->deleted_at))
                                 <td class="p-0">
-                                    <a type="submit" href="{{ route('products.restore', $product->id) }}" onclick="return confirm('Are you sure you want to restore ?')" class="btn btn-sm btn-square btn-primary">
+                                    <a type="submit" href="{{ route('product_categories.restore', $product_category->id) }}" onclick="return confirm('Are you sure you want to restore ?')" class="btn btn-sm btn-square btn-primary">
                                         <i class="bi bi-arrow-counterclockwise"></i>
                                     </a>
                                 </td>
                                 @else
                                 <td class="p-0">
-                                    <form method="POST" action="{{ route('products.destroy', $product->id) }}">
+                                    <form method="POST" action="{{ route('product-categories.destroy', $product_category->id) }}">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
                                         <button type="submit" onclick="return confirm('Are you sure you want to delete ?')" class="btn btn-sm btn-square btn-danger">
@@ -292,7 +288,7 @@
                 </div>
                 <div class="card-footer border-0 py-5">
                     <span class="text-muted text-sm">
-                        {{ $products->links() }}
+                        {{ $product_categories->links() }}
                     </span>
                 </div>
             </div>

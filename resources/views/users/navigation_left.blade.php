@@ -9,7 +9,7 @@
                                 [
                                     'sub_menu_name' => 'Product List',
                                     'sub_menu_icon' => 'bi bi-diagram-3',
-                                    'sub_menu_route' => 'products.index',
+                                    'sub_menu_route' => 'products.product-listing',
                                 ],
                                 // [
                                 //     'sub_menu_name' => 'Label management',

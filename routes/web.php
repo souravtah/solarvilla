@@ -66,6 +66,10 @@ Route::middleware('auth')->group(function () {
     Route::get('product-categories/{product_categories}/restore', [ProductCategoryController::class, 'restore'])->name('product_categories.restore');
     Route::delete('product-categories/{product_categories}/force-delete', [ProductCategoryController::class, 'force_delete'])->name('product_categories.force_delete');
 
+    Route::get('products/{product}/restore', [ProductController::class, 'restore'])->name('products.restore');
+    Route::get('products-listing', [ProductController::class, 'product_listing'])->name('products.product-listing');
+    //Route::delete('products/{product}/force-delete', [ProductController::class, 'force_delete'])->name('products.force_delete');
+
     Route::resource('users', UserController::class)->except(['create']);
     Route::resource('ticket-categories', TicketCategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('tickets', TicketController::class)->except(['destroy']);

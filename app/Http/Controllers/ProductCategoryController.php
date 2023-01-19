@@ -14,7 +14,7 @@ class ProductCategoryController
         $product_categories         = ProductCategory::withTrashed()->paginate();
         $total_product_categories   = $product_categories->count();
 
-        return view('products.listing', compact('product_categories', 'total_product_categories'));
+        return view('product-categories.index', compact('product_categories', 'total_product_categories'));
     }
 
     // public function create()

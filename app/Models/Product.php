@@ -17,7 +17,7 @@ class Product extends Model
 
     public $guarded = [];
 
-    public function category() :BelongsTo
+    public function product_category() :BelongsTo
     {
         return $this->belongsTo(ProductCategory::class);
     }

@@ -67,7 +67,9 @@
                                 </div>
                         </div>
                         {{-- <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.css> --}}
-                        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                        {{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> --}}
+                        {{-- <script src="{{ asset('assets/vendor/flatpickr/css/flatpickr.min.css') }}"></script> --}}
+                        {{-- <script src="{{ asset('assets/vendor/flatpickr/js/flatpickr.min.js') }}"></script>
                         <script type="text/javascript">
                             const myInput = document.querySelector("#inputDateTime");
                             myInput.flatpickr({
@@ -82,7 +84,7 @@
                                 // confirmText: "OK ",
                                 // showAlways: false,
                             });
-                        </script>
+                        </script> --}}
                     </div>
                     <div class="modal-footer">
                         <div class="me-auto">

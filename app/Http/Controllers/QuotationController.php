@@ -87,7 +87,7 @@ class QuotationController
 
         Auth::user()->products()->detach($validated['product_id']);
 
-        return redirect()->route('quotations.listing');
+        return redirect()->route('quotations.listing-all');
                     //->with('status', 'Invoice generated.');
     }
 

@@ -22,7 +22,7 @@
                         @role('Admin')
                         <li class="nav-item"><a href="{{ route('quotations.listing-all') }}" class="nav-link active">View all</a></li>
                         @else
-                        <li class="nav-item"><a href="{{ route('quotations.listing') }}" class="nav-link active">View all</a></li>
+                        <li class="nav-item"><a href="{{ route('quotations.listing-all') }}" class="nav-link active">View all</a></li>
                         @endrole
                     </ul>
                 </div>

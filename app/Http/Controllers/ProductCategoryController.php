@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
 //use Illuminate\Http\Request;
+use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Http\Requests\ProductCategoryUpdateRequest;
 
@@ -27,7 +28,7 @@ class ProductCategoryController
         $validated                  = $validated + array('slug' => Str::slug($validated['name']));
         $product_category           = ProductCategory::create($validated);
 
-        return redirect()->route('product-categories.index')
+        return back()
                     ->with('status', 'Product category '. $product_category->name .' created!');
     }
 
@@ -47,7 +48,7 @@ class ProductCategoryController
         $product_category->description          = $validated['description'];
         $product_category->save();
 
-        return redirect()->route('product-categories.index')
+        return back()
                     ->with('status', 'Product category '. $product_category->name .' updated!');
     }
 
@@ -55,7 +56,7 @@ class ProductCategoryController
     {
         if (!$product_category->trashed()) {
             $product_category->delete();
-            return redirect(route('product-categories.index'))->with('status', 'Product Category '. $product_category->name .' deleted!');
+            return back()->with('status', 'Product Category '. $product_category->name .' deleted!');
         }
         abort(403);
     }
@@ -64,12 +65,16 @@ class ProductCategoryController
     {
         $product_category       = ProductCategory::onlyTrashed()->findOrFail($id);
         $product_category->restore();
-        return redirect()->route('product-categories.index')->with('status', 'Product Category '. $product_category->name .' restored!');
+        Product::onlyTrashed()->where('product_category_id', $id)->get()->each(function ($product) {
+            $product->restore();
+        });
+
+        return back()->with('status', 'Product Category '. $product_category->name .' restored!');
     }
 
     public function force_delete(ProductCategory $product_category)
     {
         $product_category->forceDelete();
-        return redirect()->route('product_categories.index')->with('status', 'Product category '. $product_category->name .' permanently deleted!');
+        return back()->with('status', 'Product category '. $product_category->name .' permanently deleted!');
     }
 }

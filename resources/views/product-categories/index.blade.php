@@ -32,7 +32,7 @@
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
             id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
             <div class="offcanvas-header border-bottom py-4 bg-surface-secondary">
-                <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create a new user</h5>
+                <h5 class="offcanvas-title" id="offcanvasCreateLabel">Create Product Category</h5>
                 <button type="button" class="btn-close text-reset text-xs" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
                 @csrf

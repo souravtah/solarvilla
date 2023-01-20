@@ -22,7 +22,7 @@
                         @role('Admin')
                         <li class="nav-item"><a href="{{ route('invoices.index-all') }}" class="nav-link active">View all</a></li>
                         @else
-                        <li class="nav-item"><a href="{{ route('invoices.index') }}" class="nav-link active">View all</a></li>
+                        <li class="nav-item"><a href="{{ route('invoices.index-all') }}" class="nav-link active">View all</a></li>
                         @endrole
                     </ul>
                 </div>

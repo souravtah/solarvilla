@@ -98,6 +98,8 @@ class InvoiceController
 
         if($invoice->count())
         {
+            $file_name = ($challan == '') ? ' Invoice' : ' Challan';
+
             foreach($invoice as $invoice_details)
             {
                 $items[] = (new InvoiceItem())
@@ -119,15 +121,19 @@ class InvoiceController
 
             $notes = [
                 '',
+                'We declare that this'. $file_name .' shows actual price of the goods decided and that all particulars are true and correct.',
+                '',
+                'Note: Warranty of this product directly from the principle manufacturer company.',
+                '',
+                'All dispute are subject to Bardhaman, West Bengal Jurisdiction.',
             ];
-            $notes = implode("<br>", $notes);
 
-            $file_name = ($challan == '') ? ' Invoice' : ' Challan';
+            $notes = implode("<br>", $notes);
 
             $invoice = Invoice::make($challan)
                 ->series($invoice_number)
                 ->buyer($customer)
-                ->taxRate(18)
+                ->taxRate($invoice->pluck('gst')[0])
                 ->date($invoice->pluck('updated_at')[0])
                 ->shipping($invoice->pluck('shipping')[0])
                 ->addItems($items)

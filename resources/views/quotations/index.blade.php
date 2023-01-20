@@ -5,7 +5,7 @@
         <div class="border-bottom pt-6">
             <div class="row align-items-center">
                 <div class="col-sm-12 col-12">
-                    <h1 class="h2 ls-tight">Add products</h1>
+                    <h1 class="h2 ls-tight">Add products to Quotation</h1>
                 </div>
             </div>
             <ul class="nav nav-tabs overflow-x border-0">

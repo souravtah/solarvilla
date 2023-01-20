@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('invoice_number');
             $table->unsignedBigInteger('product_id');
             $table->string('product_name');
@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('description');
             $table->unsignedInteger('discount')->default(0);
             $table->unsignedInteger('shipping')->default(0);
+            $table->unsignedInteger('gst')->default(0);
             $table->timestamps();
         });
     }

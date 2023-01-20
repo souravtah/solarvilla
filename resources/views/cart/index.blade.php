@@ -121,7 +121,7 @@
                                     <label class="form-label">Address:</label>
                                     <input name="address" type="text" class="form-control">
                                 </div>
-                                <div class="col-md-6 mb-4 form-control-bg-light">
+                                <div class="col-md-12 mb-4 form-control-bg-light">
                                     <h6 class="text-sm font-semibold">Invoice date</h6>
                                     <div class="mt-3">
                                         <div class="datepicker d-flex gap-2 align-items-center">
@@ -135,8 +135,13 @@
                                 </div>
                                 <!-- Shipping -->
                                 <div class="col-md-6 mb-4 form-control-bg-light">
-                                    <label class="form-label">Shipping Costs (₹)</label>
+                                    <label class="form-label">Shipping(₹)</label>
                                     <input name="shipping" type="number" class="form-control" min="0" value="0">
+                                </div>
+                                <!-- GST -->
+                                <div class="col-md-6 mb-4 form-control-bg-light">
+                                    <label class="form-label">SGST+CGST (%)</label>
+                                    <input name="gst" type="number" class="form-control" min="0" value="18">
                                 </div>
                             </div>
                             <div class="col-12 text-center">

@@ -266,7 +266,7 @@
                                         </td>
                                         <td>
                                             <p class="text-heading font-semibold">
-                                                <span class="badge text-uppercase bg-soft-primary text-primary rounded-pill">{{ $product->product_category->name }}</span>
+                                                <span class="badge text-uppercase bg-soft-{{ $product->product_category?->name ? 'primary' : 'danger' }} text-primary rounded-pill">{{ $product->product_category?->name ?? 'No Category' }}</span>
                                             </p>
                                         </td>
                                         <td>

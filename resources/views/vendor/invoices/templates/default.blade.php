@@ -358,18 +358,18 @@
             </tbody>
         </table>
 
-        @if($invoice->notes)
-            <p>
-                {{ trans('invoices::invoice.notes') }}: {!! $invoice->notes !!}
-            </p>
-        @endif
-
         <p class="text-uppercase">
             {{ trans('invoices::invoice.amount_in_words') }}: {{ $invoice->getTotalAmountInWords() }}
         </p>
         <p>
             {{ trans('invoices::invoice.pay_until') }}: {{ $invoice->getPayUntilDate() }}
         </p>
+
+        @if($invoice->notes)
+            <p>
+                {!! $invoice->notes !!}
+            </p>
+        @endif
 
         <script type="text/php">
             if (isset($pdf) && $PAGE_COUNT > 1) {

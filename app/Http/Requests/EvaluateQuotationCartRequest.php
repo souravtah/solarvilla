@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\Request;
 
-class EvaluateCartRequest extends FormRequest
+class EvaluateQuotationCartRequest extends FormRequest
 {
     /**
      * @return array<string, mixed>
@@ -20,7 +20,6 @@ class EvaluateCartRequest extends FormRequest
             'description.*'         => 'string|nullable',
             'discount.*'            => 'numeric|min:0',
             'shipping'              => 'numeric|min:0',
-            'gst'                   => 'numeric|min:0',
             'name'                  => 'required|string|max:191',
             'phone'                 => 'numeric|digits:10|nullable',
             'email'                 => 'email|string|nullable',

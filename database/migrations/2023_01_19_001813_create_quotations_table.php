@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('quotation_number');
             $table->unsignedBigInteger('product_id');
             $table->string('product_name');

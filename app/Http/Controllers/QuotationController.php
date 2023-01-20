@@ -8,8 +8,8 @@ use App\Models\ProductCategory;
 use LaravelDaily\Invoices\Invoice;
 use Illuminate\Support\Facades\Auth;
 use LaravelDaily\Invoices\Classes\Party;
-use App\Http\Requests\EvaluateCartRequest;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
+use App\Http\Requests\EvaluateQuotationCartRequest;
 
 class QuotationController
 {
@@ -56,7 +56,7 @@ class QuotationController
     }
 
 
-    public function store(EvaluateCartRequest $request)
+    public function store(EvaluateQuotationCartRequest $request)
     {
         $validated                  = $request->safe()->all();
         $quotation_number           = strtoupper(uniqid());

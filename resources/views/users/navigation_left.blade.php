@@ -156,101 +156,192 @@
                             ],
                         ],
                     ],
-        'BackOffice' => [],
+        'BackOffice' => [
+                            [
+                                'menu_name' => 'Buy Items',
+                                'icon' => 'bi bi-bag-check',
+                                'sub_menu' => [
+                                    [
+                                        'sub_menu_name' => 'Select products',
+                                        'sub_menu_icon' => 'bi bi-bag-plus-fill',
+                                        'sub_menu_route' => 'products.index',
+                                    ],
+                                    [
+                                        'sub_menu_name' => 'All past orders',
+                                        'sub_menu_icon' => 'bi bi-clock-history',
+                                        'sub_menu_route' => 'invoices.index-all',
+                                    ],
+                                ],
+                            ],
+                            [
+                                'menu_name' => 'Make Quotations',
+                                'icon' => 'bi bi-file-earmark-text',
+                                'sub_menu' => [
+                                    [
+                                        'sub_menu_name' => 'Select products',
+                                        'sub_menu_icon' => 'bi bi-bag-plus-fill',
+                                        'sub_menu_route' => 'quotations.index',
+                                    ],
+                                    [
+                                        'sub_menu_name' => 'All past quotations',
+                                        'sub_menu_icon' => 'bi bi-file-text',
+                                        'sub_menu_route' => 'quotations.listing-all',
+                                    ],
+                                ],
+                            ],
+                            [
+                                'menu_name' => 'Get help',
+                                'icon' => 'bi bi-question-diamond',
+                                'sub_menu' => [
+                                    [
+                                        'sub_menu_name' => 'Raise a support ticket',
+                                        'sub_menu_icon' => 'bi bi-ticket',
+                                        'sub_menu_route' => 'tickets.create',
+                                    ],
+                                    // [
+                                    //     'sub_menu_name' => 'Call us',
+                                    //     'sub_menu_icon' => 'bi bi-telephone-outbound',
+                                    //     'sub_menu_route' => 'users.index',
+                                    // ],
+                                    // [
+                                    //     'sub_menu_name' => 'Request a phone call',
+                                    //     'sub_menu_icon' => 'bi bi-telephone-inbound',
+                                    //     'sub_menu_route' => 'users.index',
+                                    // ],
+                                ],
+                            ],
+                            // [
+                            //     'menu_name' => 'History',
+                            //     'icon' => 'bi bi-clock-history',
+                            //     'sub_menu' => [
+                            //         [
+                            //             'sub_menu_name' => 'My purchases',
+                            //             'sub_menu_icon' => 'bi bi-clock-history',
+                            //             'sub_menu_route' => 'invoices.index',
+                            //         ],
+                            //         [
+                            //             'sub_menu_name' => 'My support tickets',
+                            //             'sub_menu_icon' => 'bi bi-ticket-fill',
+                            //             'sub_menu_route' => 'tickets.index',
+                            //         ],
+                            //     ],
+                            // ],
+                            // [
+                            //     'menu_name' => 'Settings',
+                            //     'icon' => 'bi bi-gear',
+                            //     'sub_menu' => [
+                            //         [
+                            //             'sub_menu_name' => 'Privacy settings',
+                            //             'sub_menu_icon' => 'bi bi-shield-check',
+                            //             'sub_menu_route' => 'users.index',
+                            //         ],
+                            //         [
+                            //             'sub_menu_name' => 'Notification settings',
+                            //             'sub_menu_icon' => 'bi bi-bell',
+                            //             'sub_menu_route' => 'users.index',
+                            //         ],
+                            //         [
+                            //             'sub_menu_name' => 'Website preference',
+                            //             'sub_menu_icon' => 'bi bi-browser-safari',
+                            //             'sub_menu_route' => 'users.index',
+                            //         ],
+                            //     ],
+                            // ],
+                    ],
         'TeamLeader' => [],
         'Sales' => [],
         'Technician' => [],
         'Client' => [
-            [
-                            'menu_name' => 'Buy Items',
-                            'icon' => 'bi bi-bag-check',
-                            'sub_menu' => [
-                                [
-                                    'sub_menu_name' => 'Select products',
-                                    'sub_menu_icon' => 'bi bi-bag-plus-fill',
-                                    'sub_menu_route' => 'products.index',
-                                ],
-                                [
-                                    'sub_menu_name' => 'All past orders',
-                                    'sub_menu_icon' => 'bi bi-clock-history',
-                                    'sub_menu_route' => 'invoices.index-all',
-                                ],
-                            ],
-                        ],
-                        [
-                            'menu_name' => 'Make Quotations',
-                            'icon' => 'bi bi-file-earmark-text',
-                            'sub_menu' => [
-                                [
-                                    'sub_menu_name' => 'Select products',
-                                    'sub_menu_icon' => 'bi bi-bag-plus-fill',
-                                    'sub_menu_route' => 'quotations.index',
-                                ],
-                                [
-                                    'sub_menu_name' => 'All past quotations',
-                                    'sub_menu_icon' => 'bi bi-file-text',
-                                    'sub_menu_route' => 'quotations.listing-all',
-                                ],
-                            ],
-                        ],
-                        [
-                            'menu_name' => 'Get help',
-                            'icon' => 'bi bi-question-diamond',
-                            'sub_menu' => [
-                                [
-                                    'sub_menu_name' => 'Raise a support ticket',
-                                    'sub_menu_icon' => 'bi bi-ticket',
-                                    'sub_menu_route' => 'tickets.create',
-                                ],
-                                // [
-                                //     'sub_menu_name' => 'Call us',
-                                //     'sub_menu_icon' => 'bi bi-telephone-outbound',
-                                //     'sub_menu_route' => 'users.index',
-                                // ],
-                                // [
-                                //     'sub_menu_name' => 'Request a phone call',
-                                //     'sub_menu_icon' => 'bi bi-telephone-inbound',
-                                //     'sub_menu_route' => 'users.index',
-                                // ],
-                            ],
-                        ],
                         // [
-                        //     'menu_name' => 'History',
-                        //     'icon' => 'bi bi-clock-history',
+                        //     'menu_name' => 'Buy Items',
+                        //     'icon' => 'bi bi-bag-check',
                         //     'sub_menu' => [
                         //         [
-                        //             'sub_menu_name' => 'My purchases',
+                        //             'sub_menu_name' => 'Select products',
+                        //             'sub_menu_icon' => 'bi bi-bag-plus-fill',
+                        //             'sub_menu_route' => 'products.index',
+                        //         ],
+                        //         [
+                        //             'sub_menu_name' => 'All past orders',
                         //             'sub_menu_icon' => 'bi bi-clock-history',
-                        //             'sub_menu_route' => 'invoices.index',
-                        //         ],
-                        //         [
-                        //             'sub_menu_name' => 'My support tickets',
-                        //             'sub_menu_icon' => 'bi bi-ticket-fill',
-                        //             'sub_menu_route' => 'tickets.index',
+                        //             'sub_menu_route' => 'invoices.index-all',
                         //         ],
                         //     ],
                         // ],
                         // [
-                        //     'menu_name' => 'Settings',
-                        //     'icon' => 'bi bi-gear',
+                        //     'menu_name' => 'Make Quotations',
+                        //     'icon' => 'bi bi-file-earmark-text',
                         //     'sub_menu' => [
                         //         [
-                        //             'sub_menu_name' => 'Privacy settings',
-                        //             'sub_menu_icon' => 'bi bi-shield-check',
-                        //             'sub_menu_route' => 'users.index',
+                        //             'sub_menu_name' => 'Select products',
+                        //             'sub_menu_icon' => 'bi bi-bag-plus-fill',
+                        //             'sub_menu_route' => 'quotations.index',
                         //         ],
                         //         [
-                        //             'sub_menu_name' => 'Notification settings',
-                        //             'sub_menu_icon' => 'bi bi-bell',
-                        //             'sub_menu_route' => 'users.index',
-                        //         ],
-                        //         [
-                        //             'sub_menu_name' => 'Website preference',
-                        //             'sub_menu_icon' => 'bi bi-browser-safari',
-                        //             'sub_menu_route' => 'users.index',
+                        //             'sub_menu_name' => 'All past quotations',
+                        //             'sub_menu_icon' => 'bi bi-file-text',
+                        //             'sub_menu_route' => 'quotations.listing-all',
                         //         ],
                         //     ],
                         // ],
+                        // [
+                        //     'menu_name' => 'Get help',
+                        //     'icon' => 'bi bi-question-diamond',
+                        //     'sub_menu' => [
+                        //         [
+                        //             'sub_menu_name' => 'Raise a support ticket',
+                        //             'sub_menu_icon' => 'bi bi-ticket',
+                        //             'sub_menu_route' => 'tickets.create',
+                        //         ],
+                        //         // [
+                        //         //     'sub_menu_name' => 'Call us',
+                        //         //     'sub_menu_icon' => 'bi bi-telephone-outbound',
+                        //         //     'sub_menu_route' => 'users.index',
+                        //         // ],
+                        //         // [
+                        //         //     'sub_menu_name' => 'Request a phone call',
+                        //         //     'sub_menu_icon' => 'bi bi-telephone-inbound',
+                        //         //     'sub_menu_route' => 'users.index',
+                        //         // ],
+                        //     ],
+                        // ],
+                        // // [
+                        // //     'menu_name' => 'History',
+                        // //     'icon' => 'bi bi-clock-history',
+                        // //     'sub_menu' => [
+                        // //         [
+                        // //             'sub_menu_name' => 'My purchases',
+                        // //             'sub_menu_icon' => 'bi bi-clock-history',
+                        // //             'sub_menu_route' => 'invoices.index',
+                        // //         ],
+                        // //         [
+                        // //             'sub_menu_name' => 'My support tickets',
+                        // //             'sub_menu_icon' => 'bi bi-ticket-fill',
+                        // //             'sub_menu_route' => 'tickets.index',
+                        // //         ],
+                        // //     ],
+                        // // ],
+                        // // [
+                        // //     'menu_name' => 'Settings',
+                        // //     'icon' => 'bi bi-gear',
+                        // //     'sub_menu' => [
+                        // //         [
+                        // //             'sub_menu_name' => 'Privacy settings',
+                        // //             'sub_menu_icon' => 'bi bi-shield-check',
+                        // //             'sub_menu_route' => 'users.index',
+                        // //         ],
+                        // //         [
+                        // //             'sub_menu_name' => 'Notification settings',
+                        // //             'sub_menu_icon' => 'bi bi-bell',
+                        // //             'sub_menu_route' => 'users.index',
+                        // //         ],
+                        // //         [
+                        // //             'sub_menu_name' => 'Website preference',
+                        // //             'sub_menu_icon' => 'bi bi-browser-safari',
+                        // //             'sub_menu_route' => 'users.index',
+                        // //         ],
+                        // //     ],
+                        // // ],
                     ],
                 ];
 ?>

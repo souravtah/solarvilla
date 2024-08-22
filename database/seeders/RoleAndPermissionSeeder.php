@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Spatie\Permission\Models\Role;
 
 class RoleAndPermissionSeeder extends Seeder
 {
@@ -35,13 +34,13 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'create tickets']);
         Permission::create(['name' => 'manage tickets']);
 
-        // create permissions users
+        // create permissions products
         Permission::create(['name' => 'view products']);
         Permission::create(['name' => 'edit products']);
         Permission::create(['name' => 'delete products']);
         Permission::create(['name' => 'create products']);
 
-        // create permissions users
+        // create permissions productCategories
         Permission::create(['name' => 'view productCategories']);
         Permission::create(['name' => 'edit productCategories']);
         Permission::create(['name' => 'delete productCategories']);
@@ -49,15 +48,17 @@ class RoleAndPermissionSeeder extends Seeder
 
         Role::create(['name' => 'SuperAdmin'])->givePermissionTo(Permission::all());
         Role::create(['name' => 'Admin'])->givePermissionTo(Permission::all());
-        Role::create(['name' => 'BackOffice']);
+        Role::create(['name' => 'BackOffice'])->givePermissionTo([
+            'view products',
+            'edit products',
+            'create products',
+            'view productCategories',
+            'edit productCategories',
+            'create productCategories',
+        ]);
         Role::create(['name' => 'TeamLeader']);
         Role::create(['name' => 'Sales']);
         Role::create(['name' => 'Technician']);
-        Role::create(['name' => 'Client'])
-                ->givePermissionTo([
-                    'view tickets list',
-                    'create tickets',
-                    'view each tickets'
-                ]);
+        Role::create(['name' => 'Client']);
     }
 }

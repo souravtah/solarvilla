@@ -56,11 +56,11 @@
                     </div> --}}
                 </div>
                 <div class="dropdown">
-                    <a class="d-flex align-items-center" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                            <div class="avatar avatar-sm bg-warning rounded-circle text-white">
-                                <img alt="..." src="{{ asset('img/people/img-profile.jpg') }}">
-                            </div>
+                    <a class="d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-haspopup="false" aria-expanded="false">
+                        <div class="avatar avatar-sm bg-warning rounded-circle text-white">
+                            <img alt="..." src="{{ asset('img/people/img-profile.png') }}">
+                        </div>
                         <div class="d-none d-sm-block ms-3"><span class="h6">{{ Auth::user()->name }}</span></div>
                         <div class="d-none d-md-block ms-md-2">
                             <i class="bi bi-chevron-down text-muted text-xs"></i>
